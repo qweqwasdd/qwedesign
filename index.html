@@ -76,11 +76,27 @@ p{margin:0}
 .btn-ghost{border-color:var(--line-strong);color:var(--fg);background:transparent}
 .btn-ghost:hover{border-color:var(--fg)}
 .btn .arr{font-family:var(--f-mono)}
-.burger{display:none;width:40px;height:40px;background:var(--surface-2);border:0;color:var(--fg);cursor:pointer;font:500 18px/1 var(--f-mono)}
-.mnav{border-top:1px solid var(--line);padding-block:12px 20px}
-.mnav a{display:flex;justify-content:space-between;text-decoration:none;padding:14px 0;border-bottom:1px solid var(--line);font-size:18px;font-family:var(--f-display)}
-.mnav a span{font-family:var(--f-mono);color:var(--muted)}
-@media (max-width:860px){.nav,.top .btn-accent{display:none}.burger{display:grid;place-items:center}}
+.burger{display:none;width:44px;height:44px;background:transparent;border:0;color:var(--fg);cursor:pointer;padding:0;position:relative}
+.burger i{position:absolute;left:12px;right:12px;height:2px;background:currentColor;transition:transform .25s,opacity .2s}
+.burger i:nth-child(1){top:15px}.burger i:nth-child(2){top:21px}.burger i:nth-child(3){top:27px}
+.burger[aria-expanded="true"]{background:var(--fg);color:var(--bg)}
+.burger[aria-expanded="true"] i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] i:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.mnav{position:fixed;left:0;right:0;bottom:0;top:calc(65px + env(safe-area-inset-top,0px));z-index:49;background:var(--bg);display:flex;flex-direction:column;gap:28px;padding:20px 16px calc(24px + env(safe-area-inset-bottom,0px));overflow-y:auto;animation:mnavIn .25s ease both}
+@keyframes mnavIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.mnav nav{display:grid}
+.mnav nav a{display:flex;justify-content:space-between;align-items:center;gap:16px;text-decoration:none;color:var(--fg);padding:18px 0;border-bottom:1px solid var(--line);font:400 clamp(28px,8vw,36px)/1.1 var(--f-display);letter-spacing:-.02em}
+.mnav nav a span{font:400 26px var(--f-mono);color:var(--accent)}
+.mnav nav a:active{color:var(--soft)}
+.mnav .mfoot{margin-top:auto;display:grid;gap:16px}
+.mnav .mfoot .btn{width:100%;padding:18px}
+.mnav .mcontacts{display:grid;gap:6px;font:500 13px/1.4 var(--f-mono);color:var(--muted)}
+.mnav .mcontacts b{color:var(--fg);font-weight:500}
+@media (min-width:861px){.mnav{display:none!important}}
+@media (max-width:860px){.nav,.top .btn-accent{display:none}.burger{display:block}}
+body.menu-open{overflow:hidden}
+body.menu-open .fab{display:none}
 
 /* Hero */
 .hero{position:relative;overflow:hidden;color:var(--hero-fg);background:
@@ -337,16 +353,21 @@ footer small{color:var(--muted);font-family:var(--f-mono);font-size:12px}
       <a href="#contact">Контакты</a>
     </nav>
     <a class="btn btn-accent" href="#contact">Обсудить проект</a>
-    <button class="burger" id="burger" aria-expanded="false" aria-controls="mnav" aria-label="Открыть меню">≡</button>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Открыть меню"><i></i><i></i><i></i></button>
   </div>
-  <div class="wrap mnav" id="mnav" hidden>
+</header>
+<div class="mnav" id="mnav" hidden>
+  <nav aria-label="Мобильное меню">
     <a href="#services">Услуги <span>→</span></a>
     <a href="#work">Портфолио <span>→</span></a>
     <a href="#process">Процесс <span>→</span></a>
     <a href="#faq">Вопросы <span>→</span></a>
-    <a href="#contact">Обсудить проект <span>→</span></a>
+  </nav>
+  <div class="mfoot">
+    <a class="btn btn-accent" href="#contact">Обсудить проект <span class="arr">→</span></a>
+    <div class="mcontacts"><span>Telegram <b>@qweqwasdd</b></span><span>Почта <b>sempervukhin@mail.ru</b></span></div>
   </div>
-</header>
+</div>
 
 <main id="top">
   <section class="hero" aria-labelledby="h1">
@@ -660,8 +681,11 @@ footer small{color:var(--muted);font-family:var(--f-mono);font-size:12px}
 (function(){
   // Mobile menu
   var burger=document.getElementById('burger'), mnav=document.getElementById('mnav');
-  burger.addEventListener('click',function(){var o=mnav.hidden;mnav.hidden=!o;burger.setAttribute('aria-expanded',String(o));burger.textContent=o?'×':'≡';});
-  mnav.addEventListener('click',function(e){if(e.target.closest('a')){mnav.hidden=true;burger.setAttribute('aria-expanded','false');burger.textContent='≡';}});
+  function setMenu(open){mnav.hidden=!open;burger.setAttribute('aria-expanded',String(open));burger.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню');document.body.classList.toggle('menu-open',open);}
+  burger.addEventListener('click',function(){setMenu(mnav.hidden);});
+  mnav.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!mnav.hidden){setMenu(false);burger.focus();}});
+  addEventListener('resize',function(){if(innerWidth>860&&!mnav.hidden)setMenu(false);});
 
   // One open item per service accordion
   document.querySelectorAll('.acc').forEach(function(acc){
