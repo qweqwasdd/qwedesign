@@ -295,6 +295,24 @@ input:focus,textarea:focus{outline:none;border-color:var(--accent)}
 
 @media (max-width:860px){.contact{grid-template-columns:1fr}}
 
+
+/* Contact cards (form removed for now) */
+.brief-tips{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:10px}
+.brief-tips li{display:flex;gap:12px;color:var(--fg)}
+.brief-tips li::before{content:"→";font-family:var(--f-mono);color:var(--accent)}
+.contact-cards{display:grid;gap:12px;align-content:start}
+.cc{position:relative;display:grid;gap:8px;padding:clamp(22px,3vw,32px);border:1px solid var(--line);background:var(--surface);min-width:0}
+.cc .mono{color:var(--muted)}
+.cc strong{font:400 clamp(24px,3vw,34px)/1.15 var(--f-display);letter-spacing:-.02em;word-break:break-word}
+.cc-tg{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);text-decoration:none;padding-right:72px;transition:background .2s}
+.cc-tg:hover{background:color-mix(in srgb,var(--accent) 85%,#fff)}
+.cc-tg .mono{color:rgba(255,255,255,.8)}
+.cc-handle{font:500 15px var(--f-mono);opacity:.9}
+.cc-arr{position:absolute;right:clamp(22px,3vw,32px);top:50%;transform:translateY(-50%);font:400 34px var(--f-mono);transition:transform .2s}
+.cc-tg:hover .cc-arr{transform:translate(4px,-50%)}
+.cc-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.cc-acts .btn{padding:11px 16px}
+
 /* Footer */
 footer{border-top:1px solid var(--line);padding-block:40px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:center}
@@ -649,38 +667,29 @@ footer small{color:var(--muted);font-family:var(--f-mono);font-size:12px}
       <div class="contact-info">
         <div class="label mono">Контакты</div>
         <h2 id="ct-h">Обсудим проект</h2>
-        <p>Заполните форму или напишите напрямую. Отвечу, задам пару уточняющих вопросов и пришлю оценку.</p>
-        <div class="channels">
-          <div class="ch"><div><span class="mono">Telegram</span><strong id="tg">@qweqwasdd</strong></div><a class="copy tg-btn" href="https://t.me/qweqwasdd" target="_blank" rel="noopener">Связаться в Telegram</a></div>
-          <div class="ch"><div><span class="mono">Почта</span><strong id="mail">sempervukhin@mail.ru</strong></div><button class="copy" type="button" data-copy="mail">Копировать</button></div>
+        <p>Напишите, чем занимается ваш бизнес и какая задача. Отвечу, задам пару уточняющих вопросов и бесплатно пришлю оценку.</p>
+        <ul class="brief-tips">
+          <li>Чем занимается бизнес</li>
+          <li>Что нужно: сайт, приложение или фирменный стиль</li>
+          <li>Сроки и бюджет, если они уже есть</li>
+        </ul>
+      </div>
+      <div class="contact-cards">
+        <a class="cc cc-tg" href="https://t.me/qweqwasdd" target="_blank" rel="noopener">
+          <span class="mono">Быстрее всего</span>
+          <strong>Написать в Telegram</strong>
+          <span class="cc-handle" id="tg">@qweqwasdd</span>
+          <span class="cc-arr" aria-hidden="true">→</span>
+        </a>
+        <div class="cc cc-mail">
+          <span class="mono">Почта</span>
+          <strong id="mail">sempervukhin@mail.ru</strong>
+          <div class="cc-acts">
+            <a class="btn btn-ghost" href="mailto:sempervukhin@mail.ru">Написать письмо</a>
+            <button class="btn btn-ghost" type="button" data-copy="mail">Скопировать адрес</button>
+          </div>
         </div>
       </div>
-
-      <form id="brief" novalidate>
-        <input type="text" name="_honey" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <div class="row">
-          <div class="field" id="f-name"><label for="name">Как вас зовут</label><input id="name" name="name" autocomplete="name" placeholder="Анна"><span class="hint" id="name-hint"></span></div>
-          <div class="field" id="f-reach"><label for="reach">Телефон или Telegram</label><input id="reach" name="reach" placeholder="@username или +7…"><span class="hint" id="reach-hint"></span></div>
-        </div>
-        <fieldset class="field">
-          <legend>Что нужно</legend>
-          <div class="chips">
-            <label class="chip"><input type="checkbox" id="s-land" name="svc" value="Лендинг"><span>Лендинг</span></label>
-            <label class="chip"><input type="checkbox" id="s-site" name="svc" value="Многостраничный сайт"><span>Сайт</span></label>
-            <label class="chip"><input type="checkbox" id="s-shop" name="svc" value="Интернет-магазин"><span>Магазин</span></label>
-            <label class="chip"><input type="checkbox" id="s-web" name="svc" value="Веб-приложение"><span>Веб-приложение</span></label>
-            <label class="chip"><input type="checkbox" id="s-mob" name="svc" value="Мобильное приложение"><span>Мобильное приложение</span></label>
-            <label class="chip"><input type="checkbox" id="s-brand" name="svc" value="Логотип и фирменный стиль"><span>Логотип и стиль</span></label>
-          </div>
-        </fieldset>
-        <div class="field"><label for="msg">О проекте</label><textarea id="msg" name="msg" placeholder="Коротко: чем занимается бизнес, какая задача, есть ли сроки"></textarea></div>
-        <div class="send-err" id="send-err" role="alert" hidden><span></span><a class="btn btn-ghost" href="https://t.me/qweqwasdd" target="_blank" rel="noopener">Связаться в Telegram</a></div>
-        <div class="form-foot">
-          <small>Нажимая кнопку, вы соглашаетесь на обработку указанных данных для связи.</small>
-          <button class="btn btn-accent" type="submit">Отправить заявку <span class="arr">→</span></button>
-        </div>
-      </form>
-      <div class="done" id="done" hidden></div>
     </div>
   </section>
 </main>
@@ -697,9 +706,6 @@ footer small{color:var(--muted);font-family:var(--f-mono);font-size:12px}
 
 <script>
 (function(){
-  // Заявки уходят на почту через FormSubmit. Чтобы сменить почту, поменяйте адрес в конце строки.
-  var FORM_ENDPOINT='https://formsubmit.co/ajax/sempervukhin@mail.ru';
-
   // Mobile menu
   var burger=document.getElementById('burger'), mnav=document.getElementById('mnav');
   function setMenu(open){mnav.hidden=!open;burger.setAttribute('aria-expanded',String(open));burger.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню');document.body.classList.toggle('menu-open',open);}
@@ -777,48 +783,10 @@ footer small{color:var(--muted);font-family:var(--f-mono);font-size:12px}
       btn.textContent='Выделено, нажмите Ctrl+C';setTimeout(function(){btn.textContent=label;},2200);
     }
   }
-  document.querySelectorAll('.copy[data-copy]').forEach(function(b){
+  document.querySelectorAll("[data-copy]").forEach(function(b){
     b.addEventListener('click',function(){copyText(document.getElementById(b.dataset.copy).textContent.trim(),b);});
   });
 
-  // Form
-  var form=document.getElementById('brief'), done=document.getElementById('done');
-  function setErr(id,msg){var f=document.getElementById('f-'+id);f.classList.toggle('err',!!msg);document.getElementById(id+'-hint').textContent=msg||'';}
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var name=document.getElementById('name').value.trim(), reach=document.getElementById('reach').value.trim(), msg=document.getElementById('msg').value.trim();
-    var svc=[].slice.call(form.querySelectorAll('input[name=svc]:checked')).map(function(i){return i.value;});
-    var bad=false;
-    setErr('name', name?'':'Укажите имя, чтобы я знал, как к вам обращаться'); if(!name)bad=true;
-    setErr('reach', reach.length>=4?'':'Оставьте телефон или ник в Telegram для ответа'); if(reach.length<4)bad=true;
-    if(bad){document.getElementById(name?'reach':'name').focus();return;}
-    var text='Заявка для qwe studio\n\nИмя: '+name+'\nКонтакт: '+reach+'\nУслуги: '+(svc.length?svc.join(', '):'не выбраны')+'\nО проекте: '+(msg||'—');
-    if(document.getElementById('hp').value){showSent(name);return;}
-    var btn=form.querySelector('button[type=submit]'),label=btn.innerHTML;
-    document.getElementById('send-err').hidden=true;
-    btn.disabled=true;btn.textContent='Отправляю…';
-    var ctrl=('AbortController' in window)?new AbortController():null;var t=setTimeout(function(){if(ctrl)ctrl.abort();},12000);
-    fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},signal:ctrl?ctrl.signal:undefined,
-      body:JSON.stringify({'Имя':name,'Контакт':reach,'Услуги':svc.length?svc.join(', '):'не выбраны','О проекте':msg||'—',_subject:'Новая заявка с сайта qwe studio: '+name,_template:'table',_captcha:'false'})})
-      .then(function(r){return r.json().catch(function(){return {};}).then(function(j){if(!r.ok||String(j.success)==='false')throw new Error(j.message||('HTTP '+r.status));});})
-      .then(function(){clearTimeout(t);btn.disabled=false;btn.innerHTML=label;form.reset();showSent(name);})
-      .catch(function(){clearTimeout(t);btn.disabled=false;btn.innerHTML=label;showFallback(name,text);});
-  });
-  function showSent(name){
-    done.innerHTML='';
-    var h=document.createElement('h3');h.textContent='Спасибо, '+name+'! Заявка отправлена';
-    var p=document.createElement('p');p.textContent='Я получил её и скоро напишу вам по указанному контакту. Если вопрос срочный, напишите в Telegram '+document.getElementById('tg').textContent+'.';
-    var acts=document.createElement('div');acts.className='acts';
-    var back=document.createElement('button');back.type='button';back.className='btn btn-ghost';back.textContent='Отправить ещё одну заявку';
-    back.addEventListener('click',function(){done.hidden=true;form.hidden=false;document.getElementById('name').focus();});
-    acts.append(back);done.append(h,p,acts);form.hidden=true;done.hidden=false;
-  }
-  function showFallback(name,text){
-    var err=document.getElementById('send-err');
-    err.hidden=false;
-    err.querySelector('span').textContent='Не получилось отправить заявку. Проверьте интернет и нажмите «Отправить» ещё раз или напишите мне в Telegram.';
-  }
-  ['name','reach'].forEach(function(id){document.getElementById(id).addEventListener('input',function(){setErr(id,'');});});
 
   // Dithered pixel graphics: hero terrain and CTA moon
   var bayer=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5];
