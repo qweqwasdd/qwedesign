@@ -217,12 +217,22 @@ a.pv:hover{filter:brightness(1.08)}
 @media (max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.step:last-child{grid-column:1/-1}}
 @media (max-width:560px){.steps{grid-template-columns:1fr}}
 
-/* Banner (Sui-like CTA band) */
-.band{position:relative;overflow:hidden;color:#fff;background:radial-gradient(90% 140% at 50% 0%, var(--hero-b) 0%, var(--hero-a) 70%)}
-.band .wrap{position:relative;padding-block:clamp(64px,9vw,110px);display:grid;gap:22px;justify-items:center;text-align:center}
-.band h2{font-size:clamp(34px,6vw,76px);font-weight:300;letter-spacing:-.035em}
-.band p{color:rgba(255,255,255,.78);max-width:46ch}
-.band .grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:40px 40px;mask-image:radial-gradient(60% 70% at 50% 50%,#000,transparent)}
+/* CTA band: text left, dithered pixel moon right */
+.band{position:relative;overflow:hidden;color:#fff;background:radial-gradient(55% 90% at 78% 50%, var(--hero-b) 0%, var(--hero-a) 72%)}
+.band .wrap{position:relative;padding-block:clamp(56px,8vw,104px);display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,64px);align-items:center}
+.band-text{display:grid;gap:22px;justify-items:start}
+.band .label{color:rgba(255,255,255,.75);margin:0}
+.band .label::before{background:#fff}
+.band h2{font-size:clamp(34px,5vw,64px);font-weight:300;letter-spacing:-.035em;max-width:17ch}
+.band p{color:rgba(255,255,255,.78);max-width:42ch;font-size:17px}
+.band-cta{display:flex;flex-wrap:wrap;gap:0}
+.orb-box{position:relative;aspect-ratio:1/1;width:100%;max-width:440px;justify-self:end}
+.orb-box canvas{position:absolute;inset:0;width:100%;height:100%}
+@media (max-width:760px){
+  .band .wrap{grid-template-columns:1fr}
+  .orb-box{position:absolute;right:-22%;top:-4%;width:66%;max-width:none;opacity:.5;pointer-events:none}
+  .band-text{position:relative}
+}
 
 /* FAQ */
 .faq{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(24px,5vw,72px)}
@@ -251,6 +261,8 @@ a.pv:hover{filter:brightness(1.08)}
 .ch strong{font-weight:500;font-size:17px;word-break:break-all}
 .copy{flex:0 0 auto;font:500 12px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.05em;padding:10px 12px;background:var(--surface-2);color:var(--fg);border:0;cursor:pointer}
 .copy:hover{background:var(--accent);color:var(--accent-ink)}
+.tg-btn{text-decoration:none;background:var(--accent);color:var(--accent-ink);white-space:nowrap}
+.tg-btn:hover{background:color-mix(in srgb,var(--accent) 85%,#fff)}
 
 form{background:var(--surface);border:1px dashed var(--line-strong);padding:clamp(20px,3vw,36px);display:grid;gap:20px;align-content:start}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -271,6 +283,8 @@ input:focus,textarea:focus{outline:none;border-color:var(--accent)}
 .chip input:checked+span{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .chip input:checked+span::before{content:"✓"}
 .chip input:focus-visible+span{outline:2px solid var(--soft);outline-offset:2px}
+.send-err{display:grid;gap:12px;padding:14px;border:1px solid #ff5d6c;background:color-mix(in srgb,#ff5d6c 10%,transparent);font-size:14px}
+.send-err .btn{justify-self:start;padding:11px 16px}
 .form-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
 .form-foot small{color:var(--muted);font-size:13px;max-width:36ch}
 .done{display:grid;gap:16px}
@@ -333,7 +347,7 @@ footer small{color:var(--muted);font-family:var(--f-mono);font-size:12px}
   .acc summary{min-height:56px;padding:12px}
   .fab{left:16px;right:16px;bottom:calc(12px + env(safe-area-inset-bottom,0px));text-align:center;padding:16px}
   footer{padding-bottom:96px}
-  .band .cta .btn{flex:1 1 100%}
+  .band-cta .btn{flex:1 1 100%}
 }
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
@@ -600,15 +614,17 @@ footer small{color:var(--muted);font-family:var(--f-mono);font-size:12px}
   </section>
 
   <section class="band" aria-labelledby="band-h">
-    <div class="grid-bg" aria-hidden="true"></div>
     <div class="wrap">
-      <span class="mono" style="color:rgba(255,255,255,.7)">Есть идея?</span>
-      <h2 id="band-h">Расскажите задачу, а я предложу решение</h2>
-      <p>Бесплатно оценю проект и пришлю план с этапами до начала работы.</p>
-      <div class="cta" style="display:flex;flex-wrap:wrap;justify-content:center">
-        <a class="btn btn-accent" href="#contact">Оставить заявку <span class="arr">→</span></a>
-        <a class="btn btn-light" href="#faq">Частые вопросы</a>
+      <div class="band-text">
+        <span class="label mono">Есть идея?</span>
+        <h2 id="band-h">Расскажите задачу, а&nbsp;я предложу решение</h2>
+        <p>Бесплатно оценю проект и пришлю план с этапами до начала работы.</p>
+        <div class="band-cta">
+          <a class="btn btn-accent" href="#contact">Оставить заявку <span class="arr">→</span></a>
+          <a class="btn btn-light" href="https://t.me/qweqwasdd" target="_blank" rel="noopener">Связаться в Telegram</a>
+        </div>
       </div>
+      <div class="orb-box" aria-hidden="true"><canvas id="orb"></canvas></div>
     </div>
   </section>
 
@@ -635,12 +651,13 @@ footer small{color:var(--muted);font-family:var(--f-mono);font-size:12px}
         <h2 id="ct-h">Обсудим проект</h2>
         <p>Заполните форму или напишите напрямую. Отвечу, задам пару уточняющих вопросов и пришлю оценку.</p>
         <div class="channels">
-          <div class="ch"><div><span class="mono">Telegram</span><strong id="tg">@qweqwasdd</strong></div><button class="copy" type="button" data-copy="tg">Копировать</button></div>
+          <div class="ch"><div><span class="mono">Telegram</span><strong id="tg">@qweqwasdd</strong></div><a class="copy tg-btn" href="https://t.me/qweqwasdd" target="_blank" rel="noopener">Связаться в Telegram</a></div>
           <div class="ch"><div><span class="mono">Почта</span><strong id="mail">sempervukhin@mail.ru</strong></div><button class="copy" type="button" data-copy="mail">Копировать</button></div>
         </div>
       </div>
 
       <form id="brief" novalidate>
+        <input type="text" name="_honey" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <div class="row">
           <div class="field" id="f-name"><label for="name">Как вас зовут</label><input id="name" name="name" autocomplete="name" placeholder="Анна"><span class="hint" id="name-hint"></span></div>
           <div class="field" id="f-reach"><label for="reach">Телефон или Telegram</label><input id="reach" name="reach" placeholder="@username или +7…"><span class="hint" id="reach-hint"></span></div>
@@ -657,6 +674,7 @@ footer small{color:var(--muted);font-family:var(--f-mono);font-size:12px}
           </div>
         </fieldset>
         <div class="field"><label for="msg">О проекте</label><textarea id="msg" name="msg" placeholder="Коротко: чем занимается бизнес, какая задача, есть ли сроки"></textarea></div>
+        <div class="send-err" id="send-err" role="alert" hidden><span></span><a class="btn btn-ghost" href="https://t.me/qweqwasdd" target="_blank" rel="noopener">Связаться в Telegram</a></div>
         <div class="form-foot">
           <small>Нажимая кнопку, вы соглашаетесь на обработку указанных данных для связи.</small>
           <button class="btn btn-accent" type="submit">Отправить заявку <span class="arr">→</span></button>
@@ -679,6 +697,9 @@ footer small{color:var(--muted);font-family:var(--f-mono);font-size:12px}
 
 <script>
 (function(){
+  // Заявки уходят на почту через FormSubmit. Чтобы сменить почту, поменяйте адрес в конце строки.
+  var FORM_ENDPOINT='https://formsubmit.co/ajax/sempervukhin@mail.ru';
+
   // Mobile menu
   var burger=document.getElementById('burger'), mnav=document.getElementById('mnav');
   function setMenu(open){mnav.hidden=!open;burger.setAttribute('aria-expanded',String(open));burger.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню');document.body.classList.toggle('menu-open',open);}
@@ -772,76 +793,91 @@ footer small{color:var(--muted);font-family:var(--f-mono);font-size:12px}
     setErr('reach', reach.length>=4?'':'Оставьте телефон или ник в Telegram для ответа'); if(reach.length<4)bad=true;
     if(bad){document.getElementById(name?'reach':'name').focus();return;}
     var text='Заявка для qwe studio\n\nИмя: '+name+'\nКонтакт: '+reach+'\nУслуги: '+(svc.length?svc.join(', '):'не выбраны')+'\nО проекте: '+(msg||'—');
-    done.innerHTML='';
-    var h=document.createElement('h3');h.textContent='Заявка готова, '+name;
-    var p=document.createElement('p');p.textContent='Скопируйте текст и отправьте его в Telegram '+document.getElementById('tg').textContent+'. Отвечу и пришлю оценку.';
-    var pre=document.createElement('pre');pre.id='brief-text';pre.textContent=text;
-    var acts=document.createElement('div');acts.className='acts';
-    var c=document.createElement('button');c.type='button';c.className='btn btn-accent copy';c.textContent='Скопировать заявку';c.dataset.copy='brief-text';
-    c.addEventListener('click',function(){copyText(text,c);});
-    var tg=document.createElement('a');tg.className='btn btn-ghost';tg.href='https://t.me/'+document.getElementById('tg').textContent.replace('@','');tg.target='_blank';tg.rel='noopener';tg.textContent='Открыть Telegram →';
-    var back=document.createElement('button');back.type='button';back.className='btn btn-ghost';back.textContent='Изменить';
-    back.addEventListener('click',function(){done.hidden=true;form.hidden=false;document.getElementById('name').focus();});
-    acts.append(c,tg,back);done.append(h,p,pre,acts);
-    form.hidden=true;done.hidden=false;
+    if(document.getElementById('hp').value){showSent(name);return;}
+    var btn=form.querySelector('button[type=submit]'),label=btn.innerHTML;
+    document.getElementById('send-err').hidden=true;
+    btn.disabled=true;btn.textContent='Отправляю…';
+    var ctrl=('AbortController' in window)?new AbortController():null;var t=setTimeout(function(){if(ctrl)ctrl.abort();},12000);
+    fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},signal:ctrl?ctrl.signal:undefined,
+      body:JSON.stringify({'Имя':name,'Контакт':reach,'Услуги':svc.length?svc.join(', '):'не выбраны','О проекте':msg||'—',_subject:'Новая заявка с сайта qwe studio: '+name,_template:'table',_captcha:'false'})})
+      .then(function(r){return r.json().catch(function(){return {};}).then(function(j){if(!r.ok||String(j.success)==='false')throw new Error(j.message||('HTTP '+r.status));});})
+      .then(function(){clearTimeout(t);btn.disabled=false;btn.innerHTML=label;form.reset();showSent(name);})
+      .catch(function(){clearTimeout(t);btn.disabled=false;btn.innerHTML=label;showFallback(name,text);});
   });
+  function showSent(name){
+    done.innerHTML='';
+    var h=document.createElement('h3');h.textContent='Спасибо, '+name+'! Заявка отправлена';
+    var p=document.createElement('p');p.textContent='Я получил её и скоро напишу вам по указанному контакту. Если вопрос срочный, напишите в Telegram '+document.getElementById('tg').textContent+'.';
+    var acts=document.createElement('div');acts.className='acts';
+    var back=document.createElement('button');back.type='button';back.className='btn btn-ghost';back.textContent='Отправить ещё одну заявку';
+    back.addEventListener('click',function(){done.hidden=true;form.hidden=false;document.getElementById('name').focus();});
+    acts.append(back);done.append(h,p,acts);form.hidden=true;done.hidden=false;
+  }
+  function showFallback(name,text){
+    var err=document.getElementById('send-err');
+    err.hidden=false;
+    err.querySelector('span').textContent='Не получилось отправить заявку. Проверьте интернет и нажмите «Отправить» ещё раз или напишите мне в Telegram.';
+  }
   ['name','reach'].forEach(function(id){document.getElementById(id).addEventListener('input',function(){setErr(id,'');});});
 
-  // Hero: dithered pixel terrain
-  var cv=document.getElementById('terrain'), ctx=cv.getContext('2d');
+  // Dithered pixel graphics: hero terrain and CTA moon
   var bayer=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5];
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var W=0,H=0,dpr=1,cell=7,t=0,last=0,col='120,170,255';
+  var col='120,170,255';
   function readCol(){col=getComputedStyle(document.documentElement).getPropertyValue('--dot').trim()||col;}
-  function size(){
-    dpr=Math.min(window.devicePixelRatio||1,2);
-    W=cv.clientWidth;H=cv.clientHeight;
-    cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    cell=W<600?5:7;
-    draw();
+  readCol();
+  function pixelCanvas(cv,paint,cellFor){
+    var ctx=cv.getContext('2d'),st={W:0,H:0,t:0,cell:7},raf=null,last=0;
+    function draw(){ctx.clearRect(0,0,st.W,st.H);paint(ctx,st);}
+    function size(){var dpr=Math.min(window.devicePixelRatio||1,2);st.W=cv.clientWidth;st.H=cv.clientHeight;cv.width=Math.round(st.W*dpr);cv.height=Math.round(st.H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);st.cell=cellFor(st.W);draw();}
+    function loop(ts){if(ts-last>60){st.t+=.05;draw();last=ts;}raf=requestAnimationFrame(loop);}
+    if('ResizeObserver' in window){new ResizeObserver(size).observe(cv);}else{addEventListener('resize',size);}
+    size();
+    if(!reduce&&'IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){if(!raf)raf=requestAnimationFrame(loop);}else if(raf){cancelAnimationFrame(raf);raf=null;}});}).observe(cv);}
+    return draw;
   }
-  function ridge(x){
-    // two mountain ranges, left low and right high, like a horizon
-    var u=x/W;
-    var a=.55-.35*Math.exp(-Math.pow((u-.28)/.16,2))-.5*Math.exp(-Math.pow((u-.86)/.2,2));
-    a+=.025*Math.sin(u*38+t*.6)+.015*Math.sin(u*91-t*.9);
-    return a*H;
-  }
-  function draw(){
-    ctx.clearRect(0,0,W,H);
-    var cols=Math.ceil(W/cell), rows=Math.ceil(H/cell), s=cell-1.5;
+  function dot(ctx,x,y,s,a){ctx.fillStyle='rgba('+col+','+a.toFixed(3)+')';ctx.fillRect(x,y,s,s);}
+  function dotW(ctx,x,y,s,a){ctx.fillStyle='rgba(176,204,255,'+a.toFixed(3)+')';ctx.fillRect(x,y,s,s);}
+  var redraws=[];
+  var hero=document.getElementById('terrain');
+  if(hero)redraws.push(pixelCanvas(hero,function(ctx,st){
+    var W=st.W,H=st.H,cell=st.cell,t=st.t,cols=Math.ceil(W/cell),rows=Math.ceil(H/cell),s=cell-1.5;
     for(var i=0;i<cols;i++){
-      var x=i*cell, top=ridge(x);
+      var x=i*cell,u=x/W;
+      var a=.55-.35*Math.exp(-Math.pow((u-.28)/.16,2))-.5*Math.exp(-Math.pow((u-.86)/.2,2));
+      a+=.025*Math.sin(u*38+t*.6)+.015*Math.sin(u*91-t*.9);
+      var top=a*H;
       for(var j=0;j<rows;j++){
-        var y=j*cell; if(y<top)continue;
+        var y=j*cell;if(y<top)continue;
         var depth=Math.min(1,(y-top)/(H*.55));
-        var shimmer=.08*Math.sin(i*.35+j*.2+t*1.4);
-        var v=Math.min(1,.18+depth*.95+shimmer);
+        var v=Math.min(1,.18+depth*.95+.08*Math.sin(i*.35+j*.2+t*1.4));
         if(v*16<=bayer[(j%4)*4+(i%4)])continue;
-        var alpha=.25+depth*.6;
-        ctx.fillStyle='rgba('+col+','+alpha.toFixed(3)+')';
-        ctx.fillRect(x,y,s,s);
+        dot(ctx,x,y,s,.25+depth*.6);
       }
     }
-  }
-  function loop(ts){
-    if(ts-last>60){t+=.05;draw();last=ts;}
-    raf=requestAnimationFrame(loop);
-  }
-  var raf=null;
-  readCol();
-  if('ResizeObserver' in window){new ResizeObserver(size).observe(cv);}else{addEventListener('resize',size);}
-  size();
-  var mq=matchMedia('(prefers-color-scheme: dark)');
-  try{mq.addEventListener('change',function(){readCol();draw();});}catch(e){}
-  new MutationObserver(function(){readCol();draw();}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
-  if(!reduce){
-    var io=new IntersectionObserver(function(es){es.forEach(function(en){
-      if(en.isIntersecting){if(!raf)raf=requestAnimationFrame(loop);}else if(raf){cancelAnimationFrame(raf);raf=null;}
-    });});
-    io.observe(cv);
-  }
+  },function(W){return W<600?5:7;}));
+  var orb=document.getElementById('orb');
+  if(orb)redraws.push(pixelCanvas(orb,function(ctx,st){
+    var W=st.W,cell=st.cell,t=st.t,n=Math.ceil(W/cell),s=cell-1.2,R=W*.33,cx=W/2,cy=W/2;
+    var la=.15*Math.sin(t*.25),lx=-.55+la,ly=-.5,lz=Math.sqrt(Math.max(0,1-lx*lx-ly*ly));
+    for(var i=0;i<n;i++)for(var j=0;j<n;j++){
+      var x=i*cell+cell/2,y=j*cell+cell/2,dx=(x-cx)/R,dy=(y-cy)/R,d2=dx*dx+dy*dy,b=bayer[(j%4)*4+(i%4)];
+      if(d2<=1){
+        var dz=Math.sqrt(1-d2),lum=Math.max(0,dx*lx+dy*ly+dz*lz);
+        var crater=.12*Math.sin(dx*9+1.3)*Math.sin(dy*7-.4);
+        var v=Math.min(1,.04+Math.pow(lum,1.3)*1.1+crater*lum);
+        if(v*16>b)dotW(ctx,i*cell,j*cell,s,.3+v*.7);
+      }else{
+        // tilted orbit ring around the moon
+        var rx=dx*.98+dy*.2,ry=(dy*.98-dx*.2)/.22,rr=Math.sqrt(rx*rx+ry*ry);
+        if(Math.abs(rr-1.38)<.09&&(i+Math.floor(t*3))%2===0)dotW(ctx,i*cell,j*cell,s,.6);
+        else if(d2<1.35&&b<2)dotW(ctx,i*cell,j*cell,s,.18*(1.35-d2)/.35);
+      }
+    }
+  },function(W){return W<300?4:6;}));
+  function repaint(){readCol();redraws.forEach(function(f){f();});}
+  try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',repaint);}catch(e){}
+  new MutationObserver(repaint).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 })();
 </script>
 
