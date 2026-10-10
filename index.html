@@ -2,852 +2,438 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="qwe studio: дизайн и разработка сайтов, мобильных приложений, логотипы и фирменный стиль.">
-<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>qwe studio | Дизайн и разработка</title>
+<meta name="description" content="qwe studio: сайты, интернет-магазины, веб и мобильные приложения, брендинг. Открытые цены и живое портфолио.">
+<link rel="canonical" href="https://qweqwasdd.github.io/design-studio/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="qwe studio">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:url" content="https://qweqwasdd.github.io/design-studio/">
+<meta property="og:title" content="qwe studio | Дизайн и разработка">
+<meta property="og:description" content="Сайты, магазины, приложения и фирменный стиль. Открытые цены и живое портфолио.">
+<meta property="og:image" content="https://qweqwasdd.github.io/design-studio/img/og.jpg?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="qwe studio: дизайн и код, которые приводят клиентов">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://qweqwasdd.github.io/design-studio/img/og.jpg?v=2">
+<meta name="theme-color" content="#0B0C0E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%23C8F53C%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22Arial%22 font-weight=%22700%22 font-size=%2216%22 text-anchor=%22middle%22 fill=%22%230B0C0E%22%3Eq%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-</head>
-<body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: тёмная «ночная синева» в духе Sui, герой с пиксельным ландшафтом, пунктирные карточки Guardbase, моноширинные метки как клавиши Q W E */
+/* Вариант B «Ночь»: тёмная тема, лаймовый акцент, крупный широкий гротеск, лента работ в герое, линейные иллюстрации */
 :root{
-  --bg:#05070e; --surface:#0b1121; --surface-2:#111a31;
-  --fg:#eef2ff; --muted:#8b95b4; --line:rgba(120,150,230,.18); --line-strong:rgba(140,170,255,.42);
-  --accent:#2f7bff; --accent-ink:#ffffff; --soft:#8db4ff;
-  --hero-a:#020615; --hero-b:#0a2a8a; --hero-c:#2f6dff; --hero-fg:#ffffff; --dot:120,170,255;
-  --key-bg:#151d36; --key-edge:#060a16;
-  --f-display:"Geologica","Golos Text",system-ui,sans-serif;
-  --f-body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
-  --wrap:1180px;
+  --bg:#0B0C0E; --surface:#14161A; --surface-2:#1C1F24; --ink:#F1F2EE; --ink-2:#9A9D98; --line:#262A30;
+  --accent:#C8F53C; --accent-ink:#0B0C0E;
+  --disp:"Unbounded","Arial Black",system-ui,sans-serif; --f:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --max:1320px; --pad:clamp(16px,4vw,48px); --r:16px;
   color-scheme:dark;
 }
-@media (prefers-color-scheme: light){
-  :root:not([data-theme="dark"]){
-    --bg:#f4f6fb; --surface:#ffffff; --surface-2:#eaeef8;
-    --fg:#0a1022; --muted:#59627c; --line:rgba(40,70,160,.16); --line-strong:rgba(40,80,200,.38);
-    --accent:#1f5fe6; --accent-ink:#ffffff; --soft:#5f8fef;
-    --hero-a:#0a1f6e; --hero-b:#2a63ef; --hero-c:#c9dbff; --hero-fg:#ffffff; --dot:40,95,230;
-    --key-bg:#ffffff; --key-edge:#c3cde6;
-    color-scheme:light;
-  }
-}
-:root[data-theme="light"]{
-  --bg:#f4f6fb; --surface:#ffffff; --surface-2:#eaeef8;
-  --fg:#0a1022; --muted:#59627c; --line:rgba(40,70,160,.16); --line-strong:rgba(40,80,200,.38);
-  --accent:#1f5fe6; --accent-ink:#ffffff; --soft:#5f8fef;
-  --hero-a:#0a1f6e; --hero-b:#2a63ef; --hero-c:#c9dbff; --hero-fg:#ffffff; --dot:40,95,230;
-  --key-bg:#ffffff; --key-edge:#c3cde6;
-  color-scheme:light;
-}
-
-*{box-sizing:border-box}
-[hidden]{display:none!important}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:inherit}
-h1,h2,h3{font-family:var(--f-display);font-weight:400;letter-spacing:-.02em;line-height:1.05;margin:0;text-wrap:balance}
-p{margin:0}
-:focus-visible{outline:2px solid var(--soft);outline-offset:3px}
-.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
-.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
-
-/* Keycap logo */
-.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--f-display);font-size:18px}
-.keys{display:inline-flex;gap:3px}
-.key{width:22px;height:22px;display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;font-weight:500;background:var(--key-bg);color:var(--fg);border:1px solid var(--line-strong);border-bottom-width:3px;border-bottom-color:var(--key-edge);border-radius:4px;line-height:1}
-.key:nth-child(1){background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-
-/* Header */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
-.nav{display:flex;gap:6px}
-.nav a{text-decoration:none;font-size:14px;padding:8px 12px;display:inline-flex;align-items:center;gap:8px;color:var(--fg)}
-.nav a::after{content:"+";font-family:var(--f-mono);font-size:11px;width:16px;height:16px;display:grid;place-items:center;background:var(--surface-2);color:var(--muted)}
-.nav a:hover::after{background:var(--accent);color:var(--accent-ink)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:500 14px/1 var(--f-body);padding:14px 20px;border:1px solid transparent;cursor:pointer;text-decoration:none;transition:background .2s,color .2s,border-color .2s;white-space:nowrap}
-.btn-accent{background:var(--accent);color:var(--accent-ink)}
-.btn-accent:hover{background:color-mix(in srgb,var(--accent) 85%,#fff)}
-.btn-dark{background:#05070e;color:#fff}
-.btn-light{background:#fff;color:#05070e}
-.btn-ghost{border-color:var(--line-strong);color:var(--fg);background:transparent}
-.btn-ghost:hover{border-color:var(--fg)}
-.btn .arr{font-family:var(--f-mono)}
-.burger{display:none;width:44px;height:44px;background:transparent;border:0;color:var(--fg);cursor:pointer;padding:0;position:relative}
-.burger i{position:absolute;left:12px;right:12px;height:2px;background:currentColor;transition:transform .25s,opacity .2s}
-.burger i:nth-child(1){top:15px}.burger i:nth-child(2){top:21px}.burger i:nth-child(3){top:27px}
-.burger[aria-expanded="true"]{background:var(--fg);color:var(--bg)}
-.burger[aria-expanded="true"] i:nth-child(1){transform:translateY(6px) rotate(45deg)}
-.burger[aria-expanded="true"] i:nth-child(2){opacity:0}
-.burger[aria-expanded="true"] i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-.mnav{position:fixed;left:0;right:0;bottom:0;top:calc(65px + env(safe-area-inset-top,0px));z-index:49;background:var(--bg);display:flex;flex-direction:column;gap:28px;padding:20px 16px calc(24px + env(safe-area-inset-bottom,0px));overflow-y:auto;animation:mnavIn .25s ease both}
-@keyframes mnavIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
-.mnav nav{display:grid}
-.mnav nav a{display:flex;justify-content:space-between;align-items:center;gap:16px;text-decoration:none;color:var(--fg);padding:18px 0;border-bottom:1px solid var(--line);font:400 clamp(28px,8vw,36px)/1.1 var(--f-display);letter-spacing:-.02em}
-.mnav nav a span{font:400 26px var(--f-mono);color:var(--accent)}
-.mnav nav a:active{color:var(--soft)}
-.mnav .mfoot{margin-top:auto;display:grid;gap:16px}
-.mnav .mfoot .btn{width:100%;padding:18px}
-.mnav .mcontacts{display:grid;gap:6px;font:500 13px/1.4 var(--f-mono);color:var(--muted)}
-.mnav .mcontacts b{color:var(--fg);font-weight:500}
-@media (min-width:861px){.mnav{display:none!important}}
-@media (max-width:860px){.nav,.top .btn-accent{display:none}.burger{display:block}}
-body.menu-open{overflow:hidden}
-body.menu-open .fab{display:none}
-
-/* Hero */
-.hero{position:relative;overflow:hidden;color:var(--hero-fg);background:
-  radial-gradient(120% 80% at 50% 115%, var(--hero-c) 0%, var(--hero-b) 38%, var(--hero-a) 78%);}
-.hero canvas{position:absolute;inset:auto 0 0 0;width:100%;height:62%;pointer-events:none;opacity:.9}
-.hero .wrap{position:relative;padding-block:clamp(64px,8.5vw,116px) clamp(150px,18vw,220px);display:grid;gap:24px;justify-items:center;text-align:center}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:6px 12px 6px 6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
-.eyebrow b{background:#fff;color:#05070e;padding:3px 7px;font-weight:500}
-.hero h1{font-size:clamp(44px,7vw,104px);font-weight:300;letter-spacing:-.04em;line-height:.98;max-width:16ch}
-.hero h1 .w{display:inline-block;animation:focus 1.4s cubic-bezier(.2,.7,.2,1) both}
-.hero h1 .w:nth-child(2){animation-delay:.15s}
-.hero h1 .w:nth-child(3){animation-delay:.3s;color:rgba(255,255,255,.55)}
-.hero h1 .w:nth-child(4){animation-delay:.45s;color:rgba(255,255,255,.55)}
-@keyframes focus{from{filter:blur(14px);opacity:.35;transform:translateY(8px)}to{filter:blur(0);opacity:1;transform:none}}
-.hero .lead{font-size:clamp(16px,2vw,19px);max-width:52ch;color:rgba(255,255,255,.82)}
-.hero .cta{display:flex;flex-wrap:wrap;justify-content:center;gap:0}
-.hero .cta .btn{min-width:180px}
-@media (max-width:480px){.hero .cta{width:100%}.hero .cta .btn{flex:1 1 50%;min-width:0;padding-inline:12px}}
-
-/* Sections */
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+[hidden]{display:none!important}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--pad)}
 section{scroll-margin-top:72px}
-.sec{padding-block:clamp(72px,10vw,128px)}
-.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;align-items:end;margin-bottom:clamp(36px,6vw,64px)}
-.sec-head h2{font-size:clamp(36px,5.4vw,68px)}
-.sec-head p{color:var(--muted);max-width:52ch;font-size:17px}
-.label{color:var(--soft);margin-bottom:18px;display:flex;align-items:center;gap:10px}
-.label::before{content:"";width:8px;height:8px;background:var(--accent)}
-@media (max-width:760px){.sec-head{grid-template-columns:1fr}}
+h1,h2,h3{font-family:var(--disp);font-weight:500;letter-spacing:-.03em;line-height:1.05}
 
-/* Services */
-.svc{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,5vw,72px);padding-block:clamp(40px,6vw,64px);border-top:1px dashed var(--line-strong)}
-.svc:last-child{border-bottom:1px dashed var(--line-strong)}
-.svc-info{display:grid;gap:18px;align-content:start;position:sticky;top:96px}
-.svc-info .tag{color:var(--muted)}
-.svc-info h3{font-size:clamp(30px,3.6vw,46px)}
-.svc-info p{color:var(--muted);max-width:44ch}
-.iso{width:100%;max-width:300px;height:auto;margin-top:8px}
-.iso *{fill:none;stroke:var(--line-strong);stroke-width:1.2;vector-effect:non-scaling-stroke}
-.iso .hl{stroke:var(--accent);stroke-width:1.6}
-.iso .fill{fill:var(--accent);stroke:none;opacity:.9}
-@media (max-width:860px){.svc{grid-template-columns:1fr}.svc-info{position:static}.iso{max-width:220px}}
+.top{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.top.solid{background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.top .wrap{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px;white-space:nowrap}
+.logo{font:700 20px var(--disp);letter-spacing:-.04em;display:flex;align-items:center;gap:8px}
+.logo b{background:var(--accent);color:var(--accent-ink);border-radius:8px;padding:2px 7px 4px;font-weight:700}
+.nav{display:flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--surface) 70%,transparent)}
+.nav a{padding:8px 16px;border-radius:999px;font-size:14px;color:var(--ink-2);transition:color .2s,background .2s}
+.nav a:hover{color:var(--ink);background:var(--surface-2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 24px;border-radius:999px;font-weight:600;font-size:15px;white-space:nowrap;transition:transform .15s,background .2s,color .2s,border-color .2s}
+.btn:active{transform:scale(.98)}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-accent:hover{background:#d6ff55}
+.btn-line{border:1px solid var(--line);color:var(--ink)}
+.btn-line:hover{border-color:var(--ink)}
+.btn-dark{background:var(--bg);color:var(--ink)}
+.top .btn{height:42px;padding:0 18px;font-size:14px}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;position:relative}
+.burger i{position:absolute;left:13px;right:13px;height:1.5px;background:currentColor;transition:transform .2s,opacity .2s}
+.burger i:nth-child(1){top:16px}.burger i:nth-child(2){top:21px}.burger i:nth-child(3){top:26px}
+.burger[aria-expanded="true"] i:nth-child(1){transform:translateY(5px) rotate(45deg)}
+.burger[aria-expanded="true"] i:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] i:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+.mnav{position:fixed;inset:68px 0 0;z-index:49;background:var(--bg);padding:24px var(--pad) 32px;display:flex;flex-direction:column}
+.mnav a.l{font:500 34px/1.1 var(--disp);letter-spacing:-.03em;padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+.mnav a.l span{color:var(--accent)}
+.mnav .btn{margin-top:auto}
+@media (max-width:960px){.nav,.top .btn{display:none}.burger{display:block}}
+@media (min-width:961px){.mnav{display:none!important}}
 
-.acc{display:grid;gap:8px;align-content:start}
-.acc details{background:var(--surface);border:1px solid var(--line);transition:background .25s,border-color .25s}
-.acc summary{list-style:none;display:flex;align-items:center;gap:16px;padding:16px 16px 16px 16px;cursor:pointer;min-height:64px}
-.acc summary::-webkit-details-marker{display:none}
-.acc .code{flex:0 0 auto;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;padding:5px 7px;border:1px solid var(--line-strong);color:var(--muted);min-width:52px;text-align:center}
-.acc .t{flex:1;min-width:0;font-size:18px;font-weight:500;line-height:1.3}
-.acc .pm{flex:0 0 auto;width:36px;height:36px;display:grid;place-items:center;background:var(--surface-2);font-family:var(--f-mono);font-size:16px;transition:transform .25s}
-.acc .pm::before{content:"+"}
-.acc details[open]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.acc details[open] .code{border-color:rgba(255,255,255,.5);color:#fff}
-.acc details[open] .pm{background:#fff;color:#05070e}
-.acc details[open] .pm::before{content:"–"}
-.acc summary:hover .pm{background:var(--accent);color:var(--accent-ink)}
-.acc details[open] summary:hover .pm{background:#fff;color:#05070e}
-.acc .body{padding:0 16px 22px 84px;display:grid;gap:14px;max-width:62ch}
-.acc .body ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
-.acc .body li{display:flex;gap:10px;font-size:15px}
-.acc .body li::before{content:"→";font-family:var(--f-mono);opacity:.7}
-@media (max-width:520px){.acc .body{padding-left:16px}.acc .code{min-width:44px}.acc .t{font-size:16px}}
+/* hero */
+.hero{min-height:100dvh;display:flex;flex-direction:column;justify-content:flex-end;padding-top:96px;position:relative;overflow:hidden}
+.hero-txt{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center;padding-bottom:clamp(32px,5vw,56px)}
+.hero-main{display:grid;justify-items:start}
+.lead{color:var(--ink-2);font-size:clamp(17px,1.5vw,19px);max-width:40ch;margin-top:24px}
+.hero-main .ctas{display:flex;gap:8px;flex-wrap:wrap;margin-top:32px}
+/* клавиши Q W E: продолжение логотипа, нажимаются мышью и с клавиатуры */
+.board{display:grid;justify-items:center;gap:20px}
+.keyrow{display:flex;gap:clamp(10px,1.4vw,18px);transform:rotate(-6deg);padding:clamp(14px,1.6vw,22px);border-radius:28px;background:var(--surface);border:1px solid var(--line);box-shadow:0 40px 80px -40px rgb(0 0 0 / .8)}
+.kc{--h:10px;width:clamp(92px,10.5vw,152px);aspect-ratio:1;border-radius:20px;padding:0 0 var(--h);background:#05060A;transition:padding .12s ease,transform .12s ease}
+.kc .cap{height:100%;border-radius:18px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;text-align:left;padding:clamp(10px,1.2vw,16px);background:var(--surface-2);border:1px solid #2F343C;box-shadow:inset 0 1px 0 rgb(255 255 255 / .06);transition:background .2s}
+.kc b{font:500 clamp(28px,3.2vw,48px)/1 var(--disp);letter-spacing:-.04em}
+.kc em{display:block;font-style:normal;font-weight:600;font-size:clamp(13px,1.1vw,16px);line-height:1.2}
+.kc small{display:block;font:clamp(10px,.85vw,12px)/1.3 var(--mono);color:var(--ink-2);white-space:nowrap}
+.kc-q{background:#7E9C1F}
+.kc-q .cap{background:var(--accent);color:var(--accent-ink);border-color:#DDFF73}
+.kc-q small{color:rgb(11 12 14 / .7)}
+.kc-e b{color:var(--accent)}
+.kc:hover .cap{background:#262A31}
+.kc-q:hover .cap{background:#D6FF55}
+.kc:active,.kc.down{padding-bottom:2px;transform:translateY(calc(var(--h) - 2px))}
+.hint{font:13px var(--mono);color:var(--ink-2)}
+@media (max-width:900px){.hero-txt{grid-template-columns:1fr}.board{justify-items:start}.keyrow{transform:rotate(-3deg)}.hint{display:none}}
+@media (max-width:420px){.kc{width:84px;--h:7px;border-radius:16px}.kc .cap{border-radius:14px;padding:9px}.kc b{font-size:24px}.kc em{font-size:12px}.kc small{font-size:9.5px}}
+@media (prefers-reduced-motion:reduce){.kc,.kc .cap{transition:none}}
+.plate{display:inline-flex;align-items:center;gap:10px;font:500 13px var(--mono);color:var(--ink-2);margin-bottom:24px}
+.plate b{background:var(--surface-2);color:var(--ink);padding:5px 10px;border-radius:999px;font-weight:500}
+h1{font-size:clamp(38px,5.2vw,78px);font-weight:500;line-height:1}
+h1 span{color:var(--accent)}
+@media (max-width:900px){.hero-txt{grid-template-columns:1fr}}
 
+.reel{position:relative;padding-bottom:clamp(24px,4vw,40px);-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.track{display:flex;gap:16px;width:max-content;animation:roll 60s linear infinite}
+.reel:hover .track{animation-play-state:paused}
+.shot{width:clamp(260px,30vw,420px);flex:0 0 auto;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--surface);display:block}
+.shot .bar{height:24px;display:flex;align-items:center;gap:5px;padding:0 10px;background:var(--surface-2)}
+.shot .bar i{width:7px;height:7px;border-radius:50%;background:#3A3F47}
+.shot img{aspect-ratio:16/10;object-fit:cover;object-position:top;width:100%}
+.shot.ph{width:clamp(110px,12vw,170px);border-radius:22px;padding:5px;background:#000}
+.shot.ph img{aspect-ratio:9/19.5;border-radius:18px}
+.track{align-items:flex-end}
+@keyframes roll{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.track{animation:none}.reel{overflow-x:auto}}
 
-.price{display:flex;align-items:baseline;gap:14px;padding-block:14px;border-block:1px dashed var(--line-strong);max-width:340px}
-.price .mono{color:var(--muted)}
-.price b{font-family:var(--f-mono);font-weight:500;font-size:clamp(22px,2.4vw,28px);letter-spacing:-.02em;color:var(--fg);font-variant-numeric:tabular-nums}
+/* sections */
+.sec{padding:clamp(80px,10vw,140px) 0}
+.sh{display:flex;flex-direction:column;gap:16px;margin-bottom:clamp(36px,5vw,64px);max-width:760px}
+h2{font-size:clamp(32px,4.4vw,60px)}
+.sh p{color:var(--ink-2);font-size:18px;max-width:52ch}
 
-/* Portfolio */
-.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-.tab{font:500 14px/1 var(--f-body);padding:11px 14px;background:transparent;color:var(--fg);border:1px solid var(--line-strong);cursor:pointer;display:inline-flex;gap:10px;align-items:center}
-.tab sup{font:11px/1 var(--f-mono);color:var(--muted);top:0}
-.tab[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.tab[aria-pressed="true"] sup{color:var(--bg);opacity:.7}
-.works{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-@media (max-width:960px){.works{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:600px){.works{grid-template-columns:1fr}}
-.work{display:grid;grid-template-rows:auto 1fr;background:var(--surface);border:1px solid var(--line);min-width:0}
-.pv{position:relative;aspect-ratio:4/3;max-width:100%;overflow:hidden;display:grid;place-items:center;
-  background:radial-gradient(rgba(var(--dot),.35) 1.2px,transparent 1.6px) 0 0/10px 10px,radial-gradient(110% 90% at 50% 120%,var(--hero-b),var(--hero-a) 75%)}
-.pv[data-dir="mobile"]{background:radial-gradient(rgba(var(--dot),.35) 1.2px,transparent 1.6px) 0 0/10px 10px,radial-gradient(110% 90% at 0% 100%,var(--hero-b),var(--hero-a) 75%)}
-.pv[data-dir="brand"]{background:radial-gradient(rgba(var(--dot),.35) 1.2px,transparent 1.6px) 0 0/10px 10px,radial-gradient(110% 90% at 100% 0%,var(--hero-b),var(--hero-a) 75%)}
-.pv .cap{font:500 clamp(22px,3vw,30px)/1 var(--f-mono);color:#fff;padding:16px 20px;border:1px solid rgba(255,255,255,.35);border-bottom-width:5px;background:rgba(255,255,255,.06);letter-spacing:.04em}
-.pv .st{position:absolute;left:12px;top:12px;font:500 11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:6px 8px;background:#fff;color:#05070e}
-.pv img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.wmeta{padding:18px;display:flex;flex-direction:column;gap:8px}
-.pv.live{background:none;text-decoration:none;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:20px;gap:6px;place-items:unset}
-.pv .lv-t{font:500 clamp(34px,4vw,52px)/1 var(--f-display);letter-spacing:-.04em}
-.pv .lv-s{font:500 11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;opacity:.75}
-.pv{transition:filter .2s}
-a.pv:hover{filter:brightness(1.08)}
-.pv .st.st-live{background:var(--accent);color:var(--accent-ink)}
-.wmeta .wlink{margin-top:auto}
+/* services tabs */
+.svc{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:clamp(20px,3vw,40px)}
+.stabs{display:grid;gap:4px;align-content:start}
+.stab{display:flex;justify-content:space-between;align-items:center;gap:16px;text-align:left;padding:18px 20px;border-radius:14px;border:1px solid transparent;transition:background .2s,border-color .2s}
+.stab b{font:500 clamp(18px,1.8vw,22px)/1.2 var(--disp);letter-spacing:-.02em}
+.stab span{font:13px var(--mono);color:var(--ink-2);white-space:nowrap}
+.stab:hover{background:var(--surface-2)}
+.stab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink)}
+.stab[aria-selected="true"] span{color:var(--accent-ink)}
+.panel{display:grid;gap:24px;align-content:start;min-width:0}
+.panel .ill{width:100%;aspect-ratio:16/10;background:var(--bg);border-radius:18px;border:1px solid var(--line);color:var(--accent)}
+.panel h3{font-size:clamp(24px,2.4vw,32px)}
+.panel p{color:var(--ink-2);max-width:54ch}
+.panel ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.panel li{font-size:14px;padding:7px 14px;border:1px solid var(--line);border-radius:999px}
+.panel .pr{display:flex;align-items:baseline;gap:12px;font:500 clamp(28px,3vw,40px) var(--disp);letter-spacing:-.03em}
+.panel .pr small{font:13px var(--mono);color:var(--ink-2);letter-spacing:0}
+@media (max-width:900px){.svc{grid-template-columns:1fr}.stabs{display:flex;overflow-x:auto;scrollbar-width:none;margin-inline:-4px}.stabs::-webkit-scrollbar{display:none}.stab{flex:0 0 auto;padding:12px 16px}.stab span{display:none}.stab b{font-size:15px}}
 
-.wmeta .mono{color:var(--muted)}
-.wmeta h3{font:500 19px/1.3 var(--f-body);letter-spacing:-.01em}
-.wmeta p{color:var(--muted);font-size:14.5px}
-.wlink{margin-top:6px;font:500 12px/1 var(--f-mono);letter-spacing:.05em;text-transform:uppercase;text-decoration:none;color:var(--soft);padding-block:6px;align-self:flex-start;border-bottom:1px solid currentColor}
-.wlink:hover{color:var(--fg)}
-.work-note{margin-top:12px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:20px;border:1px dashed var(--line-strong)}
-.work-note p{color:var(--muted);max-width:60ch}
+/* portfolio */
+.feat{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:center;margin-bottom:16px}
+.feat .pic{border-radius:20px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/10;background:var(--surface)}
+.feat .pic img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.feat:hover .pic img{transform:scale(1.03)}
+.feat .txt{display:grid;gap:16px;justify-items:start}
+.feat h3{font-size:clamp(26px,2.8vw,38px)}
+.feat p{color:var(--ink-2)}
+.tag{font:12px var(--mono);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);padding:5px 10px;border-radius:999px}
+.flt{display:flex;gap:6px;flex-wrap:wrap;margin:40px 0 16px}
+.flt button{height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--line);font-size:14px;color:var(--ink-2)}
+.flt button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{columns:3 320px;column-gap:16px}
+.card{break-inside:avoid;display:block;margin-bottom:16px;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:border-color .2s,transform .3s}
+.card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.card img{width:100%;object-fit:cover;object-position:top}
+.card .m{padding:16px 18px 18px;display:grid;gap:6px}
+.card .k{display:flex;justify-content:space-between;gap:10px;font:12px var(--mono);color:var(--ink-2)}
+.card .k .live{color:var(--accent)}
+.card h3{font:500 17px/1.3 var(--f);letter-spacing:-.01em}
+@media (max-width:900px){.feat{grid-template-columns:1fr}}
+@media (max-width:600px){.grid{columns:2 150px;column-gap:8px}.card{margin-bottom:8px;border-radius:12px}.card .m{padding:10px}.card h3{font-size:13px}.card .k{font-size:10px}}
 
-/* Numbers */
-.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-block:1px solid var(--line)}
-.num{padding:clamp(28px,4vw,44px) clamp(16px,3vw,32px);display:grid;gap:10px}
-.num+.num{border-left:1px solid var(--line)}
-.num b{font-family:var(--f-mono);font-weight:400;font-size:clamp(48px,7vw,92px);line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
-.num b small{font-size:.4em;color:var(--soft);letter-spacing:0;margin-left:6px}
-.num span{color:var(--muted);font-size:15px;max-width:26ch}
-@media (max-width:700px){.nums{grid-template-columns:1fr}.num+.num{border-left:0;border-top:1px solid var(--line)}}
+/* process timeline */
+.proc{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,96px)}
+.proc .stick{position:sticky;top:110px;align-self:start;display:grid;gap:20px}
+.proc .stick p{color:var(--ink-2);font-size:18px}
+.proc .stick .ill{width:min(280px,80%);color:var(--accent)}
+.tl{display:grid;gap:12px}
+.ti{display:grid;grid-template-columns:72px minmax(0,1fr);gap:20px;padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+.ti .ic{width:72px;height:72px;border-radius:16px;background:var(--bg);display:grid;place-items:center;color:var(--accent)}
+.ti .ic svg{width:40px;height:40px}
+.ti h3{font-size:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.ti h3 small{font:13px var(--mono);color:var(--ink-2);letter-spacing:0}
+.ti p{color:var(--ink-2);margin-top:8px}
+@media (max-width:900px){.proc{grid-template-columns:1fr}.proc .stick{position:static}.proc .stick .ill{display:none}}
+@media (max-width:480px){.ti{grid-template-columns:1fr;padding:18px}.ti .ic{width:56px;height:56px}}
 
-/* Process */
-.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;counter-reset:s}
-.step{border:1px dashed var(--line-strong);padding:20px;display:flex;flex-direction:column;gap:12px;background:var(--bg);position:relative}
-.step .n{font-family:var(--f-mono);font-size:12px;color:var(--soft);display:flex;justify-content:space-between}
-.step h3{font-size:22px;font-family:var(--f-body);font-weight:500;letter-spacing:-.01em}
-.step p{color:var(--muted);font-size:14.5px}
-.step .out{font-family:var(--f-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--fg);border-top:1px dashed var(--line);padding-top:12px;margin-top:auto}
-@media (max-width:1000px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.step:last-child{grid-column:1/-1}}
-@media (max-width:560px){.steps{grid-template-columns:1fr}}
-
-/* CTA band: text left, dithered pixel moon right */
-.band{position:relative;overflow:hidden;color:#fff;background:radial-gradient(55% 90% at 78% 50%, var(--hero-b) 0%, var(--hero-a) 72%)}
-.band .wrap{position:relative;padding-block:clamp(56px,8vw,104px);display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,64px);align-items:center}
-.band-text{display:grid;gap:22px;justify-items:start}
-.band .label{color:rgba(255,255,255,.75);margin:0}
-.band .label::before{background:#fff}
-.band h2{font-size:clamp(34px,5vw,64px);font-weight:300;letter-spacing:-.035em;max-width:17ch}
-.band p{color:rgba(255,255,255,.78);max-width:42ch;font-size:17px}
-.band-cta{display:flex;flex-wrap:wrap;gap:0}
-.orb-box{position:relative;aspect-ratio:1/1;width:100%;max-width:440px;justify-self:end}
-.orb-box canvas{position:absolute;inset:0;width:100%;height:100%}
-@media (max-width:760px){
-  .band .wrap{grid-template-columns:1fr}
-  .orb-box{position:absolute;right:-22%;top:-4%;width:66%;max-width:none;opacity:.5;pointer-events:none}
-  .band-text{position:relative}
-}
-
-/* FAQ */
-.faq{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(24px,5vw,72px)}
-.faq h2{font-size:clamp(36px,5vw,60px)}
-.faq-intro{display:grid;gap:18px;align-content:start}
-.faq-intro p{color:var(--muted)}
+/* faq */
+.qa{border-top:1px solid var(--line)}
 .qa details{border-bottom:1px solid var(--line)}
-.qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 0;font-size:18px;font-weight:500}
+.qa summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center;padding:26px 0;font:500 clamp(18px,2vw,24px)/1.3 var(--disp);letter-spacing:-.02em}
 .qa summary::-webkit-details-marker{display:none}
-.qa summary i{font-style:normal;flex:0 0 auto;width:32px;height:32px;display:grid;place-items:center;background:var(--surface-2);font-family:var(--f-mono)}
-.qa summary i::before{content:"+"}
-.qa details[open] summary i{background:var(--accent);color:var(--accent-ink)}
-.qa details[open] summary i::before{content:"–"}
-.qa .a{padding:0 52px 24px 0;color:var(--muted);max-width:62ch}
-@media (max-width:860px){.faq{grid-template-columns:1fr}.qa .a{padding-right:0}}
+.qa summary i{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-style:normal;transition:transform .3s,background .2s}
+.qa summary i::before{content:"+";font:20px var(--mono)}
+.qa details[open] summary i{transform:rotate(45deg);background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.qa p{color:var(--ink-2);max-width:68ch;padding:0 64px 26px 0}
 
-/* Contact */
-.contact{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px)}
-.contact-info{display:grid;gap:22px;align-content:start}
-.contact-info h2{font-size:clamp(36px,5vw,64px)}
-.contact-info p{color:var(--muted);max-width:42ch}
-.channels{display:grid;gap:8px;margin-top:8px}
-.ch{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;background:var(--surface);border:1px solid var(--line);min-width:0}
-.ch div{min-width:0}
-.ch .mono{color:var(--muted);display:block;margin-bottom:4px}
-.ch strong{font-weight:500;font-size:17px;word-break:break-all}
-.copy{flex:0 0 auto;font:500 12px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.05em;padding:10px 12px;background:var(--surface-2);color:var(--fg);border:0;cursor:pointer}
-.copy:hover{background:var(--accent);color:var(--accent-ink)}
-.tg-btn{text-decoration:none;background:var(--accent);color:var(--accent-ink);white-space:nowrap}
-.tg-btn:hover{background:color-mix(in srgb,var(--accent) 85%,#fff)}
+/* contact */
+.cta{background:var(--accent);color:var(--accent-ink);border-radius:32px;padding:clamp(28px,5vw,72px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px)}
+.cta h2{font-size:clamp(34px,5vw,68px)}
+.cta .sub{margin-top:18px;font-size:18px;max-width:40ch;color:rgb(11 12 14 / .75)}
+.links{margin-top:32px;display:grid;gap:8px}
+.links a,.links div{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;border-radius:16px;background:rgb(11 12 14 / .08);min-width:0}
+.links a:hover{background:rgb(11 12 14 / .14)}
+.links div{flex-wrap:wrap}
+.links small{display:block;font:12px var(--mono);opacity:.7}
+.links strong{font:500 18px var(--disp);letter-spacing:-.02em;word-break:break-all}
+.copy{font:12px var(--mono);padding:8px 12px;border-radius:999px;border:1px solid rgb(11 12 14 / .35);white-space:nowrap}
+.copy:hover{background:var(--accent-ink);color:var(--accent)}
+.brief{background:var(--bg);color:var(--ink);border-radius:24px;padding:clamp(20px,3vw,32px);display:grid;gap:18px;align-content:start;min-width:0}
+.brief h3{font-size:clamp(20px,2vw,26px)}
+.brief ol{display:grid;gap:10px;padding-left:22px;color:var(--ink-2)}
+.brief ol li::marker{color:var(--accent);font-family:var(--mono)}
+.brief pre{white-space:pre-wrap;font:14px/1.7 var(--mono);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;overflow-x:auto}
+.brow{display:flex;flex-wrap:wrap;gap:8px}
+.brow .btn{flex:1 1 180px}
+.bnote{color:var(--ink-2);font-size:13px}
+@media (max-width:900px){.cta{grid-template-columns:1fr;border-radius:24px}}
+@media (max-width:520px){.two{grid-template-columns:1fr}}
 
-form{background:var(--surface);border:1px dashed var(--line-strong);padding:clamp(20px,3vw,36px);display:grid;gap:20px;align-content:start}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media (max-width:560px){.row{grid-template-columns:1fr}}
-.field{display:grid;gap:8px;min-width:0}
-.field label,.field legend{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:0}
-fieldset{border:0;margin:0;padding:0;min-width:0}
-input,textarea{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);padding:13px 14px;width:100%;border-radius:0}
-textarea{min-height:120px;resize:vertical}
-input:focus,textarea:focus{outline:none;border-color:var(--accent)}
-.field.err input{border-color:#ff5d6c}
-.hint{font-size:13px;color:#ff7b88;min-height:0}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-.chip{position:relative}
-.chip input{position:absolute;opacity:0;pointer-events:none}
-.chip span{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--line-strong);font-size:14px;cursor:pointer;user-select:none;transition:background .2s,border-color .2s}
-.chip span::before{content:"+";font-family:var(--f-mono);font-size:12px;opacity:.7}
-.chip input:checked+span{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.chip input:checked+span::before{content:"✓"}
-.chip input:focus-visible+span{outline:2px solid var(--soft);outline-offset:2px}
-.send-err{display:grid;gap:12px;padding:14px;border:1px solid #ff5d6c;background:color-mix(in srgb,#ff5d6c 10%,transparent);font-size:14px}
-.send-err .btn{justify-self:start;padding:11px 16px}
-.form-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
-.form-foot small{color:var(--muted);font-size:13px;max-width:36ch}
-.done{display:grid;gap:16px}
-.done h3{font-size:30px}
-.done p{color:var(--muted)}
-.done pre{margin:0;white-space:pre-wrap;font:13px/1.6 var(--f-mono);background:var(--bg);border:1px solid var(--line);padding:16px;overflow-x:auto}
-.done .acts{display:flex;flex-wrap:wrap;gap:8px}
+footer{padding:40px 0 48px;color:var(--ink-2);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center}
+footer .logo{color:var(--ink)}
+footer nav{display:flex;gap:20px;flex-wrap:wrap}
+footer a:hover{color:var(--ink)}
+.fab{position:fixed;left:16px;right:16px;bottom:12px;z-index:40;display:none;height:54px;border-radius:999px;align-items:center;justify-content:center;background:var(--accent);color:var(--accent-ink);font-weight:600}
+@media (max-width:700px){.fab{display:flex}footer{padding-bottom:96px}body.menu .fab{display:none}}
+.toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:999px;font-size:14px;z-index:70}
 
-@media (max-width:860px){.contact{grid-template-columns:1fr}}
-
-
-/* Contact cards (form removed for now) */
-.brief-tips{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:10px}
-.brief-tips li{display:flex;gap:12px;color:var(--fg)}
-.brief-tips li::before{content:"→";font-family:var(--f-mono);color:var(--accent)}
-.contact-cards{display:grid;gap:12px;align-content:start}
-.cc{position:relative;display:grid;gap:8px;padding:clamp(22px,3vw,32px);border:1px solid var(--line);background:var(--surface);min-width:0}
-.cc .mono{color:var(--muted)}
-.cc strong{font:400 clamp(24px,3vw,34px)/1.15 var(--f-display);letter-spacing:-.02em;word-break:break-word}
-.cc-tg{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);text-decoration:none;padding-right:72px;transition:background .2s}
-.cc-tg:hover{background:color-mix(in srgb,var(--accent) 85%,#fff)}
-.cc-tg .mono{color:rgba(255,255,255,.8)}
-.cc-handle{font:500 15px var(--f-mono);opacity:.9}
-.cc-arr{position:absolute;right:clamp(22px,3vw,32px);top:50%;transform:translateY(-50%);font:400 34px var(--f-mono);transition:transform .2s}
-.cc-tg:hover .cc-arr{transform:translate(4px,-50%)}
-.cc-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-.cc-acts .btn{padding:11px 16px}
-
-/* Footer */
-footer{border-top:1px solid var(--line);padding-block:40px}
-footer .wrap{display:flex;flex-wrap:wrap;gap:20px 40px;justify-content:space-between;align-items:center}
-footer nav{display:flex;flex-wrap:wrap;gap:20px}
-footer nav a{text-decoration:none;color:var(--muted);font-size:14px}
-footer nav a:hover{color:var(--fg)}
-footer small{color:var(--muted);font-family:var(--f-mono);font-size:12px}
-
-
-/* Floating CTA */
-.fab{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:60;background:var(--fg);color:var(--bg);text-decoration:none;font:500 15px/1 var(--f-body);padding:16px 22px;box-shadow:0 12px 30px -10px rgba(20,40,140,.6);transition:transform .2s}
-.fab:hover{transform:translateY(-2px)}
-.wmeta h3 a{text-decoration:none;color:inherit}
-.wmeta h3 a:hover{color:var(--soft)}
-
-/* Mobile refinements */
-@media (max-width:860px){.iso{display:none}.svc-info{gap:14px}}
-@media (max-width:600px){
-  .sec{padding-block:56px}
-  .sec-head{margin-bottom:28px}
-  .sec-head p{font-size:16px}
-  .works{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-  .pv{aspect-ratio:1/1}
-  .pv.live{padding:12px}
-  .pv .lv-t{font-size:24px}
-  .pv .lv-s{display:none}
-  .pv .st{font-size:9px;padding:4px 6px;left:8px;top:8px}
-  .wmeta{padding:10px 10px 12px;gap:4px}
-  .wmeta .mono{font-size:10px}
-  .wmeta h3{font-size:14px;line-height:1.3}
-  .wmeta p,.wmeta .wlink{display:none}
-  .tabs{flex-wrap:nowrap;overflow-x:auto;margin-inline:-16px;padding-inline:16px;scrollbar-width:none}
-  .tabs::-webkit-scrollbar{display:none}
-  .tab{flex:0 0 auto}
-  .works .work:first-child{grid-column:1/-1}
-  .works .work:first-child .pv{aspect-ratio:16/9}
-  .works .work:first-child .pv .lv-t{font-size:34px}
-  .nums{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .num{padding:20px 10px;gap:6px}
-  .num+.num{border-top:0;border-left:1px solid var(--line)}
-  .num b{font-size:40px;display:grid}
-  .num b small{margin-left:0;margin-top:4px;font-size:11px}
-  .num span{font-size:12px;line-height:1.4}
-  .work-note{padding:16px}
-  .work-note .btn{width:100%}
-  .steps{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:82%;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px;scrollbar-width:none}
-  .steps::-webkit-scrollbar{display:none}
-  .step{scroll-snap-align:start}
-  .step:last-child{grid-column:auto}
-  .acc summary{min-height:56px;padding:12px}
-  .fab{left:16px;right:16px;bottom:calc(12px + env(safe-area-inset-bottom,0px));text-align:center;padding:16px}
-  footer{padding-bottom:96px}
-  .band-cta .btn{flex:1 1 100%}
-}
-
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+.rv{transform:translateY(24px);transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.rv.in{transform:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}}
 </style>
+</head>
+<body>
 
-<header class="top">
+<header class="top" id="top-bar">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="qwe studio, на главную">
-      <span class="keys" aria-hidden="true"><span class="key">q</span><span class="key">w</span><span class="key">e</span></span>
-      studio
-    </a>
-    <nav class="nav" aria-label="Основное меню">
-      <a href="#services">Услуги</a>
-      <a href="#work">Портфолио</a>
-      <a href="#process">Процесс</a>
-      <a href="#faq">Вопросы</a>
-      <a href="#contact">Контакты</a>
-    </nav>
+    <a class="logo" href="#top" aria-label="qwe studio, на главную"><b>qwe</b>studio</a>
+    <nav class="nav" aria-label="Основное меню"><a href="#services">Услуги</a><a href="#work">Работы</a><a href="#process">Процесс</a><a href="#faq">Вопросы</a></nav>
     <a class="btn btn-accent" href="#contact">Обсудить проект</a>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Открыть меню"><i></i><i></i><i></i></button>
   </div>
 </header>
 <div class="mnav" id="mnav" hidden>
-  <nav aria-label="Мобильное меню">
-    <a href="#services">Услуги <span>→</span></a>
-    <a href="#work">Портфолио <span>→</span></a>
-    <a href="#process">Процесс <span>→</span></a>
-    <a href="#faq">Вопросы <span>→</span></a>
-  </nav>
-  <div class="mfoot">
-    <a class="btn btn-accent" href="#contact">Обсудить проект <span class="arr">→</span></a>
-    <div class="mcontacts"><span>Telegram <b>@qweqwasdd</b></span><span>Почта <b>sempervukhin@mail.ru</b></span></div>
-  </div>
+  <a class="l" href="#services">Услуги <span>→</span></a><a class="l" href="#work">Работы <span>→</span></a><a class="l" href="#process">Процесс <span>→</span></a><a class="l" href="#faq">Вопросы <span>→</span></a>
+  <a class="btn btn-accent" href="#contact">Обсудить проект</a>
 </div>
 
 <main id="top">
-  <section class="hero" aria-labelledby="h1">
-    <canvas id="terrain" aria-hidden="true"></canvas>
+  <section class="hero">
+    <div class="wrap hero-txt">
+      <div class="hero-main">
+        <span class="plate"><b>3 года</b> веб · мобайл · бренд</span>
+        <h1>Дизайн и код, которые <span>приводят клиентов</span></h1>
+        <p class="lead">Сайты, магазины, приложения и фирменный стиль. Один исполнитель, открытые цены.</p>
+        <div class="ctas"><a class="btn btn-accent" href="#contact">Обсудить проект</a><a class="btn btn-line" href="#work">Смотреть работы</a></div>
+      </div>
+      <div class="board" aria-label="Направления и цены">
+        <div class="keyrow">
+          <button class="kc kc-q" type="button" data-svc="0" data-k="q й"><span class="cap"><b>Q</b><span><em>Веб</em><small>от 7 500 ₽</small></span></span></button>
+          <button class="kc kc-w" type="button" data-svc="3" data-k="w ц"><span class="cap"><b>W</b><span><em>Мобайл</em><small>от 20 000 ₽</small></span></span></button>
+          <button class="kc kc-e" type="button" data-svc="4" data-k="e у"><span class="cap"><b>E</b><span><em>Бренд</em><small>от 15 000 ₽</small></span></span></button>
+        </div>
+        <p class="hint">Нажмите клавишу, чтобы открыть услугу</p>
+      </div>
+    </div>
+    <div class="reel" aria-label="Лента работ">
+      <div class="track" id="track"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="services">
     <div class="wrap">
-      <span class="eyebrow mono"><b>3 года</b> веб · мобайл · бренд</span>
-      <h1 id="h1"><span class="w">Дизайн,</span> <span class="w">который</span> <span class="w">работает</span> <span class="w">на&nbsp;вас</span></h1>
-      <p class="lead">Сайты, мобильные приложения и фирменный стиль. Вы общаетесь напрямую с тем, кто делает ваш проект, а цены открыты заранее.</p>
-      <div class="cta">
-        <a class="btn btn-dark" href="#contact">Обсудить проект <span class="arr">→</span></a>
-        <a class="btn btn-light" href="#work">Смотреть работы</a>
+      <div class="sh rv"><h2>Что я делаю</h2><p>Выберите направление, чтобы увидеть, что входит в работу и сколько это стоит.</p></div>
+      <div class="svc rv">
+        <div class="stabs" role="tablist" aria-label="Услуги" id="stabs"></div>
+        <div class="panel" role="tabpanel" id="panel" aria-live="polite"></div>
       </div>
     </div>
   </section>
 
-  <section class="sec" id="services" aria-labelledby="svc-h">
+  <section class="sec" id="work" style="padding-top:0">
     <div class="wrap">
-      <div class="sec-head">
+      <div class="sh rv"><h2>Сделано</h2><p>Работы с меткой «Живой сайт» открываются и работают: запись, корзина, приложение. Остальные лежат на Behance.</p></div>
+      <a class="feat rv" href="works/stupen/" target="_blank" rel="noopener">
+        <div class="pic"><img src="img/stupen.jpg" alt="Лендинг кабинета подологии Ступень" width="1440" height="900"></div>
+        <div class="txt"><span class="tag">Живой сайт · 2026</span><h3>Лендинг кабинета подологии «Ступень»</h3><p>Интерактивная карта проблем стопы, прайс без звёздочек и онлайн-запись на свободное время. Человек находит свою проблему за пару секунд и сразу записывается.</p><span class="btn btn-line">Открыть сайт ↗</span></div>
+      </a>
+      <div class="flt" role="group" aria-label="Фильтр работ" id="flt">
+        <button type="button" data-f="all" aria-pressed="true">Все</button><button type="button" data-f="web" aria-pressed="false">Веб</button><button type="button" data-f="mobile" aria-pressed="false">Мобайл</button><button type="button" data-f="brand" aria-pressed="false">Брендинг</button>
+      </div>
+      <div class="grid" id="works"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="process" style="padding-top:0">
+    <div class="wrap proc">
+      <div class="stick rv">
+        <h2>Как идёт работа</h2>
+        <p>Пять шагов. После каждого вы смотрите результат и согласуете его.</p>
+        <svg class="ill" viewBox="0 0 280 200" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.5"><path d="M20 170C70 170 60 40 140 40s70 130 120 130"/><circle cx="20" cy="170" r="8" fill="currentColor"/><circle cx="80" cy="96" r="6"/><circle cx="140" cy="40" r="6"/><circle cx="200" cy="96" r="6"/><circle cx="260" cy="170" r="12" fill="currentColor"/><path d="M0 190h280" stroke-dasharray="4 6"/></g></svg>
+      </div>
+      <div class="tl">
+        <div class="ti rv"><div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 10h24v18H18l-6 6v-6H8z"/><path d="M14 17h12M14 22h8"/></svg></div><div><h3>Знакомство <small>1 день</small></h3><p>Обсуждаем задачу, аудиторию, сроки и бюджет. Вы получаете смету и план по этапам.</p></div></div>
+        <div class="ti rv"><div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="8" width="28" height="24" rx="2"/><path d="M6 15h28M14 15v17"/></svg></div><div><h3>Прототип <small>2-4 дня</small></h3><p>Каркас страниц или экранов: что где лежит и как человек идёт к цели.</p></div></div>
+        <div class="ti rv"><div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="18" r="9"/><circle cx="25" cy="22" r="9"/></svg></div><div><h3>Дизайн <small>3-7 дней</small></h3><p>Финальный вид в вашем стиле, для телефона и компьютера. Правки до утверждения.</p></div></div>
+        <div class="ti rv"><div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 12l-8 8 8 8M26 12l8 8-8 8M22 8l-4 24"/></svg></div><div><h3>Разработка <small>5-14 дней</small></h3><p>Верстка и программирование, формы, оплата, аналитика. Рабочую версию показываю по ходу.</p></div></div>
+        <div class="ti rv"><div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6c7 4 9 12 7 20H13c-2-8 0-16 7-20z"/><circle cx="20" cy="17" r="3"/><path d="M15 30l-2 5M25 30l2 5M20 30v6"/></svg></div><div><h3>Запуск <small>1 день</small></h3><p>Публикация, проверка на устройствах, передача доступов и короткая инструкция.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="sh rv"><h2>Частые вопросы</h2></div>
+      <div class="qa rv">
+        <details open><summary>Сколько времени занимает работа?<i aria-hidden="true"></i></summary><p>Лендинг обычно занимает от одной до трёх недель. Для магазина или приложения сроки называю после брифа и фиксирую по каждому этапу.</p></details>
+        <details><summary>Можно заказать только дизайн или только разработку?<i aria-hidden="true"></i></summary><p>Да. Нарисую макеты для вашей команды или сверстаю и запрограммирую готовый дизайн.</p></details>
+        <details><summary>Почему цены открытые?<i aria-hidden="true"></i></summary><p>Чтобы вы сразу понимали порядок суммы. Финальная цена зависит от объёма и фиксируется в смете до старта.</p></details>
+        <details><summary>Что нужно от меня для старта?<i aria-hidden="true"></i></summary><p>Описание задачи, примеры, которые нравятся, и материалы, если они есть: логотип, тексты, фото.</p></details>
+        <details><summary>Поддерживаете проект после запуска?<i aria-hidden="true"></i></summary><p>Да. Исправляю ошибки, добавляю разделы и функции. Формат поддержки обсуждаем отдельно.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="contact" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta rv">
         <div>
-          <div class="label mono">Услуги</div>
-          <h2 id="svc-h">Три направления, одна логика</h2>
-        </div>
-        <p>Каждый проект начинается с задачи бизнеса: продавать, собирать заявки, автоматизировать или запоминаться. Дальше подбираю формат и делаю его целиком, от структуры до запуска.</p>
-      </div>
-
-      <!-- WEB -->
-      <article class="svc">
-        <div class="svc-info">
-          <span class="tag mono">Направление · Web</span>
-          <h3>Веб-дизайн и разработка</h3>
-          <div class="price"><span class="mono">Стоимость</span><b>от 7 500 ₽</b></div>
-          <p>Дизайн и разработка сайтов любого масштаба: от одной продающей страницы до сервиса с личным кабинетом.</p>
-          <svg class="iso" viewBox="0 0 300 200" aria-hidden="true">
-            <g transform="translate(150 100) scale(1 .58) rotate(-30)">
-              <rect x="-110" y="-80" width="220" height="160"/>
-              <line x1="-110" y1="-58" x2="110" y2="-58"/>
-              <circle cx="-98" cy="-69" r="3" class="hl"/><circle cx="-88" cy="-69" r="3"/><circle cx="-78" cy="-69" r="3"/>
-              <rect x="-94" y="-42" width="110" height="14" class="hl"/>
-              <rect x="-94" y="-20" width="80" height="6"/>
-              <rect x="-94" y="-8" width="96" height="6"/>
-              <rect x="-94" y="10" width="40" height="14" class="fill"/>
-              <rect x="30" y="-42" width="64" height="66"/>
-              <line x1="30" y1="-42" x2="94" y2="24"/><line x1="94" y1="-42" x2="30" y2="24"/>
-              <rect x="-94" y="40" width="58" height="26"/><rect x="-30" y="40" width="58" height="26"/><rect x="34" y="40" width="60" height="26"/>
-            </g>
-          </svg>
-        </div>
-        <div class="acc">
-          <details open>
-            <summary><span class="code">LND</span><span class="t">Лендинги</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="body">
-              <p>Одностраничный сайт под одну цель: заявка, звонок, запись или покупка. Подходит для запуска услуги, рекламы и проверки спроса.</p>
-              <ul><li>Структура и тексты под вашу аудиторию</li><li>Адаптив для телефона, планшета и компьютера</li><li>Форма заявок, аналитика, подключение домена</li></ul>
-            </div>
-          </details>
-          <details>
-            <summary><span class="code">SITE</span><span class="t">Многостраничные сайты</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="body">
-              <p>Сайт компании или эксперта с разделами услуг, кейсов, блога и контактов. Удобно обновлять самостоятельно.</p>
-              <ul><li>Карта сайта и навигация</li><li>Единая дизайн-система для всех страниц</li><li>Базовая SEO-настройка и скорость загрузки</li></ul>
-            </div>
-          </details>
-          <details>
-            <summary><span class="code">SHOP</span><span class="t">Интернет-магазины</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="body">
-              <p>Каталог, карточки товаров, корзина и оформление заказа. Путь покупателя продуман так, чтобы он доходил до оплаты.</p>
-              <ul><li>Каталог с фильтрами и поиском</li><li>Корзина, оплата и доставка</li><li>Панель управления товарами и заказами</li></ul>
-            </div>
-          </details>
-          <details>
-            <summary><span class="code">APP</span><span class="t">Веб-приложения</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="body">
-              <p>Сервисы и внутренние инструменты: личные кабинеты, CRM, калькуляторы, дашборды. Всё, что работает в браузере и экономит время команды.</p>
-              <ul><li>Проектирование сценариев и интерфейсов</li><li>Роли пользователей и авторизация</li><li>Интеграции с вашими сервисами</li></ul>
-            </div>
-          </details>
-        </div>
-      </article>
-
-      <!-- MOBILE -->
-      <article class="svc">
-        <div class="svc-info">
-          <span class="tag mono">Направление · Mobile</span>
-          <h3>Мобильные приложения</h3>
-          <div class="price"><span class="mono">Стоимость</span><b>от 20 000 ₽</b></div>
-          <p>Дизайн и разработка приложений для iOS и Android: от первого прототипа до публикации в сторах.</p>
-          <svg class="iso" viewBox="0 0 300 200" aria-hidden="true">
-            <g transform="translate(150 100) scale(1 .58) rotate(-30)">
-              <rect x="-90" y="-95" width="74" height="150" rx="12"/>
-              <rect x="-80" y="-80" width="54" height="22" class="hl"/>
-              <rect x="-80" y="-50" width="54" height="8"/><rect x="-80" y="-36" width="40" height="8"/>
-              <rect x="-80" y="-20" width="54" height="30"/>
-              <rect x="-80" y="30" width="54" height="12" class="fill"/>
-              <rect x="10" y="-70" width="74" height="150" rx="12"/>
-              <rect x="20" y="-56" width="25" height="25"/><rect x="49" y="-56" width="25" height="25" class="hl"/>
-              <rect x="20" y="-26" width="25" height="25"/><rect x="49" y="-26" width="25" height="25"/>
-              <rect x="20" y="10" width="54" height="8"/><rect x="20" y="24" width="38" height="8"/>
-              <line x1="-16" y1="-30" x2="10" y2="-30" class="hl"/>
-            </g>
-          </svg>
-        </div>
-        <div class="acc">
-          <details>
-            <summary><span class="code">UX</span><span class="t">Прототип и сценарии</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="body">
-              <p>Разбираю, кто и зачем откроет приложение, и собираю кликабельный прототип. Его можно показать пользователям или инвесторам до разработки.</p>
-              <ul><li>Карта экранов и пользовательские сценарии</li><li>Кликабельный прототип</li></ul>
-            </div>
-          </details>
-          <details>
-            <summary><span class="code">UI</span><span class="t">Дизайн интерфейсов iOS и Android</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="body">
-              <p>Интерфейс по гайдлайнам платформ, но в вашем стиле. Все состояния экранов, анимации и компоненты готовы к разработке.</p>
-              <ul><li>UI-кит и дизайн-система</li><li>Тёмная и светлая темы</li><li>Иконка приложения и скриншоты для стора</li></ul>
-            </div>
-          </details>
-          <details>
-            <summary><span class="code">DEV</span><span class="t">Разработка и публикация</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="body">
-              <p>Превращаю макеты в работающее приложение, подключаю серверную часть и помогаю пройти модерацию App Store и Google Play.</p>
-              <ul><li>Приложение для двух платформ</li><li>Push-уведомления, авторизация, оплата</li><li>Публикация в сторах</li></ul>
-            </div>
-          </details>
-          <details>
-            <summary><span class="code">CARE</span><span class="t">Поддержка и развитие</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="body">
-              <p>После релиза собираю обратную связь, исправляю ошибки и выпускаю обновления с новыми функциями.</p>
-            </div>
-          </details>
-        </div>
-      </article>
-
-      <!-- BRAND -->
-      <article class="svc">
-        <div class="svc-info">
-          <span class="tag mono">Направление · Brand</span>
-          <h3>Логотип и фирменный стиль</h3>
-          <div class="price"><span class="mono">Стоимость</span><b>от 15 000 ₽</b></div>
-          <p>Визуальный язык компании, который узнают на вывеске, в соцсетях и в приложении.</p>
-          <svg class="iso" viewBox="0 0 300 200" aria-hidden="true">
-            <g transform="translate(150 100) scale(1 .58) rotate(-30)">
-              <rect x="-110" y="-75" width="100" height="140"/>
-              <circle cx="-60" cy="-20" r="28" class="hl"/>
-              <path d="M-74 -20 L-60 -40 L-46 -20 L-60 0 Z" class="hl"/>
-              <rect x="-96" y="30" width="72" height="6"/><rect x="-96" y="42" width="50" height="6"/>
-              <rect x="10" y="-75" width="40" height="40" class="fill"/>
-              <rect x="56" y="-75" width="40" height="40"/>
-              <rect x="10" y="-28" width="40" height="40"/>
-              <rect x="56" y="-28" width="40" height="40" class="hl"/>
-              <text x="12" y="45" style="font:28px Geologica,sans-serif;fill:none;stroke:var(--line-strong)">Aa</text>
-            </g>
-          </svg>
-        </div>
-        <div class="acc">
-          <details>
-            <summary><span class="code">LOGO</span><span class="t">Логотип</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="body">
-              <p>Несколько концепций с обоснованием, доработка выбранной и финальные версии для любых носителей.</p>
-              <ul><li>Основная и упрощённая версии, знак</li><li>Цветная, монохромная и инверсная версии</li><li>Файлы для печати и веба</li></ul>
-            </div>
-          </details>
-          <details>
-            <summary><span class="code">ID</span><span class="t">Фирменный стиль</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="body">
-              <p>Цвета, шрифты, графика и правила их сочетания. Применяю стиль к главным носителям, чтобы бренд выглядел единым везде.</p>
-              <ul><li>Палитра, типографика, графические элементы</li><li>Визитки, бланки, презентации</li><li>Шаблоны для соцсетей</li></ul>
-            </div>
-          </details>
-          <details>
-            <summary><span class="code">BOOK</span><span class="t">Брендбук</span><span class="pm" aria-hidden="true"></span></summary>
-            <div class="body">
-              <p>Документ с правилами использования стиля. С ним любой подрядчик сделает макет, который выглядит как ваш бренд.</p>
-              <ul><li>Правила логотипа, охранное поле, запреты</li><li>Примеры применения</li><li>Исходники всех элементов</li></ul>
-            </div>
-          </details>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="sec" id="work" aria-labelledby="work-h" style="padding-top:0">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <div class="label mono">Портфолио</div>
-          <h2 id="work-h">Сделано</h2>
-        </div>
-        <p>Работы с меткой «Живой сайт» можно потрогать: записаться, положить товар в корзину, пройти приложение. Остальные лежат на Behance.</p>
-      </div>
-      <div class="tabs" role="group" aria-label="Фильтр работ">
-        <button class="tab" type="button" data-f="all" aria-pressed="true">Все <sup></sup></button>
-        <button class="tab" type="button" data-f="web" aria-pressed="false">Веб <sup></sup></button>
-        <button class="tab" type="button" data-f="mobile" aria-pressed="false">Мобайл <sup></sup></button>
-        <button class="tab" type="button" data-f="brand" aria-pressed="false">Брендинг <sup></sup></button>
-      </div>
-      <div class="works" id="works"></div>
-      <div class="work-note">
-        <p>Хотите проект в похожем направлении? Расскажите о задаче, подберу подходящие примеры и предложу решение.</p>
-        <a class="btn btn-accent" href="#contact">Обсудить проект <span class="arr">→</span></a>
-      </div>
-    </div>
-  </section>
-
-
-  <div class="wrap">
-    <div class="nums">
-      <div class="num"><b>3<small>года</small></b><span>опыта в дизайне и разработке</span></div>
-      <div class="num"><b>3<small>направления</small></b><span>веб, мобильные приложения и брендинг в одних руках</span></div>
-      <div class="num"><b>1<small>контакт</small></b><span>на весь проект: от брифа до запуска</span></div>
-    </div>
-  </div>
-
-  <section class="sec" id="process" aria-labelledby="pr-h">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <div class="label mono">Процесс</div>
-          <h2 id="pr-h">Как идёт работа</h2>
-        </div>
-        <p>Пять этапов, и после каждого вы получаете результат, который можно посмотреть и согласовать. Никаких сюрпризов в день сдачи.</p>
-      </div>
-      <div class="steps">
-        <div class="step"><span class="n"><span>01</span><span>Бриф</span></span><h3>Знакомство</h3><p>Обсуждаем задачу, аудиторию, сроки и бюджет. Задаю вопросы, которые помогут не переделывать потом.</p><span class="out">→ Смета и план</span></div>
-        <div class="step"><span class="n"><span>02</span><span>Структура</span></span><h3>Прототип</h3><p>Собираю каркас страниц или экранов: что где лежит и как пользователь идёт к цели.</p><span class="out">→ Прототип</span></div>
-        <div class="step"><span class="n"><span>03</span><span>Визуал</span></span><h3>Дизайн</h3><p>Рисую финальный дизайн в вашем стиле. Вносим правки, пока всё не станет как надо.</p><span class="out">→ Макеты</span></div>
-        <div class="step"><span class="n"><span>04</span><span>Код</span></span><h3>Разработка</h3><p>Верстаю и программирую, подключаю формы, оплату, аналитику и нужные сервисы.</p><span class="out">→ Рабочая версия</span></div>
-        <div class="step"><span class="n"><span>05</span><span>Запуск</span></span><h3>Релиз</h3><p>Публикую, проверяю на устройствах, передаю доступы и объясняю, как всем пользоваться.</p><span class="out">→ Готовый продукт</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" aria-labelledby="band-h">
-    <div class="wrap">
-      <div class="band-text">
-        <span class="label mono">Есть идея?</span>
-        <h2 id="band-h">Расскажите задачу, а&nbsp;я предложу решение</h2>
-        <p>Бесплатно оценю проект и пришлю план с этапами до начала работы.</p>
-        <div class="band-cta">
-          <a class="btn btn-accent" href="#contact">Оставить заявку <span class="arr">→</span></a>
-          <a class="btn btn-light" href="https://t.me/qweqwasdd" target="_blank" rel="noopener">Связаться в Telegram</a>
-        </div>
-      </div>
-      <div class="orb-box" aria-hidden="true"><canvas id="orb"></canvas></div>
-    </div>
-  </section>
-
-  <section class="sec" id="faq" aria-labelledby="faq-h">
-    <div class="wrap faq">
-      <div class="faq-intro">
-        <div class="label mono">Вопросы</div>
-        <h2 id="faq-h">Частые вопросы</h2>
-        <p>Не нашли ответ? Напишите, отвечу лично.</p>
-      </div>
-      <div class="qa">
-        <details open><summary>Сколько времени занимает работа?<i aria-hidden="true"></i></summary><p class="a">Лендинг делается заметно быстрее, чем магазин или приложение. Точные даты по каждому этапу фиксируем в плане ещё до старта.</p></details>
-        <details><summary>Можно заказать только дизайн или только разработку?<i aria-hidden="true"></i></summary><p class="a">Да. Могу нарисовать макеты для вашей команды разработки или сверстать и запрограммировать готовый дизайн.</p></details>
-        <details><summary>Что нужно от меня для старта?<i aria-hidden="true"></i></summary><p class="a">Описание задачи, примеры сайтов или приложений, которые вам нравятся, и материалы, если они есть: логотип, тексты, фото. Если чего-то нет, поможем собрать.</p></details>
-        <details><summary>Вы поддерживаете проект после запуска?<i aria-hidden="true"></i></summary><p class="a">Да. Исправляю ошибки, добавляю разделы и функции, помогаю с обновлениями. Формат поддержки обсуждаем отдельно.</p></details>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="contact" aria-labelledby="ct-h" style="padding-top:0">
-    <div class="wrap contact">
-      <div class="contact-info">
-        <div class="label mono">Контакты</div>
-        <h2 id="ct-h">Обсудим проект</h2>
-        <p>Напишите, чем занимается ваш бизнес и какая задача. Отвечу, задам пару уточняющих вопросов и бесплатно пришлю оценку.</p>
-        <ul class="brief-tips">
-          <li>Чем занимается бизнес</li>
-          <li>Что нужно: сайт, приложение или фирменный стиль</li>
-          <li>Сроки и бюджет, если они уже есть</li>
-        </ul>
-      </div>
-      <div class="contact-cards">
-        <a class="cc cc-tg" href="https://t.me/qweqwasdd" target="_blank" rel="noopener">
-          <span class="mono">Быстрее всего</span>
-          <strong>Написать в Telegram</strong>
-          <span class="cc-handle" id="tg">@qweqwasdd</span>
-          <span class="cc-arr" aria-hidden="true">→</span>
-        </a>
-        <div class="cc cc-mail">
-          <span class="mono">Почта</span>
-          <strong id="mail">sempervukhin@mail.ru</strong>
-          <div class="cc-acts">
-            <a class="btn btn-ghost" href="mailto:sempervukhin@mail.ru">Написать письмо</a>
-            <button class="btn btn-ghost" type="button" data-copy="mail">Скопировать адрес</button>
+          <h2>Расскажите о задаче</h2>
+          <p class="sub">Отвечу в течение дня, задам пару вопросов и бесплатно пришлю оценку.</p>
+          <div class="links">
+            <a href="https://t.me/qweqwasdd" target="_blank" rel="noopener"><span><small>Telegram</small><strong>@qweqwasdd</strong></span><span aria-hidden="true">↗</span></a>
+            <div><span><small>Почта</small><strong>sempervukhin@mail.ru</strong></span><button class="copy" type="button" data-copy="sempervukhin@mail.ru">Скопировать</button></div>
+            <a href="https://www.behance.net/qweqweqwasdd" target="_blank" rel="noopener"><span><small>Портфолио</small><strong>Behance</strong></span><span aria-hidden="true">↗</span></a>
           </div>
+        </div>
+        <div class="brief">
+          <h3>Что написать в первом сообщении</h3>
+          <ol>
+            <li>Чем занимается ваш бизнес</li>
+            <li>Что нужно: сайт, магазин, приложение или фирменный стиль</li>
+            <li>Сроки и бюджет, если они уже есть</li>
+          </ol>
+          <pre id="tpl">Здравствуйте! Меня зовут …
+Бизнес: …
+Нужно: …
+Сроки и бюджет: …</pre>
+          <div class="brow"><button class="btn btn-accent" type="button" id="copyTpl">Скопировать шаблон</button><a class="btn btn-line" href="https://t.me/qweqwasdd" target="_blank" rel="noopener">Открыть Telegram</a></div>
+          <small class="bnote">Шаблон скопируется, останется вставить его в чат и дописать.</small>
         </div>
       </div>
     </div>
   </section>
 </main>
 
-<a class="fab" id="fab" href="#contact" hidden>Обсудить проект…</a>
-
-<footer>
-  <div class="wrap">
-    <a class="logo" href="#top"><span class="keys" aria-hidden="true"><span class="key">q</span><span class="key">w</span><span class="key">e</span></span>studio</a>
-    <nav aria-label="Нижнее меню"><a href="#services">Услуги</a><a href="#work">Портфолио</a><a href="#process">Процесс</a><a href="#faq">Вопросы</a><a href="#contact">Контакты</a></nav>
-    <small>© 2026 qwe studio</small>
-  </div>
-</footer>
+<footer><div class="wrap"><a class="logo" href="#top"><b>qwe</b>studio</a><nav aria-label="Нижнее меню"><a href="#services">Услуги</a><a href="#work">Работы</a><a href="#process">Процесс</a><a href="#contact">Контакты</a></nav><span>© 2026 qwe studio</span></div></footer>
+<a class="fab" href="#contact">Обсудить проект</a>
 
 <script>
 (function(){
-  // Mobile menu
-  var burger=document.getElementById('burger'), mnav=document.getElementById('mnav');
-  function setMenu(open){mnav.hidden=!open;burger.setAttribute('aria-expanded',String(open));burger.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню');document.body.classList.toggle('menu-open',open);}
-  burger.addEventListener('click',function(){setMenu(mnav.hidden);});
-  mnav.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false);});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!mnav.hidden){setMenu(false);burger.focus();}});
-  addEventListener('resize',function(){if(innerWidth>860&&!mnav.hidden)setMenu(false);});
-
-  // One open item per service accordion
-  document.querySelectorAll('.acc').forEach(function(acc){
-    acc.querySelectorAll('details').forEach(function(d){
-      d.addEventListener('toggle',function(){ if(d.open){acc.querySelectorAll('details').forEach(function(o){if(o!==d)o.open=false;});} });
-    });
-  });
-
-
-  // Portfolio. live: true — живой сайт-концепт, иначе ссылка ведёт на Behance.
   var BH='https://www.behance.net/gallery/';
-  var CASES=[
-    {dir:'web',kind:'Лендинг',title:'Ступень',full:'Лендинг кабинета подологии «Ступень»',year:2026,text:'Лендинг кабинета подологии: интерактивная карта проблем стопы, прайс и онлайн-запись на свободное время.',link:'./stupen/',live:true,bg:'#dff2ec',fg:'#0f2e2d',sub:'Подология · запись онлайн'},
-    {dir:'web',kind:'Интернет-магазин',title:'СОРТ',full:'Интернет-магазин кофейной обжарки «СОРТ»',year:2026,text:'Магазин кофейной обжарки: фильтр по шкале обжарки, карточки товаров, корзина и оформление заказа.',link:'./sort/',live:true,bg:'#2b3cff',fg:'#ffffff',sub:'Кофе · магазин'},
-    {dir:'web',kind:'Веб-приложение',title:'Слот',full:'Веб-приложение для записи в салоны «Слот»',year:2026,text:'Сервис онлайн-записи для салонов: расписание мастеров, карточки клиентов и аналитика выручки.',link:'./slot/',live:true,bg:'#17171b',fg:'#ff5f2e',sub:'Салоны · CRM'},
-    {dir:'mobile',kind:'Мобильное приложение',title:'СОРТ',full:'Мобильное приложение кофейни «СОРТ»',year:2026,text:'Приложение кофейни: заказ напитка без очереди, настройка молока и сиропа, бонусная карта и статус заказа.',link:'./sort-app/',live:true,bg:'#151311',fg:'#ffffff',sub:'iOS и Android · прототип'},
-    {dir:'brand',kind:'Логотип и брендбук',title:'СОРТ',full:'Логотип и фирменный стиль обжарки «СОРТ»',year:2026,text:'Фирменный стиль обжарки: логотип с зерном вместо буквы О, кобальт и цветовая шкала обжарки на упаковке.',link:'./sort-brand/',live:true,bg:'#e2bd5a',fg:'#2f1b12',sub:'Брендинг · упаковка'},
-    {dir:'web',kind:'Интернет-магазин',title:'GETFLOW',full:'Интернет-магазин цветов GETFLOW',year:2025,text:'Дизайн интернет-магазина цветов: каталог, карточки букетов и оформление заказа.',link:BH+'216734345/GETFLOW-flower-shop',code:'FLOW',img:'./img/getflow.jpg'},
-    {dir:'web',kind:'Интернет-магазин',title:'furnistore',full:'Интернет-магазин мебели furnistore',year:2024,text:'Дизайн интернет-магазина мебели.',link:BH+'214734307/furnistore-internet-magazin-mebeli',code:'FURN',img:'./img/furnistore.jpg'},
-    {dir:'web',kind:'Сайт',title:'WATCHLABS',full:'Сайт часового бренда WATCHLABS',year:2024,text:'Дизайн сайта бренда WATCHLABS.',link:BH+'212936045/WATCHLABS-website-design',code:'WTCH',img:'./img/watchlabs.jpg'},
-    {dir:'web',kind:'Лендинг',title:'Trekking',full:'Лендинг о треккинге TREKKING',year:2024,text:'Дизайн лендинга о треккинге.',link:BH+'211908757/TREKKING-LANDING-PAGE',code:'TREK',img:'./img/trekking.jpg'}
+  var W=[
+    {d:'mobile',k:'Мобильное приложение',t:'Приложение кофейни «СОРТ»',img:'img/sort-app-m.jpg',url:'works/sort-app/',live:1,y:2026,ph:1},
+    {d:'web',k:'Интернет-магазин',t:'Магазин кофейной обжарки «СОРТ»',img:'img/sort-shop.jpg',url:'works/sort-shop/',live:1,y:2026},
+    {d:'web',k:'Веб-приложение',t:'Сервис записи в салоны «Слот»',img:'img/slot.jpg',url:'works/slot/',live:1,y:2026},
+    {d:'brand',k:'Брендбук',t:'Фирменный стиль обжарки «СОРТ»',img:'img/sort-brand.jpg',url:'works/sort-brand/',live:1,y:2026},
+    {d:'web',k:'Интернет-магазин',t:'Магазин цветов GETFLOW',img:'img/getflow.jpg',url:BH+'216734345/GETFLOW-flower-shop',y:2025},
+    {d:'web',k:'Сайт',t:'Сайт часового бренда WATCHLABS',img:'img/watchlabs.jpg',url:BH+'212936045/WATCHLABS-website-design',y:2024},
+    {d:'web',k:'Интернет-магазин',t:'Магазин мебели furnistore',img:'img/furnistore.jpg',url:BH+'214734307/furnistore-internet-magazin-mebeli'},
+    {d:'web',k:'Лендинг',t:'Лендинг о треккинге TREKKING',img:'img/trekking.jpg',url:BH+'211908757/TREKKING-LANDING-PAGE'}
   ];
-  var DIRS={web:'Веб',mobile:'Мобайл',brand:'Брендинг'};
-  var worksEl=document.getElementById('works');
-  function renderWorks(f){
-    worksEl.innerHTML='';
-    CASES.filter(function(c){return f==='all'||c.dir===f;}).forEach(function(c){
-      var a=document.createElement('article');a.className='work';
-      var pv=document.createElement('a');pv.className='pv'+(c.live?' live':'');pv.dataset.dir=c.dir;pv.href=c.link;pv.target='_blank';pv.rel='noopener';pv.setAttribute('aria-label','Открыть: '+c.title);
-      if(c.live){pv.style.background=c.bg;pv.style.color=c.fg;var big=document.createElement('span');big.className='lv-t';big.textContent=c.title;var sm=document.createElement('span');sm.className='lv-s';sm.textContent=c.sub;pv.append(big,sm);}
-      else if(c.img){var im=document.createElement('img');im.src=c.img;im.alt='Обложка проекта '+c.title;im.loading='lazy';pv.append(im);}
-      else{var cap=document.createElement('span');cap.className='cap';cap.textContent=c.code;pv.append(cap);}
-      var st=document.createElement('span');st.className='st'+(c.live?' st-live':'');st.textContent=c.live?'Живой сайт · концепт':'Behance';pv.append(st);
-      var m=document.createElement('div');m.className='wmeta';
-      var tag=document.createElement('span');tag.className='mono';tag.textContent=DIRS[c.dir]+' · '+c.kind+(c.year?' · '+c.year:'');
-      var h=document.createElement('h3');var ha=document.createElement('a');ha.href=c.link;ha.target='_blank';ha.rel='noopener';ha.textContent=c.full||c.title;h.append(ha);
-      var p=document.createElement('p');p.textContent=c.text;
-      var l=document.createElement('a');l.className='wlink';l.href=c.link;l.target='_blank';l.rel='noopener';l.textContent=c.live?'Открыть проект →':'Смотреть на Behance →';
-      m.append(tag,h,p,l);a.append(pv,m);worksEl.append(a);
-    });
-  }
-  var tabs=document.querySelectorAll('.tab');
-  tabs.forEach(function(t){
-    var f=t.dataset.f;t.querySelector('sup').textContent=CASES.filter(function(c){return f==='all'||c.dir===f;}).length;
-    t.addEventListener('click',function(){tabs.forEach(function(o){o.setAttribute('aria-pressed',String(o===t));});renderWorks(f);});
-  });
-  renderWorks('all');
+  // hero reel (duplicated for seamless loop)
+  var REEL=[['img/stupen.jpg'],['img/sort-app-m.jpg',1],['img/sort-shop.jpg'],['img/slot.jpg'],['img/slot-m.jpg',1],['img/getflow.jpg'],['img/sort-brand.jpg'],['img/stupen-m.jpg',1],['img/watchlabs.jpg']];
+  var tr=document.getElementById('track'),html='';
+  for(var r=0;r<2;r++)REEL.forEach(function(x){html+=x[1]?'<a class="shot ph" href="#work"'+(r?' aria-hidden="true" tabindex="-1"':'')+'><img src="'+x[0]+'" alt=""></a>':'<a class="shot" href="#work"'+(r?' aria-hidden="true" tabindex="-1"':'')+'><span class="bar"><i></i><i></i><i></i></span><img src="'+x[0]+'" alt=""></a>';});
+  tr.innerHTML=html;
 
+  // services tabs
+  var I={
+    web:'<svg class="ill" viewBox="0 0 400 250" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="40" y="30" width="320" height="190" rx="10"/><path d="M40 58h320"/><circle cx="58" cy="44" r="4"/><circle cx="72" cy="44" r="4"/><path d="M70 92h130M70 112h100" stroke-width="10" stroke-linecap="round"/><path d="M70 140h120M70 154h90" stroke-opacity=".45"/><rect x="70" y="174" width="70" height="24" rx="12" fill="currentColor"/><rect x="230" y="84" width="104" height="110" rx="8" stroke-dasharray="4 5"/><circle cx="300" cy="114" r="12"/><path d="M234 190l30-40 22 26 14-14 30 28"/></svg>',
+    shop:'<svg class="ill" viewBox="0 0 400 250" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="40" y="40" width="90" height="120" rx="8"/><rect x="146" y="40" width="90" height="120" rx="8"/><circle cx="85" cy="90" r="22"/><rect x="170" y="70" width="42" height="50" rx="4"/><path d="M52 178h50M158 178h50" stroke-opacity=".45"/><path d="M52 196h28M158 196h28" stroke-width="8" stroke-linecap="round"/><path d="M268 96h84l-10 116h-64z" fill="currentColor" fill-opacity=".12"/><path d="M290 96V82a20 20 0 0 1 40 0v14"/><circle cx="352" cy="88" r="14" fill="currentColor"/><text x="346" y="93" fill="var(--bg)" stroke="none" style="font:600 14px var(--f)">3</text></svg>',
+    app:'<svg class="ill" viewBox="0 0 400 250" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="40" y="30" width="320" height="190" rx="10"/><path d="M110 30v190"/><path d="M56 56h38M56 76h30M56 96h34" stroke-opacity=".5"/><rect x="128" y="48" width="66" height="40" rx="6"/><rect x="206" y="48" width="66" height="40" rx="6"/><rect x="284" y="48" width="60" height="40" rx="6" fill="currentColor" fill-opacity=".14"/><path d="M128 200l40-38 30 20 40-50 34 24 70-46"/><circle cx="238" cy="132" r="5" fill="currentColor"/></svg>',
+    mobile:'<svg class="ill" viewBox="0 0 400 250" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="110" y="24" width="92" height="196" rx="18"/><rect x="198" y="40" width="92" height="196" rx="18" fill="var(--bg)"/><path d="M226 50h36" stroke-width="4" stroke-linecap="round"/><rect x="212" y="70" width="64" height="40" rx="8" fill="currentColor" fill-opacity=".16"/><path d="M212 124h64M212 138h40" stroke-opacity=".5"/><rect x="212" y="160" width="64" height="24" rx="12" fill="currentColor"/><path d="M124 70h64M124 84h40M124 108h64M124 122h50" stroke-opacity=".35"/><circle cx="320" cy="64" r="16"/><path d="M313 64l5 5 9-10"/></svg>',
+    brand:'<svg class="ill" viewBox="0 0 400 250" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="130" cy="125" r="70"/><circle cx="130" cy="125" r="36" stroke-dasharray="4 5"/><path d="M60 125h140M130 55v140" stroke-opacity=".35"/><path d="M130 55a70 70 0 0 1 70 70h-70z" fill="currentColor"/><rect x="240" y="60" width="40" height="40" rx="6" fill="currentColor"/><rect x="290" y="60" width="40" height="40" rx="6"/><rect x="240" y="110" width="90" height="10" rx="5" stroke-opacity=".5"/><text x="240" y="186" fill="currentColor" stroke="none" style="font:500 56px var(--disp);letter-spacing:-3px">Aa</text></svg>'
+  };
+  var S=[
+    {id:'web',t:'Лендинги и сайты',p:'от 7 500 ₽',d:'Одностраничные и многостраничные сайты под одну цель: заявку, звонок или запись.',l:['Структура и тексты','Адаптив','Заявки в Telegram','Аналитика','Домен и хостинг']},
+    {id:'shop',t:'Интернет-магазины',p:'от 7 500 ₽',d:'Каталог с фильтрами и поиском, карточки товаров, корзина и оформление заказа.',l:['Каталог и фильтры','Корзина','Оплата и доставка','Управление товарами']},
+    {id:'app',t:'Веб-приложения',p:'по задаче',d:'Личные кабинеты, сервисы записи, CRM и дашборды. Всё, что работает в браузере и экономит время.',l:['Сценарии и интерфейсы','Роли и авторизация','Интеграции','Аналитика']},
+    {id:'mobile',t:'Мобильные приложения',p:'от 20 000 ₽',d:'От кликабельного прототипа до публикации в App Store и Google Play.',l:['Прототип','Дизайн iOS и Android','Push и оплата','Публикация в сторах']},
+    {id:'brand',t:'Логотип и стиль',p:'от 15 000 ₽',d:'Логотип, фирменный стиль и брендбук, чтобы бизнес узнавали на вывеске, в соцсетях и в приложении.',l:['Логотип','Палитра и шрифты','Брендбук','Шаблоны для соцсетей']}
+  ];
+  var tabs=document.getElementById('stabs'),panel=document.getElementById('panel');
+  S.forEach(function(s,i){var b=document.createElement('button');b.type='button';b.className='stab';b.setAttribute('role','tab');b.id='tab-'+s.id;b.setAttribute('aria-controls','panel');b.innerHTML='<b>'+s.t+'</b><span>'+s.p+'</span>';b.addEventListener('click',function(){pick(i);});
+    b.addEventListener('keydown',function(e){if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();pick((i+1)%S.length,1);}if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();pick((i+S.length-1)%S.length,1);}});tabs.append(b);});
+  function pick(i,focus){var s=S[i];[].forEach.call(tabs.children,function(b,k){b.setAttribute('aria-selected',String(k===i));b.tabIndex=k===i?0:-1;});if(focus)tabs.children[i].focus();
+    panel.setAttribute('aria-labelledby','tab-'+s.id);
+    panel.innerHTML=I[s.id]+'<div><h3>'+s.t+'</h3><p style="margin-top:10px">'+s.d+'</p></div><ul>'+s.l.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul><div class="pr">'+s.p.replace(/^от /,'<small>от</small> ')+'</div>';}
+  pick(0);
 
-  // Floating CTA: visible after the hero, hidden near the contact form
-  var fab=document.getElementById('fab'),heroIn=true,contactIn=false;
-  function fabSync(){fab.hidden=heroIn||contactIn;}
-  if('IntersectionObserver' in window){
-    new IntersectionObserver(function(e){heroIn=e[0].isIntersecting;fabSync();}).observe(document.querySelector('.hero'));
-    new IntersectionObserver(function(e){contactIn=e[0].isIntersecting;fabSync();},{rootMargin:'0px 0px -20% 0px'}).observe(document.getElementById('contact'));
-  }
-
-  // Copy helper
-  function copyText(text,btn){
-    var label=btn.textContent;
-    function ok(){btn.textContent='Скопировано';setTimeout(function(){btn.textContent=label;},1600);}
-    try{
-      navigator.clipboard.writeText(text).then(ok,function(){selectFallback();});
-    }catch(e){selectFallback();}
-    function selectFallback(){
-      var el=document.getElementById(btn.dataset.copy)||document.getElementById('brief-text');
-      if(!el)return; var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);
-      btn.textContent='Выделено, нажмите Ctrl+C';setTimeout(function(){btn.textContent=label;},2200);
-    }
-  }
-  document.querySelectorAll("[data-copy]").forEach(function(b){
-    b.addEventListener('click',function(){copyText(document.getElementById(b.dataset.copy).textContent.trim(),b);});
+  // клавиши Q W E в первом экране
+  var keys=[].slice.call(document.querySelectorAll('.kc'));
+  function press(k){k.classList.add('down');setTimeout(function(){k.classList.remove('down');},160);
+    setTimeout(function(){pick(+k.dataset.svc);document.getElementById('services').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});},180);}
+  keys.forEach(function(k){k.addEventListener('click',function(){press(k);});});
+  document.addEventListener('keydown',function(e){
+    if(e.ctrlKey||e.metaKey||e.altKey||e.repeat)return;
+    var t=e.target;if(t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)))return;
+    var key=(e.key||'').toLowerCase();
+    keys.forEach(function(k){if(k.dataset.k.split(' ').indexOf(key)>=0&&scrollY<innerHeight)press(k);});
   });
 
+  // portfolio
+  var box=document.getElementById('works'),flt=[].slice.call(document.querySelectorAll('#flt button'));
+  function draw(f){box.innerHTML='';W.filter(function(w){return f==='all'||w.d===f;}).forEach(function(w){
+    var a=document.createElement('a');a.className='card';a.href=w.url;a.target='_blank';a.rel='noopener';
+    a.innerHTML='<img alt=""><div class="m"><div class="k"><span>'+w.k+(w.y?', '+w.y:'')+'</span><span class="'+(w.live?'live':'')+'">'+(w.live?'Живой сайт':'Behance')+'</span></div><h3></h3></div>';
+    var im=a.querySelector('img');im.src=w.img;im.alt=w.t;if(w.ph){im.style.aspectRatio='9/14';}a.querySelector('h3').textContent=w.t;box.append(a);});}
+  flt.forEach(function(b){b.addEventListener('click',function(){flt.forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});draw(b.dataset.f);});});
+  draw('all');
 
-  // Dithered pixel graphics: hero terrain and CTA moon
-  var bayer=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5];
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var col='120,170,255';
-  function readCol(){col=getComputedStyle(document.documentElement).getPropertyValue('--dot').trim()||col;}
-  readCol();
-  function pixelCanvas(cv,paint,cellFor){
-    var ctx=cv.getContext('2d'),st={W:0,H:0,t:0,cell:7},raf=null,last=0;
-    function draw(){ctx.clearRect(0,0,st.W,st.H);paint(ctx,st);}
-    function size(){var dpr=Math.min(window.devicePixelRatio||1,2);st.W=cv.clientWidth;st.H=cv.clientHeight;cv.width=Math.round(st.W*dpr);cv.height=Math.round(st.H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);st.cell=cellFor(st.W);draw();}
-    function loop(ts){if(ts-last>60){st.t+=.05;draw();last=ts;}raf=requestAnimationFrame(loop);}
-    if('ResizeObserver' in window){new ResizeObserver(size).observe(cv);}else{addEventListener('resize',size);}
-    size();
-    if(!reduce&&'IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){if(!raf)raf=requestAnimationFrame(loop);}else if(raf){cancelAnimationFrame(raf);raf=null;}});}).observe(cv);}
-    return draw;
-  }
-  function dot(ctx,x,y,s,a){ctx.fillStyle='rgba('+col+','+a.toFixed(3)+')';ctx.fillRect(x,y,s,s);}
-  function dotW(ctx,x,y,s,a){ctx.fillStyle='rgba(176,204,255,'+a.toFixed(3)+')';ctx.fillRect(x,y,s,s);}
-  var redraws=[];
-  var hero=document.getElementById('terrain');
-  if(hero)redraws.push(pixelCanvas(hero,function(ctx,st){
-    var W=st.W,H=st.H,cell=st.cell,t=st.t,cols=Math.ceil(W/cell),rows=Math.ceil(H/cell),s=cell-1.5;
-    for(var i=0;i<cols;i++){
-      var x=i*cell,u=x/W;
-      var a=.55-.35*Math.exp(-Math.pow((u-.28)/.16,2))-.5*Math.exp(-Math.pow((u-.86)/.2,2));
-      a+=.025*Math.sin(u*38+t*.6)+.015*Math.sin(u*91-t*.9);
-      var top=a*H;
-      for(var j=0;j<rows;j++){
-        var y=j*cell;if(y<top)continue;
-        var depth=Math.min(1,(y-top)/(H*.55));
-        var v=Math.min(1,.18+depth*.95+.08*Math.sin(i*.35+j*.2+t*1.4));
-        if(v*16<=bayer[(j%4)*4+(i%4)])continue;
-        dot(ctx,x,y,s,.25+depth*.6);
-      }
-    }
-  },function(W){return W<600?5:7;}));
-  var orb=document.getElementById('orb');
-  if(orb)redraws.push(pixelCanvas(orb,function(ctx,st){
-    var W=st.W,cell=st.cell,t=st.t,n=Math.ceil(W/cell),s=cell-1.2,R=W*.33,cx=W/2,cy=W/2;
-    var la=.15*Math.sin(t*.25),lx=-.55+la,ly=-.5,lz=Math.sqrt(Math.max(0,1-lx*lx-ly*ly));
-    for(var i=0;i<n;i++)for(var j=0;j<n;j++){
-      var x=i*cell+cell/2,y=j*cell+cell/2,dx=(x-cx)/R,dy=(y-cy)/R,d2=dx*dx+dy*dy,b=bayer[(j%4)*4+(i%4)];
-      if(d2<=1){
-        var dz=Math.sqrt(1-d2),lum=Math.max(0,dx*lx+dy*ly+dz*lz);
-        var crater=.12*Math.sin(dx*9+1.3)*Math.sin(dy*7-.4);
-        var v=Math.min(1,.04+Math.pow(lum,1.3)*1.1+crater*lum);
-        if(v*16>b)dotW(ctx,i*cell,j*cell,s,.3+v*.7);
-      }else{
-        // tilted orbit ring around the moon
-        var rx=dx*.98+dy*.2,ry=(dy*.98-dx*.2)/.22,rr=Math.sqrt(rx*rx+ry*ry);
-        if(Math.abs(rr-1.38)<.09&&(i+Math.floor(t*3))%2===0)dotW(ctx,i*cell,j*cell,s,.6);
-        else if(d2<1.35&&b<2)dotW(ctx,i*cell,j*cell,s,.18*(1.35-d2)/.35);
-      }
-    }
-  },function(W){return W<300?4:6;}));
-  function repaint(){readCol();redraws.forEach(function(f){f();});}
-  try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',repaint);}catch(e){}
-  new MutationObserver(repaint).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  // header
+  var bar=document.getElementById('top-bar');
+  if('IntersectionObserver' in window){var sent=document.createElement('div');sent.style.cssText='position:absolute;top:80px;height:1px;width:1px';document.body.prepend(sent);new IntersectionObserver(function(e){bar.classList.toggle('solid',!e[0].isIntersecting);}).observe(sent);}
+  var burger=document.getElementById('burger'),mnav=document.getElementById('mnav');
+  function menu(o){mnav.hidden=!o;burger.setAttribute('aria-expanded',String(o));burger.setAttribute('aria-label',o?'Закрыть меню':'Открыть меню');document.body.classList.toggle('menu',o);document.body.style.overflow=o?'hidden':'';bar.classList.toggle('solid',o||scrollY>80);}
+  burger.addEventListener('click',function(){menu(mnav.hidden);});
+  mnav.addEventListener('click',function(e){if(e.target.closest('a'))menu(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!mnav.hidden)menu(false);});
+
+  function toast(t){var el=document.createElement('div');el.className='toast';el.setAttribute('role','status');el.textContent=t;document.body.append(el);setTimeout(function(){el.remove();},2200);}
+  function copy(text,msg){try{navigator.clipboard.writeText(text).then(function(){toast(msg);},function(){toast(text);});}catch(e){toast(text);}}
+  document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){copy(b.dataset.copy,'Адрес скопирован');});});
+
+  document.getElementById('copyTpl').addEventListener('click',function(){copy(document.getElementById('tpl').textContent,'Шаблон скопирован');});
+
+  if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});}
+  else document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');});
 })();
 </script>
-
 </body>
 </html>
