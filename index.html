@@ -277,10 +277,10 @@ footer a:hover{color:var(--ink)}
 
   <section class="sec" id="work" style="padding-top:0">
     <div class="wrap">
-      <div class="sh rv"><h2>Сделано</h2><p>Работы с меткой «Живой сайт» открываются и работают: запись, корзина, приложение. Остальные лежат на Behance.</p></div>
-      <a class="feat rv" href="works/stupen/" target="_blank" rel="noopener">
-        <div class="pic"><img src="img/stupen.jpg" alt="Лендинг кабинета подологии Ступень" width="1440" height="900"></div>
-        <div class="txt"><span class="tag">Живой сайт · 2026</span><h3>Лендинг кабинета подологии «Ступень»</h3><p>Интерактивная карта проблем стопы, прайс без звёздочек и онлайн-запись на свободное время. Человек находит свою проблему за пару секунд и сразу записывается.</p><span class="btn btn-line">Открыть сайт ↗</span></div>
+      <div class="sh rv"><h2>Сделано</h2><p>Коммерческий проект для клиента из Казахстана и живые концепты, которые открываются и работают: запись, корзина, приложение. Остальные работы лежат на Behance.</p></div>
+      <a class="feat rv" href="works/smartglobal/">
+        <div class="pic"><img src="img/smartglobal.jpg" alt="Первый экран сайта SmartGlobal Systems: камера видеонаблюдения на тёмном фоне" width="1172" height="797"></div>
+        <div class="txt"><span class="tag">Коммерческий проект · Казахстан · 2026</span><h3>Сайт для SmartGlobal Systems</h3><p>Компания монтирует видеонаблюдение, сигнализацию и системы доступа. Сайт продаёт через доверие: оффер, три аргумента на первом экране, шесть услуг в одном ритме и форма из двух полей. Дизайн передан заказчику.</p><span class="btn btn-line">Смотреть кейс →</span></div>
       </a>
       <div class="flt" role="group" aria-label="Фильтр работ" id="flt">
         <button type="button" data-f="all" aria-pressed="true">Все</button><button type="button" data-f="web" aria-pressed="false">Веб</button><button type="button" data-f="mobile" aria-pressed="false">Мобайл</button><button type="button" data-f="brand" aria-pressed="false">Брендинг</button>
@@ -357,6 +357,7 @@ footer a:hover{color:var(--ink)}
 (function(){
   var BH='https://www.behance.net/gallery/';
   var W=[
+    {d:'web',k:'Лендинг',t:'Лендинг кабинета подологии «Ступень»',img:'img/stupen.jpg',url:'works/stupen/',live:1,y:2026},
     {d:'mobile',k:'Мобильное приложение',t:'Приложение кофейни «СОРТ»',img:'img/sort-app-m.jpg',url:'works/sort-app/',live:1,y:2026,ph:1},
     {d:'web',k:'Интернет-магазин',t:'Магазин кофейной обжарки «СОРТ»',img:'img/sort-shop.jpg',url:'works/sort-shop/',live:1,y:2026},
     {d:'web',k:'Веб-приложение',t:'Сервис записи в салоны «Слот»',img:'img/slot.jpg',url:'works/slot/',live:1,y:2026},
@@ -367,7 +368,7 @@ footer a:hover{color:var(--ink)}
     {d:'web',k:'Лендинг',t:'Лендинг о треккинге TREKKING',img:'img/trekking.jpg',url:BH+'211908757/TREKKING-LANDING-PAGE'}
   ];
   // hero reel (duplicated for seamless loop)
-  var REEL=[['img/stupen.jpg'],['img/sort-app-m.jpg',1],['img/sort-shop.jpg'],['img/slot.jpg'],['img/slot-m.jpg',1],['img/getflow.jpg'],['img/sort-brand.jpg'],['img/stupen-m.jpg',1],['img/watchlabs.jpg']];
+  var REEL=[['img/smartglobal.jpg'],['img/stupen.jpg'],['img/sort-app-m.jpg',1],['img/sort-shop.jpg'],['img/slot.jpg'],['img/slot-m.jpg',1],['img/getflow.jpg'],['img/sort-brand.jpg'],['img/stupen-m.jpg',1],['img/watchlabs.jpg']];
   var tr=document.getElementById('track'),html='';
   for(var r=0;r<2;r++)REEL.forEach(function(x){html+=x[1]?'<a class="shot ph" href="#work"'+(r?' aria-hidden="true" tabindex="-1"':'')+'><img src="'+x[0]+'" alt=""></a>':'<a class="shot" href="#work"'+(r?' aria-hidden="true" tabindex="-1"':'')+'><span class="bar"><i></i><i></i><i></i></span><img src="'+x[0]+'" alt=""></a>';});
   tr.innerHTML=html;
