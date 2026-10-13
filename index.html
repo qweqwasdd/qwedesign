@@ -587,8 +587,7 @@ html.intro{overflow:hidden}
   // пока посетитель не нажал клавишу, витрина сама показывает все три направления
   var order=['q','w','e'];
   function step(d){show(order[(order.indexOf(cur)+d+3)%3]);}
-  if(!reduce){deck.classList.add('auto');timer=setInterval(function(){if(touched||!heroIn)return;step(1);},4200);
-    document.querySelector('.show').addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')stopAuto();});}
+  if(!reduce){deck.classList.add('auto');timer=setInterval(function(){if(touched||!heroIn)return;step(1);},4200);}
   // свайп по витрине переключает направление
   var stage=document.querySelector('.stage'),sx=0,sy=0;
   stage.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
