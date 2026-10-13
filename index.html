@@ -22,13 +22,13 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%23C8F53C%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22Arial%22 font-weight=%22700%22 font-size=%2216%22 text-anchor=%22middle%22 fill=%22%23101211%22%3Eq%3C/text%3E%3C/svg%3E">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<link rel="preload" href="fonts/geologica.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="fonts/onest.woff" as="font" type="font/woff" crossorigin>
-<link rel="preload" href="fonts/unbounded.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/geologica.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/onest.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/unbounded-logo.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-@font-face{font-family:"Geologica";src:url(fonts/geologica.woff) format("woff");font-weight:400 700;font-style:normal;font-display:swap}
-@font-face{font-family:"Onest";src:url(fonts/onest.woff) format("woff");font-weight:400 600;font-style:normal;font-display:swap}
-@font-face{font-family:"Unbounded";src:url(fonts/unbounded.woff) format("woff");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Geologica";src:url(fonts/geologica.woff2) format("woff2"),url(fonts/geologica.woff) format("woff");font-weight:400 700;font-style:normal;font-display:swap}
+@font-face{font-family:"Onest";src:url(fonts/onest.woff2) format("woff2"),url(fonts/onest.woff) format("woff");font-weight:400 600;font-style:normal;font-display:swap}
+@font-face{font-family:"Unbounded";src:url(fonts/unbounded-logo.woff2) format("woff2"),url(fonts/unbounded.woff) format("woff");font-weight:700;font-style:normal;font-display:swap}
 /*
   qwe studio, светлая версия.
   Цвет: тёплый нейтральный фон с лёгким зелёным оттенком, белые карточки, графитовый текст.
@@ -283,20 +283,57 @@ footer a:hover{color:var(--ink)}
 /* появление при прокрутке */
 .js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .9s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
+/* ---------- главный экран: клавиши как вкладки, таймер автопереключения ---------- */
+.key .cap{position:relative;overflow:hidden}
+.key .cap::after{content:"";position:absolute;left:12px;right:12px;bottom:7px;height:3px;border-radius:3px;background:rgb(16 18 17 / .55);transform:scaleX(0);transform-origin:0 50%;opacity:0}
+.deck.auto .key[aria-pressed="true"] .cap::after{opacity:1;animation:tick 4.2s linear both}
+@keyframes tick{to{transform:scaleX(1)}}
+.h-touch{display:none}
+@media (hover:none){.h-desk{display:none}.h-touch{display:inline}}
+.fab{transition:opacity .3s,transform .3s}
+.fab:not(.on){opacity:0;transform:translateY(16px);pointer-events:none}
+@media (max-width:960px){
+  .show{gap:12px}
+  .deck{order:-1;width:100%}
+  .key{flex:1;width:auto;aspect-ratio:auto;height:72px}
+  .key .cap{flex-direction:row;align-items:center;justify-content:flex-start;gap:10px;padding:0 14px}
+  .key b{font-size:24px}
+  .key em{font-size:14px}
+  .hint{order:-1;justify-self:start}
+}
+@media (max-width:640px){
+  .hero{padding:92px 0 40px}
+  .hero .wrap{gap:28px}
+  .plate{margin-bottom:16px}
+  h1{font-size:clamp(34px,9.6vw,40px)}
+  .lead{font-size:16px;margin-top:14px}
+  .ctas{margin-top:22px;flex-wrap:nowrap}
+  .ctas .btn{height:48px;padding:0 18px}
+  .ctas .btn-lime{flex:1}
+  .stage{aspect-ratio:4/3}
+  .hint{display:block;font-size:13px}
+  .key{height:64px}
+  .key .cap{padding:0 10px;gap:8px}
+  .key b{font-size:20px}
+  .key em{font-size:13px}
+  .key .cap::after{left:10px;right:10px;bottom:6px}
+}
+.xs-show{display:none}
+@media (max-width:400px){.xs-hide{display:none}.xs-show{display:inline}.key em{font-size:12px}.key .cap{gap:6px;padding:0 8px}}
 /* ---------- экран загрузки: клавиши Q W E печатают логотип, затем знак улетает на место логотипа в шапке ---------- */
 .ld{display:none}
-.intro .ld,.ld.out{display:grid;place-items:center;position:fixed;inset:0;z-index:100;pointer-events:none;animation:ldKill .4s 6s forwards}
+.intro .ld,.ld.out{overflow:hidden;display:grid;place-items:center;position:fixed;inset:0;z-index:100;pointer-events:none;animation:ldKill .4s 6s forwards}
 .ld::before{content:"";position:absolute;inset:0;background:var(--bg);transition:opacity .5s ease .25s}
-.ld-in{position:relative;display:grid;justify-items:start;gap:18px;opacity:0;transform-origin:0 0}
+.ld-in{will-change:transform,opacity;position:relative;display:grid;justify-items:start;gap:18px;opacity:0;transform-origin:0 0}
 .ld.go .ld-in{opacity:1;transition:opacity .25s}
 .ld-sh{display:grid;gap:18px;transform:translateX(var(--sh,0px))}
 .ld.go .ld-sh{animation:ldShift .55s var(--ease) .56s both}
 .ld-lock{display:flex;align-items:center;gap:14px}
 @keyframes ldShift{to{transform:none}}
 .ld-keys{display:flex;gap:7px;padding:7px;border-radius:17px;background:linear-gradient(#E6E8E2,#DCDFD7);box-shadow:inset 0 1px 0 #fff,0 1px 0 #fff,var(--sh-1)}
-.ld-k{--h:6px;display:block;width:clamp(46px,5vw,58px);aspect-ratio:1;border-radius:12px;padding-bottom:var(--h);background:#C3C7BD}
-.ld-k i{display:grid;place-items:center;height:100%;border-radius:11px;background:linear-gradient(#fff,#F5F6F2);box-shadow:inset 0 0 0 1px #E3E5DF;font:700 clamp(19px,2vw,23px)/1 var(--logo);font-style:normal;letter-spacing:-.04em;padding-bottom:2px}
-.ld.go .ld-k{animation:ldPress .34s var(--ease) both;animation-delay:calc(.12s + var(--n) * .15s)}
+.ld-k{--h:6px;display:block;overflow:hidden;width:clamp(46px,5vw,58px);aspect-ratio:1;border-radius:12px;padding-bottom:var(--h);background:#C3C7BD}
+.ld-k i{will-change:transform;display:grid;place-items:center;height:100%;border-radius:11px;background:linear-gradient(#fff,#F5F6F2);box-shadow:inset 0 0 0 1px #E3E5DF;font:700 clamp(19px,2vw,23px)/1 var(--logo);font-style:normal;letter-spacing:-.04em;padding-bottom:2px}
+.ld.go .ld-k{animation:ldBase .34s var(--ease) both;animation-delay:calc(.12s + var(--n) * .15s)}
 .ld.go .ld-k i{animation:ldCap .34s var(--ease) both;animation-delay:calc(.12s + var(--n) * .15s)}
 .ld-word{font:700 clamp(26px,3vw,34px)/1 var(--logo);letter-spacing:-.04em;opacity:0;transform:translateX(-12px)}
 .ld.go .ld-word{animation:ldWord .5s var(--ease) .56s both}
@@ -305,9 +342,10 @@ footer a:hover{color:var(--ink)}
 .ld.out::before{opacity:0}
 .ld.out .ld-bar{opacity:0;transition:opacity .2s}
 .ld.out .ld-in{transition:transform .8s cubic-bezier(.7,0,.2,1),opacity .25s ease .72s;opacity:0}
-@keyframes ldPress{0%{transform:none;padding-bottom:var(--h)}45%{transform:translateY(5px);padding-bottom:1px;background:var(--lime-edge)}100%{transform:translateY(2px);padding-bottom:4px;background:var(--lime-edge)}}
-@keyframes ldCap{0%{background:#fff}40%,100%{background:var(--lime);box-shadow:inset 0 0 0 1px var(--lime-hi)}}
+@keyframes ldBase{40%,100%{background:var(--lime-edge)}}
+@keyframes ldCap{0%{background:#fff;transform:none}40%{background:var(--lime);box-shadow:inset 0 0 0 1px var(--lime-hi);transform:translateY(5px)}100%{background:var(--lime);box-shadow:inset 0 0 0 1px var(--lime-hi);transform:translateY(3px)}}
 @keyframes ldWord{to{opacity:1;transform:none}}
+@media (max-width:480px){.ld-k{width:40px;border-radius:10px}.ld-k i{border-radius:9px;font-size:18px}.ld-keys{gap:6px;padding:6px;border-radius:15px}.ld-word{font-size:22px}.ld-lock{gap:10px}}
 @keyframes ldKill{to{opacity:0;visibility:hidden}}
 html.intro{overflow:hidden}
 .intro .top .logo,.fly .top .logo{opacity:0}
@@ -315,7 +353,6 @@ html.intro{overflow:hidden}
 .intro .rv.in{opacity:0;transform:translateY(18px)}
 .fly .facts.rv{transition-delay:.6s}
 .intro .fab,.fly .fab{opacity:0}
-.fab{transition:opacity .4s}
 .js .hero .rv{transition-delay:calc(var(--i,0) * 70ms)}
 .fly .hero .rv{transition-delay:calc(var(--i,0) * 80ms + 300ms)}
 @media (prefers-reduced-motion:reduce){
@@ -335,7 +372,7 @@ html.intro{overflow:hidden}
   var r=document.documentElement,ld=document.querySelector('.ld');
   if(!r.classList.contains('intro')||!ld)return;
   var lin=ld.querySelector('.ld-in'),bar=ld.querySelector('.ld-bar i'),t0=Date.now(),started=false,ended=false;
-  function go(){if(started)return;started=true;t0=Date.now();var wd=lin.querySelector('.ld-word');lin.querySelector('.ld-sh').style.setProperty('--sh',(wd.offsetWidth+14)/2+'px');ld.classList.add('go');requestAnimationFrame(function(){bar.style.transform='scaleX(.72)';});}
+  function go(){if(started)return;started=true;t0=Date.now();var wd=lin.querySelector('.ld-word');lin.querySelector('.ld-sh').style.setProperty('--sh',(wd.offsetWidth+parseFloat(getComputedStyle(lin.querySelector('.ld-lock')).columnGap||14))/2+'px');ld.classList.add('go');requestAnimationFrame(function(){bar.style.transform='scaleX(.72)';});}
   // знак показываем, когда загрузился шрифт логотипа (не дольше 700 мс)
   try{document.fonts.load('700 30px Unbounded').then(go,go);}catch(e){go();}
   setTimeout(go,700);
@@ -347,7 +384,7 @@ html.intro{overflow:hidden}
   }
   function finish(){
     if(ended)return;ended=true;
-    var wait=Math.max(0,1050-(Date.now()-t0));
+    var wait=Math.max(0,1000-(Date.now()-t0));
     bar.style.transition='transform .35s ease';bar.style.transform='scaleX(1)';
     setTimeout(function(){
       var logo=document.querySelector('.top .logo'),a=lin.getBoundingClientRect(),lock=lin.querySelector('.ld-lock').getBoundingClientRect();
@@ -360,7 +397,7 @@ html.intro{overflow:hidden}
   }
   function start(){ready().then(finish,finish);}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
-  setTimeout(finish,3200);
+  setTimeout(finish,2300);
 })();
 </script>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ph-arrow-right" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></symbol><symbol id="ph-arrow-up-right" viewBox="0 0 256 256" fill="currentColor"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"></path></symbol><symbol id="ph-arrows-clockwise" viewBox="0 0 256 256" fill="currentColor"><path d="M224,48V96a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h28.69L182.06,73.37a79.56,79.56,0,0,0-56.13-23.43h-.45A79.52,79.52,0,0,0,69.59,72.71,8,8,0,0,1,58.41,61.27a96,96,0,0,1,135,.79L208,76.69V48a8,8,0,0,1,16,0ZM186.41,183.29a80,80,0,0,1-112.47-.66L59.31,168H88a8,8,0,0,0,0-16H40a8,8,0,0,0-8,8v48a8,8,0,0,0,16,0V179.31l14.63,14.63A95.43,95.43,0,0,0,130,222.06h.53a95.36,95.36,0,0,0,67.07-27.33,8,8,0,0,0-11.18-11.44Z"></path></symbol><symbol id="ph-behance-logo" viewBox="0 0 256 256" fill="currentColor"><path d="M160,80a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H168A8,8,0,0,1,160,80Zm-24,78a42,42,0,0,1-42,42H32a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H90a38,38,0,0,1,25.65,66A42,42,0,0,1,136,158ZM40,116H90a22,22,0,0,0,0-44H40Zm80,42a26,26,0,0,0-26-26H40v52H94A26,26,0,0,0,120,158Zm128-6a8,8,0,0,1-8,8H169a32,32,0,0,0,56.59,11.2,8,8,0,0,1,12.8,9.61A48,48,0,1,1,248,152Zm-17-8a32,32,0,0,0-62,0Z"></path></symbol><symbol id="ph-chat-circle-text" viewBox="0 0 256 256" fill="currentColor"><path d="M168,112a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Zm-8,24H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm72-8A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z"></path></symbol><symbol id="ph-copy" viewBox="0 0 256 256" fill="currentColor"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path></symbol><symbol id="ph-envelope-simple" viewBox="0 0 256 256" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"></path></symbol><symbol id="ph-info" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path></symbol><symbol id="ph-plus" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path></symbol><symbol id="ph-receipt" viewBox="0 0 256 256" fill="currentColor"><path d="M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V195.06l20.42-10.22a8,8,0,0,1,7.16,0L96,199.06l28.42-14.22a8,8,0,0,1,7.16,0L160,199.06l28.42-14.22a8,8,0,0,1,7.16,0L216,195.06Z"></path></symbol><symbol id="ph-telegram-logo" viewBox="0 0 256 256" fill="currentColor"><path d="M228.88,26.19a9,9,0,0,0-9.16-1.57L17.06,103.93a14.22,14.22,0,0,0,2.43,27.21L72,141.45V200a15.92,15.92,0,0,0,10,14.83,15.91,15.91,0,0,0,17.51-3.73l25.32-26.26L165,220a15.88,15.88,0,0,0,10.51,4,16.3,16.3,0,0,0,5-.79,15.85,15.85,0,0,0,10.67-11.63L231.77,35A9,9,0,0,0,228.88,26.19Zm-61.14,36L78.15,126.35l-49.6-9.73ZM88,200V152.52l24.79,21.74Zm87.53,8L92.85,135.5l119-85.29Z"></path></symbol><symbol id="ph-user-focus" viewBox="0 0 256 256" fill="currentColor"><path d="M224,40V76a8,8,0,0,1-16,0V48H180a8,8,0,0,1,0-16h36A8,8,0,0,1,224,40Zm-8,132a8,8,0,0,0-8,8v28H180a8,8,0,0,0,0,16h36a8,8,0,0,0,8-8V180A8,8,0,0,0,216,172ZM76,208H48V180a8,8,0,0,0-16,0v36a8,8,0,0,0,8,8H76a8,8,0,0,0,0-16ZM40,84a8,8,0,0,0,8-8V48H76a8,8,0,0,0,0-16H40a8,8,0,0,0-8,8V76A8,8,0,0,0,40,84Zm136,92a8,8,0,0,1-6.41-3.19,52,52,0,0,0-83.2,0,8,8,0,1,1-12.8-9.62A67.94,67.94,0,0,1,101,141.51a40,40,0,1,1,53.94,0,67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,176,176Zm-48-40a24,24,0,1,0-24-24A24,24,0,0,0,128,136Z"></path></symbol></svg>
@@ -385,21 +422,21 @@ html.intro{overflow:hidden}
         <span class="plate rv" style="--i:0"><b>3 года</b> сайты, приложения, бренд</span>
         <h1 class="rv" style="--i:1">Дизайн и код, которые <span class="hl">приводят клиентов</span></h1>
         <p class="lead rv" style="--i:2">Сайты, магазины, приложения и фирменный стиль под ключ. Один исполнитель, цена известна до старта.</p>
-        <div class="ctas rv" style="--i:3"><a class="btn btn-lime" href="#contact">Обсудить проект <svg class="ph" aria-hidden="true"><use href="#ph-arrow-right"/></svg></a><a class="btn btn-line" href="#work">Смотреть работы</a></div>
+        <div class="ctas rv" style="--i:3"><a class="btn btn-lime" href="#contact">Обсудить проект <svg class="ph" aria-hidden="true"><use href="#ph-arrow-right"/></svg></a><a class="btn btn-line" href="#work"><span class="xs-hide">Смотреть работы</span><span class="xs-show">Работы</span></a></div>
       </div>
       <div class="show rv" style="--i:2">
         <div class="stage" aria-live="polite">
-          <div class="view v-q on" data-v="q"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>smartglobal.kz</span></div><img src="img/smartglobal.jpg" alt="Сайт SmartGlobal Systems" width="1172" height="797"></div></div>
-          <div class="view v-w" data-v="w"><div class="phone a"><img src="img/sort-app-m.jpg" alt="Приложение кофейни «СОРТ»" loading="lazy"></div><div class="phone b"><img src="img/slot-m.jpg" alt="Сервис записи «Слот» на телефоне" loading="lazy"></div></div>
-          <div class="view v-e" data-v="e"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>Брендбук «СОРТ»</span></div><img src="img/sort-brand.jpg" alt="Фирменный стиль кофейной обжарки «СОРТ»" loading="lazy"></div></div>
+          <div class="view v-q on" data-v="q"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>smartglobal.kz</span></div><img src="img/smartglobal.webp" srcset="img/smartglobal-800.webp 800w, img/smartglobal.webp 1172w" sizes="(max-width:960px) calc(100vw - 32px), 560px" alt="Сайт SmartGlobal Systems" width="1172" height="797" fetchpriority="high" decoding="async"></div></div>
+          <div class="view v-w" data-v="w"><div class="phone a"><img src="img/sort-app-m-400.webp" alt="Приложение кофейни «СОРТ»" width="400" height="866" loading="lazy" decoding="async"></div><div class="phone b"><img src="img/slot-m-400.webp" width="400" height="866" decoding="async" alt="Сервис записи «Слот» на телефоне" loading="lazy"></div></div>
+          <div class="view v-e" data-v="e"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>Брендбук «СОРТ»</span></div><img src="img/sort-brand-800.webp" srcset="img/sort-brand-800.webp 800w, img/sort-brand.webp 1440w" sizes="(max-width:960px) calc(100vw - 32px), 560px" alt="Фирменный стиль кофейной обжарки «СОРТ»" width="1440" height="900" loading="lazy" decoding="async"></div></div>
           <div class="scap"><span><b id="capT">Сайты и магазины</b><small id="capP">от 7 500 ₽, от 1 недели</small></span><a href="#services" id="capA">Что входит <svg class="ph" aria-hidden="true"><use href="#ph-arrow-right"/></svg></a></div>
         </div>
         <div class="deck" role="group" aria-label="Направления">
-          <button class="key" type="button" data-v="q" data-k="q й" aria-pressed="true"><span class="cap"><b>Q</b><em>Веб</em></span></button>
-          <button class="key" type="button" data-v="w" data-k="w ц" aria-pressed="false"><span class="cap"><b>W</b><em>Мобайл</em></span></button>
+          <button class="key" type="button" data-v="q" data-k="q й" aria-pressed="true"><span class="cap"><b>Q</b><em>Сайты</em></span></button>
+          <button class="key" type="button" data-v="w" data-k="w ц" aria-pressed="false"><span class="cap"><b>W</b><em>Приложения</em></span></button>
           <button class="key" type="button" data-v="e" data-k="e у" aria-pressed="false"><span class="cap"><b>E</b><em>Бренд</em></span></button>
         </div>
-        <p class="hint">Нажмите <kbd>Q</kbd> <kbd>W</kbd> <kbd>E</kbd>, чтобы переключить направление</p>
+        <p class="hint"><span class="h-desk">Нажмите <kbd>Q</kbd> <kbd>W</kbd> <kbd>E</kbd> на клавиатуре или кликните по клавише</span><span class="h-touch">Нажмите на клавишу или листайте витрину</span></p>
       </div>
     </div>
   </section>
@@ -418,36 +455,36 @@ html.intro{overflow:hidden}
       <div class="sh rv"><h2>Работы</h2><p>Коммерческий проект для клиента из Казахстана и живые проекты, которые открываются и работают: запись, корзина, приложение.</p></div>
       <div class="bento">
         <a class="w w-feat rv" href="works/smartglobal/">
-          <div class="pic"><img src="img/smartglobal.jpg" alt="Первый экран сайта SmartGlobal Systems" width="1172" height="797" loading="lazy"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
+          <div class="pic"><img src="img/smartglobal.webp" srcset="img/smartglobal-800.webp 800w, img/smartglobal.webp 1172w" sizes="(max-width:900px) calc(100vw - 32px), 780px" alt="Первый экран сайта SmartGlobal Systems" width="1172" height="797" loading="lazy" decoding="async"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
           <div class="info"><div class="mt"><span class="tag">Коммерческий проект</span><span>Казахстан, 2026</span></div><h3>Сайт для SmartGlobal Systems</h3><p>Монтаж видеонаблюдения, сигнализации и систем доступа. Сайт продаёт через доверие: оффер, три аргумента и заявка в два шага.</p></div>
         </a>
         <a class="w w-app rv" href="works/sort-app/">
-          <div class="pic"><div class="phone"><img src="img/sort-app-m.jpg" alt="Приложение кофейни «СОРТ»" loading="lazy"></div><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
+          <div class="pic"><div class="phone"><img src="img/sort-app-m-400.webp" alt="Приложение кофейни «СОРТ»" width="400" height="866" loading="lazy" decoding="async"></div><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
           <div class="info"><div class="mt"><span>Мобильное приложение</span><span class="live">Живой прототип</span></div><h3>Приложение кофейни «СОРТ»</h3></div>
         </a>
         <a class="w w-sm rv" href="works/stupen/">
-          <div class="pic"><img src="img/stupen.jpg" alt="Лендинг кабинета подологии «Ступень»" loading="lazy"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
+          <div class="pic"><img src="img/stupen-800.webp" srcset="img/stupen-800.webp 800w, img/stupen.webp 1440w" sizes="(max-width:900px) calc(100vw - 32px), 560px" alt="Лендинг кабинета подологии «Ступень»" width="1440" height="900" loading="lazy" decoding="async"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
           <div class="info"><div class="mt"><span>Лендинг</span><span class="live">Живой сайт</span></div><h3>Кабинет подологии «Ступень»</h3></div>
         </a>
         <a class="w w-sm rv" href="works/sort-shop/">
-          <div class="pic"><img src="img/sort-shop.jpg" alt="Интернет-магазин кофейной обжарки «СОРТ»" loading="lazy"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
+          <div class="pic"><img src="img/sort-shop-800.webp" srcset="img/sort-shop-800.webp 800w, img/sort-shop.webp 1440w" sizes="(max-width:900px) calc(100vw - 32px), 560px" alt="Интернет-магазин кофейной обжарки «СОРТ»" width="1440" height="900" loading="lazy" decoding="async"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
           <div class="info"><div class="mt"><span>Интернет-магазин</span><span class="live">Живой сайт</span></div><h3>Кофейная обжарка «СОРТ»</h3></div>
         </a>
         <a class="w w-sm rv" href="works/slot/">
-          <div class="pic"><img src="img/slot.jpg" alt="Сервис записи в салоны «Слот»" loading="lazy"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
+          <div class="pic"><img src="img/slot-800.webp" srcset="img/slot-800.webp 800w, img/slot.webp 1440w" sizes="(max-width:900px) calc(100vw - 32px), 560px" alt="Сервис записи в салоны «Слот»" width="1440" height="900" loading="lazy" decoding="async"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
           <div class="info"><div class="mt"><span>Веб-приложение</span><span class="live">Живой сайт</span></div><h3>Сервис записи «Слот»</h3></div>
         </a>
         <a class="w w-wide rv" href="works/sort-brand/">
-          <div class="pic"><img src="img/sort-brand.jpg" alt="Фирменный стиль обжарки «СОРТ»" loading="lazy"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
+          <div class="pic"><img src="img/sort-brand-800.webp" srcset="img/sort-brand-800.webp 800w, img/sort-brand.webp 1440w" sizes="(max-width:900px) calc(100vw - 32px), 560px" alt="Фирменный стиль обжарки «СОРТ»" width="1440" height="900" loading="lazy" decoding="async"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
           <div class="info"><div class="mt"><span>Фирменный стиль, 2026</span><span class="live">Онлайн-брендбук</span></div><h3>Брендбук обжарки «СОРТ»</h3></div>
         </a>
         <div class="more rv">
           <div><h3>Ещё на Behance</h3><p>Магазины, лендинги и сайт часового бренда.</p></div>
           <div class="thumbs">
-            <a href="https://www.behance.net/gallery/216734345/GETFLOW-flower-shop" target="_blank" rel="noopener"><img src="img/getflow.jpg" alt="Магазин цветов GETFLOW" loading="lazy"></a>
-            <a href="https://www.behance.net/gallery/212936045/WATCHLABS-website-design" target="_blank" rel="noopener"><img src="img/watchlabs.jpg" alt="Сайт часового бренда WATCHLABS" loading="lazy"></a>
-            <a href="https://www.behance.net/gallery/214734307/furnistore-internet-magazin-mebeli" target="_blank" rel="noopener"><img src="img/furnistore.jpg" alt="Магазин мебели furnistore" loading="lazy"></a>
-            <a href="https://www.behance.net/gallery/211908757/TREKKING-LANDING-PAGE" target="_blank" rel="noopener"><img src="img/trekking.jpg" alt="Лендинг TREKKING" loading="lazy"></a>
+            <a href="https://www.behance.net/gallery/216734345/GETFLOW-flower-shop" target="_blank" rel="noopener"><img src="img/getflow.webp" decoding="async" alt="Магазин цветов GETFLOW" loading="lazy"></a>
+            <a href="https://www.behance.net/gallery/212936045/WATCHLABS-website-design" target="_blank" rel="noopener"><img src="img/watchlabs.webp" decoding="async" alt="Сайт часового бренда WATCHLABS" loading="lazy"></a>
+            <a href="https://www.behance.net/gallery/214734307/furnistore-internet-magazin-mebeli" target="_blank" rel="noopener"><img src="img/furnistore.webp" decoding="async" alt="Магазин мебели furnistore" loading="lazy"></a>
+            <a href="https://www.behance.net/gallery/211908757/TREKKING-LANDING-PAGE" target="_blank" rel="noopener"><img src="img/trekking.webp" decoding="async" alt="Лендинг TREKKING" loading="lazy"></a>
           </div>
           <a class="btn btn-line" href="https://www.behance.net/qweqweqwasdd" target="_blank" rel="noopener">Открыть Behance <svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></a>
         </div>
@@ -532,12 +569,13 @@ html.intro{overflow:hidden}
   // ---- витрина: клавиши Q W E переключают направление ----
   var CAP={q:['Сайты и магазины','от 7 500 ₽, от 1 недели','#s-q'],w:['Мобильные приложения','от 20 000 ₽, от 3 недель','#s-w'],e:['Логотип и фирменный стиль','от 15 000 ₽, от 1 недели','#s-e']};
   var keys=[].slice.call(document.querySelectorAll('.key')),views=[].slice.call(document.querySelectorAll('.view')),cur='q',timer=0,touched=false;
-  var capT=document.getElementById('capT'),capP=document.getElementById('capP'),capA=document.getElementById('capA');
+  var deck=document.querySelector('.deck'),capT=document.getElementById('capT'),capP=document.getElementById('capP'),capA=document.getElementById('capA');
   function show(v){cur=v;
     keys.forEach(function(k){k.setAttribute('aria-pressed',String(k.dataset.v===v));});
     views.forEach(function(x){x.classList.toggle('on',x.dataset.v===v);});
     capT.textContent=CAP[v][0];capP.textContent=CAP[v][1];capA.setAttribute('href',CAP[v][2]);}
-  function press(k){touched=true;clearInterval(timer);k.classList.add('down');setTimeout(function(){k.classList.remove('down');},150);show(k.dataset.v);}
+  function stopAuto(){touched=true;clearInterval(timer);deck.classList.remove('auto');}
+  function press(k){stopAuto();k.classList.add('down');setTimeout(function(){k.classList.remove('down');},150);show(k.dataset.v);}
   keys.forEach(function(k){k.addEventListener('click',function(){press(k);});});
   var hero=document.querySelector('.hero'),heroIn=true;
   if('IntersectionObserver' in window)new IntersectionObserver(function(e){heroIn=e[0].isIntersecting;}).observe(hero);
@@ -547,8 +585,19 @@ html.intro{overflow:hidden}
     var key=(e.key||'').toLowerCase();keys.forEach(function(k){if(k.dataset.k.split(' ').indexOf(key)>=0)press(k);});
   });
   // пока посетитель не нажал клавишу, витрина сама показывает все три направления
-  if(!reduce){var order=['q','w','e'];timer=setInterval(function(){if(touched||!heroIn)return;show(order[(order.indexOf(cur)+1)%3]);},4200);
-    document.querySelector('.show').addEventListener('pointerenter',function(){touched=true;clearInterval(timer);});}
+  var order=['q','w','e'];
+  function step(d){show(order[(order.indexOf(cur)+d+3)%3]);}
+  if(!reduce){deck.classList.add('auto');timer=setInterval(function(){if(touched||!heroIn)return;step(1);},4200);
+    document.querySelector('.show').addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')stopAuto();});}
+  // свайп по витрине переключает направление
+  var stage=document.querySelector('.stage'),sx=0,sy=0;
+  stage.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
+  stage.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;
+    if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)*1.3){stopAuto();step(dx<0?1:-1);}},{passive:true});
+  // плавающая кнопка появляется, когда кнопки первого экрана ушли из вида
+  var fab=document.querySelector('.fab'),ctas=document.querySelector('.ctas');
+  if(fab&&ctas&&'IntersectionObserver' in window)new IntersectionObserver(function(e){fab.classList.toggle('on',!e[0].isIntersecting&&e[0].boundingClientRect.top<0);}).observe(ctas);
+  else if(fab)fab.classList.add('on');
   // переход к услуге подсвечивает строку
   capA.addEventListener('click',function(){var r=document.querySelector(capA.getAttribute('href'));if(r){r.classList.remove('flash');void r.offsetWidth;r.classList.add('flash');}});
 

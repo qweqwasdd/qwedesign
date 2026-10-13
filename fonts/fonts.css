@@ -1,9 +1,9 @@
 /* Шрифты размещены на самом сайте (лицензия SIL OFL, тексты лицензий лежат рядом). Пути относительны этого файла. */
-@font-face{font-family:"Geologica";src:url(geologica.woff) format("woff");font-weight:400 700;font-display:swap}
-@font-face{font-family:"Onest";src:url(onest.woff) format("woff");font-weight:400 600;font-display:swap}
-@font-face{font-family:"Unbounded";src:url(unbounded.woff) format("woff");font-weight:400 800;font-display:swap}
-@font-face{font-family:"Commissioner";src:url(commissioner.woff) format("woff");font-weight:300 700;font-display:swap}
-@font-face{font-family:"IBM Plex Sans";src:url(ibmplexsans.woff) format("woff");font-weight:400 700;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url(ibmplexmono-400.woff) format("woff");font-weight:400;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url(ibmplexmono-500.woff) format("woff");font-weight:500;font-display:swap}
-@font-face{font-family:"JetBrains Mono";src:url(jetbrainsmono.woff) format("woff");font-weight:400 500;font-display:swap}
+@font-face{font-family:"Geologica";src:url(geologica.woff2) format("woff2"),url(geologica.woff) format("woff");font-weight:400 700;font-display:swap}
+@font-face{font-family:"Onest";src:url(onest.woff2) format("woff2"),url(onest.woff) format("woff");font-weight:400 600;font-display:swap}
+@font-face{font-family:"Unbounded";src:url(unbounded.woff2) format("woff2"),url(unbounded.woff) format("woff");font-weight:400 800;font-display:swap}
+@font-face{font-family:"Commissioner";src:url(commissioner.woff2) format("woff2"),url(commissioner.woff) format("woff");font-weight:300 700;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url(ibmplexsans.woff2) format("woff2"),url(ibmplexsans.woff) format("woff");font-weight:400 700;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url(ibmplexmono-400.woff2) format("woff2"),url(ibmplexmono-400.woff) format("woff");font-weight:400;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url(ibmplexmono-500.woff2) format("woff2"),url(ibmplexmono-500.woff) format("woff");font-weight:500;font-display:swap}
+@font-face{font-family:"JetBrains Mono";src:url(jetbrainsmono.woff2) format("woff2"),url(jetbrainsmono.woff) format("woff");font-weight:400 500;font-display:swap}
