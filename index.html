@@ -20,11 +20,15 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F4F5F1">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%23C8F53C%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22Arial%22 font-weight=%22700%22 font-size=%2216%22 text-anchor=%22middle%22 fill=%22%23101211%22%3Eq%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700&family=Onest:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&text=qwestudio&display=swap">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="preload" href="fonts/geologica.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/onest.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/unbounded.woff" as="font" type="font/woff" crossorigin>
 <style>
+@font-face{font-family:"Geologica";src:url(fonts/geologica.woff) format("woff");font-weight:400 700;font-style:normal;font-display:swap}
+@font-face{font-family:"Onest";src:url(fonts/onest.woff) format("woff");font-weight:400 600;font-style:normal;font-display:swap}
+@font-face{font-family:"Unbounded";src:url(fonts/unbounded.woff) format("woff");font-weight:700;font-style:normal;font-display:swap}
 /*
   qwe studio, светлая версия.
   Цвет: тёплый нейтральный фон с лёгким зелёным оттенком, белые карточки, графитовый текст.
@@ -158,22 +162,25 @@ h1{font-size:clamp(38px,4.3vw,64px);line-height:1.03;letter-spacing:-.05em;max-w
 .sh p{font-size:18px;color:var(--ink-2);max-width:54ch}
 
 /* ---------- работы: бенто ---------- */
-.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px 20px}
 .w{display:flex;flex-direction:column;gap:14px;min-width:0}
-.w .pic{position:relative;overflow:hidden;border-radius:20px;background:var(--sunk);box-shadow:inset 0 0 0 1px var(--line)}
+.w{padding:10px;border-radius:24px;background:var(--surface);box-shadow:var(--sh-1);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.w:hover{transform:translateY(-4px);box-shadow:var(--sh-2)}
+.w .pic{position:relative;overflow:hidden;border-radius:16px;background:var(--sunk);box-shadow:inset 0 0 0 1px var(--line)}
 .w .pic img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .9s var(--ease)}
 .w:hover .pic img{transform:scale(1.035)}
 .w .pic .go{position:absolute;right:14px;top:14px;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--surface);box-shadow:var(--sh-1);
   opacity:0;transform:translateY(6px);transition:opacity .3s,transform .4s var(--ease)}
 .w:hover .go,.w:focus-visible .go{opacity:1;transform:none}
-.w .meta{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
-.w h3{font-size:clamp(18px,1.5vw,21px);letter-spacing:-.025em;line-height:1.2}
-.w .k{font-size:14px;color:var(--ink-2);white-space:nowrap}
-.w .k.live{color:var(--olive);font-weight:600}
+.w .info{display:grid;gap:8px;align-content:start;padding:16px 12px 10px}
+.w .mt{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;color:var(--ink-2)}
+.w .mt .live{color:var(--olive);font-weight:600;white-space:nowrap}
+.w h3{font-size:clamp(19px,1.6vw,22px);letter-spacing:-.03em;line-height:1.2;text-wrap:balance}
 .w-feat{grid-column:span 8}
 .w-feat .pic{aspect-ratio:16/10}
-.w-feat .tag{display:inline-flex;font-size:13px;font-weight:600;padding:5px 11px;border-radius:999px;background:var(--lime);margin-bottom:8px}
-.w-feat p{color:var(--ink-2);max-width:60ch;margin-top:6px}
+.w-feat .tag{display:inline-flex;font-size:13px;font-weight:600;color:var(--ink);padding:4px 11px;border-radius:999px;background:var(--lime)}
+.w-feat h3{font-size:clamp(22px,2vw,28px)}
+.w-feat p{color:var(--ink-2);max-width:62ch}
 .w-app{grid-column:span 4}
 .w-app .pic{flex:1;min-height:320px;display:grid;place-items:center;padding:24px}
 .w-app .pic .phone{width:min(56%,210px);box-shadow:var(--sh-2)}
@@ -184,7 +191,7 @@ h1{font-size:clamp(38px,4.3vw,64px);line-height:1.03;letter-spacing:-.05em;max-w
 .w-sm .pic{aspect-ratio:16/10}
 .w-wide{grid-column:span 7}
 .w-wide .pic{aspect-ratio:16/9}
-.more{grid-column:span 5;display:flex;flex-direction:column;justify-content:space-between;gap:18px;padding:24px;border-radius:20px;background:var(--surface);box-shadow:var(--sh-1)}
+.more{grid-column:span 5;display:flex;flex-direction:column;justify-content:space-between;gap:18px;padding:26px;border-radius:24px;background:var(--surface);box-shadow:var(--sh-1)}
 .more h3{font-size:24px}
 .more p{color:var(--ink-2);font-size:15px;margin-top:6px}
 .thumbs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -193,7 +200,7 @@ h1{font-size:clamp(38px,4.3vw,64px);line-height:1.03;letter-spacing:-.05em;max-w
 .thumbs a:hover img{transform:scale(1.06)}
 .more .btn{align-self:flex-start}
 @media (max-width:960px){.w-feat,.w-app,.w-sm,.w-wide,.more{grid-column:span 12}.w-sm{grid-column:span 6}.w-app .pic{min-height:420px}}
-@media (max-width:600px){.w-sm{grid-column:span 12}.bento{gap:28px 16px}}
+@media (max-width:600px){.w-sm{grid-column:span 12}.bento{gap:16px}}
 
 /* ---------- услуги и цены: прайс-лист ---------- */
 .price{border-radius:24px;background:var(--surface);box-shadow:var(--sh-1);padding:8px clamp(8px,1.4vw,16px)}
@@ -276,17 +283,86 @@ footer a:hover{color:var(--ink)}
 /* появление при прокрутке */
 .js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .9s var(--ease)}
 .js .rv.in{opacity:1;transform:none}
+/* ---------- экран загрузки: клавиши Q W E печатают логотип, затем знак улетает на место логотипа в шапке ---------- */
+.ld{display:none}
+.intro .ld,.ld.out{display:grid;place-items:center;position:fixed;inset:0;z-index:100;pointer-events:none;animation:ldKill .4s 6s forwards}
+.ld::before{content:"";position:absolute;inset:0;background:var(--bg);transition:opacity .5s ease .25s}
+.ld-in{position:relative;display:grid;justify-items:start;gap:18px;opacity:0;transform-origin:0 0}
+.ld.go .ld-in{opacity:1;transition:opacity .25s}
+.ld-sh{display:grid;gap:18px;transform:translateX(var(--sh,0px))}
+.ld.go .ld-sh{animation:ldShift .55s var(--ease) .56s both}
+.ld-lock{display:flex;align-items:center;gap:14px}
+@keyframes ldShift{to{transform:none}}
+.ld-keys{display:flex;gap:7px;padding:7px;border-radius:17px;background:linear-gradient(#E6E8E2,#DCDFD7);box-shadow:inset 0 1px 0 #fff,0 1px 0 #fff,var(--sh-1)}
+.ld-k{--h:6px;display:block;width:clamp(46px,5vw,58px);aspect-ratio:1;border-radius:12px;padding-bottom:var(--h);background:#C3C7BD}
+.ld-k i{display:grid;place-items:center;height:100%;border-radius:11px;background:linear-gradient(#fff,#F5F6F2);box-shadow:inset 0 0 0 1px #E3E5DF;font:700 clamp(19px,2vw,23px)/1 var(--logo);font-style:normal;letter-spacing:-.04em;padding-bottom:2px}
+.ld.go .ld-k{animation:ldPress .34s var(--ease) both;animation-delay:calc(.12s + var(--n) * .15s)}
+.ld.go .ld-k i{animation:ldCap .34s var(--ease) both;animation-delay:calc(.12s + var(--n) * .15s)}
+.ld-word{font:700 clamp(26px,3vw,34px)/1 var(--logo);letter-spacing:-.04em;opacity:0;transform:translateX(-12px)}
+.ld.go .ld-word{animation:ldWord .5s var(--ease) .56s both}
+.ld-bar{width:100%;height:2px;border-radius:2px;background:var(--line);overflow:hidden}
+.ld-bar i{display:block;height:100%;background:var(--ink);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.ld.out::before{opacity:0}
+.ld.out .ld-bar{opacity:0;transition:opacity .2s}
+.ld.out .ld-in{transition:transform .8s cubic-bezier(.7,0,.2,1),opacity .25s ease .72s;opacity:0}
+@keyframes ldPress{0%{transform:none;padding-bottom:var(--h)}45%{transform:translateY(5px);padding-bottom:1px;background:var(--lime-edge)}100%{transform:translateY(2px);padding-bottom:4px;background:var(--lime-edge)}}
+@keyframes ldCap{0%{background:#fff}40%,100%{background:var(--lime);box-shadow:inset 0 0 0 1px var(--lime-hi)}}
+@keyframes ldWord{to{opacity:1;transform:none}}
+@keyframes ldKill{to{opacity:0;visibility:hidden}}
+html.intro{overflow:hidden}
+.intro .top .logo,.fly .top .logo{opacity:0}
+.top .logo{transition:opacity .2s}
+.intro .rv.in{opacity:0;transform:translateY(18px)}
+.fly .facts.rv{transition-delay:.6s}
+.intro .fab,.fly .fab{opacity:0}
+.fab{transition:opacity .4s}
 .js .hero .rv{transition-delay:calc(var(--i,0) * 70ms)}
+.fly .hero .rv{transition-delay:calc(var(--i,0) * 80ms + 300ms)}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js .rv{opacity:1;transform:none;transition:none}
-  .view,.key,.w .pic img,.thumbs img,.w-app .phone{transition:none}
+  .ld{display:none!important}
+  .view,.key,.w,.w .pic img,.thumbs img,.w-app .phone{transition:none}
   .row.flash{animation:none}
 }
 </style>
-<script>document.documentElement.classList.add('js')</script>
+<script>(function(r){r.classList.add('js');try{if(!location.hash&&!sessionStorage.getItem('qwe-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('intro');setTimeout(function(){r.classList.remove('intro');},5000);}catch(e){}})(document.documentElement)</script>
 </head>
 <body>
+<div class="ld" aria-hidden="true"><div class="ld-in"><div class="ld-sh"><div class="ld-lock"><span class="ld-keys"><span class="ld-k" style="--n:0"><i>q</i></span><span class="ld-k" style="--n:1"><i>w</i></span><span class="ld-k" style="--n:2"><i>e</i></span></span><span class="ld-word">studio</span></div><div class="ld-bar"><i></i></div></div></div></div>
+<script>
+(function(){
+  var r=document.documentElement,ld=document.querySelector('.ld');
+  if(!r.classList.contains('intro')||!ld)return;
+  var lin=ld.querySelector('.ld-in'),bar=ld.querySelector('.ld-bar i'),t0=Date.now(),started=false,ended=false;
+  function go(){if(started)return;started=true;t0=Date.now();var wd=lin.querySelector('.ld-word');lin.querySelector('.ld-sh').style.setProperty('--sh',(wd.offsetWidth+14)/2+'px');ld.classList.add('go');requestAnimationFrame(function(){bar.style.transform='scaleX(.72)';});}
+  // знак показываем, когда загрузился шрифт логотипа (не дольше 700 мс)
+  try{document.fonts.load('700 30px Unbounded').then(go,go);}catch(e){go();}
+  setTimeout(go,700);
+  function ready(){
+    var img=document.querySelector('.v-q img'),p=[];
+    try{p.push(document.fonts.ready);}catch(e){}
+    if(img&&img.decode)p.push(img.decode().catch(function(){}));
+    return Promise.all(p);
+  }
+  function finish(){
+    if(ended)return;ended=true;
+    var wait=Math.max(0,1050-(Date.now()-t0));
+    bar.style.transition='transform .35s ease';bar.style.transform='scaleX(1)';
+    setTimeout(function(){
+      var logo=document.querySelector('.top .logo'),a=lin.getBoundingClientRect(),lock=lin.querySelector('.ld-lock').getBoundingClientRect();
+      if(logo){var b=logo.getBoundingClientRect(),k=b.height/lock.height;
+        lin.style.transform='translate('+(b.left-a.left)+'px,'+(b.top-a.top)+'px) scale('+k+')';}
+      ld.classList.add('out');r.classList.add('fly');r.classList.remove('intro');setTimeout(function(){r.classList.remove('fly');},760);
+      try{sessionStorage.setItem('qwe-intro','1');}catch(e){}
+      setTimeout(function(){ld.remove();},1100);
+    },wait+120);
+  }
+  function start(){ready().then(finish,finish);}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);else start();
+  setTimeout(finish,3200);
+})();
+</script>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ph-arrow-right" viewBox="0 0 256 256" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></symbol><symbol id="ph-arrow-up-right" viewBox="0 0 256 256" fill="currentColor"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"></path></symbol><symbol id="ph-arrows-clockwise" viewBox="0 0 256 256" fill="currentColor"><path d="M224,48V96a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h28.69L182.06,73.37a79.56,79.56,0,0,0-56.13-23.43h-.45A79.52,79.52,0,0,0,69.59,72.71,8,8,0,0,1,58.41,61.27a96,96,0,0,1,135,.79L208,76.69V48a8,8,0,0,1,16,0ZM186.41,183.29a80,80,0,0,1-112.47-.66L59.31,168H88a8,8,0,0,0,0-16H40a8,8,0,0,0-8,8v48a8,8,0,0,0,16,0V179.31l14.63,14.63A95.43,95.43,0,0,0,130,222.06h.53a95.36,95.36,0,0,0,67.07-27.33,8,8,0,0,0-11.18-11.44Z"></path></symbol><symbol id="ph-behance-logo" viewBox="0 0 256 256" fill="currentColor"><path d="M160,80a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H168A8,8,0,0,1,160,80Zm-24,78a42,42,0,0,1-42,42H32a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H90a38,38,0,0,1,25.65,66A42,42,0,0,1,136,158ZM40,116H90a22,22,0,0,0,0-44H40Zm80,42a26,26,0,0,0-26-26H40v52H94A26,26,0,0,0,120,158Zm128-6a8,8,0,0,1-8,8H169a32,32,0,0,0,56.59,11.2,8,8,0,0,1,12.8,9.61A48,48,0,1,1,248,152Zm-17-8a32,32,0,0,0-62,0Z"></path></symbol><symbol id="ph-chat-circle-text" viewBox="0 0 256 256" fill="currentColor"><path d="M168,112a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,112Zm-8,24H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm72-8A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z"></path></symbol><symbol id="ph-copy" viewBox="0 0 256 256" fill="currentColor"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path></symbol><symbol id="ph-envelope-simple" viewBox="0 0 256 256" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"></path></symbol><symbol id="ph-info" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"></path></symbol><symbol id="ph-plus" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path></symbol><symbol id="ph-receipt" viewBox="0 0 256 256" fill="currentColor"><path d="M72,104a8,8,0,0,1,8-8h96a8,8,0,0,1,0,16H80A8,8,0,0,1,72,104Zm8,40h96a8,8,0,0,0,0-16H80a8,8,0,0,0,0,16ZM232,56V208a8,8,0,0,1-11.58,7.15L192,200.94l-28.42,14.21a8,8,0,0,1-7.16,0L128,200.94,99.58,215.15a8,8,0,0,1-7.16,0L64,200.94,35.58,215.15A8,8,0,0,1,24,208V56A16,16,0,0,1,40,40H216A16,16,0,0,1,232,56Zm-16,0H40V195.06l20.42-10.22a8,8,0,0,1,7.16,0L96,199.06l28.42-14.22a8,8,0,0,1,7.16,0L160,199.06l28.42-14.22a8,8,0,0,1,7.16,0L216,195.06Z"></path></symbol><symbol id="ph-telegram-logo" viewBox="0 0 256 256" fill="currentColor"><path d="M228.88,26.19a9,9,0,0,0-9.16-1.57L17.06,103.93a14.22,14.22,0,0,0,2.43,27.21L72,141.45V200a15.92,15.92,0,0,0,10,14.83,15.91,15.91,0,0,0,17.51-3.73l25.32-26.26L165,220a15.88,15.88,0,0,0,10.51,4,16.3,16.3,0,0,0,5-.79,15.85,15.85,0,0,0,10.67-11.63L231.77,35A9,9,0,0,0,228.88,26.19Zm-61.14,36L78.15,126.35l-49.6-9.73ZM88,200V152.52l24.79,21.74Zm87.53,8L92.85,135.5l119-85.29Z"></path></symbol><symbol id="ph-user-focus" viewBox="0 0 256 256" fill="currentColor"><path d="M224,40V76a8,8,0,0,1-16,0V48H180a8,8,0,0,1,0-16h36A8,8,0,0,1,224,40Zm-8,132a8,8,0,0,0-8,8v28H180a8,8,0,0,0,0,16h36a8,8,0,0,0,8-8V180A8,8,0,0,0,216,172ZM76,208H48V180a8,8,0,0,0-16,0v36a8,8,0,0,0,8,8H76a8,8,0,0,0,0-16ZM40,84a8,8,0,0,0,8-8V48H76a8,8,0,0,0,0-16H40a8,8,0,0,0-8,8V76A8,8,0,0,0,40,84Zm136,92a8,8,0,0,1-6.41-3.19,52,52,0,0,0-83.2,0,8,8,0,1,1-12.8-9.62A67.94,67.94,0,0,1,101,141.51a40,40,0,1,1,53.94,0,67.94,67.94,0,0,1,27.43,21.68A8,8,0,0,1,176,176Zm-48-40a24,24,0,1,0-24-24A24,24,0,0,0,128,136Z"></path></symbol></svg>
 
 <header class="top" id="top-bar">
@@ -343,27 +419,27 @@ footer a:hover{color:var(--ink)}
       <div class="bento">
         <a class="w w-feat rv" href="works/smartglobal/">
           <div class="pic"><img src="img/smartglobal.jpg" alt="Первый экран сайта SmartGlobal Systems" width="1172" height="797" loading="lazy"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
-          <div><span class="tag">Коммерческий проект, Казахстан, 2026</span><h3>Сайт для SmartGlobal Systems</h3><p>Монтаж видеонаблюдения, сигнализации и систем доступа. Сайт продаёт через доверие: оффер, три аргумента и заявка в два шага.</p></div>
+          <div class="info"><div class="mt"><span class="tag">Коммерческий проект</span><span>Казахстан, 2026</span></div><h3>Сайт для SmartGlobal Systems</h3><p>Монтаж видеонаблюдения, сигнализации и систем доступа. Сайт продаёт через доверие: оффер, три аргумента и заявка в два шага.</p></div>
         </a>
         <a class="w w-app rv" href="works/sort-app/">
           <div class="pic"><div class="phone"><img src="img/sort-app-m.jpg" alt="Приложение кофейни «СОРТ»" loading="lazy"></div><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
-          <div class="meta"><h3>Приложение кофейни «СОРТ»</h3><span class="k live">Живой прототип</span></div>
+          <div class="info"><div class="mt"><span>Мобильное приложение</span><span class="live">Живой прототип</span></div><h3>Приложение кофейни «СОРТ»</h3></div>
         </a>
         <a class="w w-sm rv" href="works/stupen/">
           <div class="pic"><img src="img/stupen.jpg" alt="Лендинг кабинета подологии «Ступень»" loading="lazy"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
-          <div class="meta"><h3>Лендинг подологии «Ступень»</h3><span class="k live">Живой сайт</span></div>
+          <div class="info"><div class="mt"><span>Лендинг</span><span class="live">Живой сайт</span></div><h3>Кабинет подологии «Ступень»</h3></div>
         </a>
         <a class="w w-sm rv" href="works/sort-shop/">
           <div class="pic"><img src="img/sort-shop.jpg" alt="Интернет-магазин кофейной обжарки «СОРТ»" loading="lazy"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
-          <div class="meta"><h3>Магазин обжарки «СОРТ»</h3><span class="k live">Живой сайт</span></div>
+          <div class="info"><div class="mt"><span>Интернет-магазин</span><span class="live">Живой сайт</span></div><h3>Кофейная обжарка «СОРТ»</h3></div>
         </a>
         <a class="w w-sm rv" href="works/slot/">
           <div class="pic"><img src="img/slot.jpg" alt="Сервис записи в салоны «Слот»" loading="lazy"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
-          <div class="meta"><h3>Сервис записи «Слот»</h3><span class="k live">Живой сайт</span></div>
+          <div class="info"><div class="mt"><span>Веб-приложение</span><span class="live">Живой сайт</span></div><h3>Сервис записи «Слот»</h3></div>
         </a>
         <a class="w w-wide rv" href="works/sort-brand/">
           <div class="pic"><img src="img/sort-brand.jpg" alt="Фирменный стиль обжарки «СОРТ»" loading="lazy"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
-          <div class="meta"><h3>Фирменный стиль «СОРТ»</h3><span class="k">Брендбук, 2026</span></div>
+          <div class="info"><div class="mt"><span>Фирменный стиль, 2026</span><span class="live">Онлайн-брендбук</span></div><h3>Брендбук обжарки «СОРТ»</h3></div>
         </a>
         <div class="more rv">
           <div><h3>Ещё на Behance</h3><p>Магазины, лендинги и сайт часового бренда.</p></div>
@@ -383,13 +459,13 @@ footer a:hover{color:var(--ink)}
     <div class="wrap">
       <div class="sh rv"><h2>Услуги и цены</h2><p>Цены открыты заранее. Финальная сумма зависит от объёма и фиксируется в смете до старта.</p></div>
       <div class="price rv" id="price">
-        <div class="row" data-svc="Лендинг или сайт" id="s-q"><div><h3>Лендинги и сайты</h3><p>Под одну цель: заявку, звонок или запись.</p></div><ul><li>Структура и тексты</li><li>Адаптив</li><li>Заявки в Telegram</li><li>Аналитика</li></ul><div class="pr"><small>от</small>7 500 ₽</div><button class="pick" type="button">Выбрать</button></div>
+        <div class="row" data-svc="Лендинг или сайт" id="s-q"><div><h3>Лендинги и сайты</h3><p>Под одну цель: заявку, звонок или запись.</p></div><ul><li>Структура и тексты</li><li>Адаптив</li><li>Сбор заявок</li><li>Аналитика</li></ul><div class="pr"><small>от</small>7 500 ₽</div><button class="pick" type="button">Выбрать</button></div>
         <div class="row" data-svc="Интернет-магазин"><div><h3>Интернет-магазины</h3><p>Каталог, корзина и оформление заказа.</p></div><ul><li>Фильтры и поиск</li><li>Оплата и доставка</li><li>Управление товарами</li></ul><div class="pr"><small>от</small>7 500 ₽</div><button class="pick" type="button">Выбрать</button></div>
         <div class="row" data-svc="Веб-приложение"><div><h3>Веб-приложения</h3><p>Кабинеты, онлайн-запись, CRM и дашборды.</p></div><ul><li>Сценарии и интерфейсы</li><li>Роли и вход</li><li>Интеграции</li></ul><div class="pr"><small>цена</small>по задаче</div><button class="pick" type="button">Выбрать</button></div>
         <div class="row" data-svc="Мобильное приложение" id="s-w"><div><h3>Мобильные приложения</h3><p>От прототипа до публикации в сторах.</p></div><ul><li>Прототип</li><li>iOS и Android</li><li>Push и оплата</li><li>App Store и Google Play</li></ul><div class="pr"><small>от</small>20 000 ₽</div><button class="pick" type="button">Выбрать</button></div>
         <div class="row" data-svc="Логотип и фирменный стиль" id="s-e"><div><h3>Логотип и стиль</h3><p>Чтобы бизнес узнавали на вывеске и в соцсетях.</p></div><ul><li>Логотип</li><li>Палитра и шрифты</li><li>Брендбук</li><li>Шаблоны для соцсетей</li></ul><div class="pr"><small>от</small>15 000 ₽</div><button class="pick" type="button">Выбрать</button></div>
       </div>
-      <p class="pnote rv"><svg class="ph" aria-hidden="true"><use href="#ph-info"/></svg>Можно заказать только дизайн или только разработку.</p>
+      <p class="pnote rv"><svg class="ph" aria-hidden="true"><use href="#ph-info"/></svg>Можно заказать и дизайн, и разработку: проект от макета до запуска ведёт один исполнитель.</p>
     </div>
   </section>
 
@@ -411,7 +487,7 @@ footer a:hover{color:var(--ink)}
       <div class="sh rv"><h2>Частые вопросы</h2><p>Не нашли ответ? Спросите напрямую, отвечаю в течение дня.</p><a href="https://t.me/qweqwasdd" target="_blank" rel="noopener"><svg class="ph" aria-hidden="true"><use href="#ph-telegram-logo"/></svg>Спросить в Telegram</a></div>
       <div class="qa rv">
         <details open><summary>Сколько времени занимает работа?<svg class="ph" aria-hidden="true"><use href="#ph-plus"/></svg></summary><p>Лендинг обычно занимает от одной до трёх недель. Для магазина или приложения сроки называю после брифа и фиксирую по каждому этапу.</p></details>
-        <details><summary>Можно заказать только дизайн или только разработку?<svg class="ph" aria-hidden="true"><use href="#ph-plus"/></svg></summary><p>Да. Нарисую макеты для вашей команды или сверстаю и запрограммирую готовый дизайн.</p></details>
+        <details><summary>Можно заказать и дизайн, и разработку?<svg class="ph" aria-hidden="true"><use href="#ph-plus"/></svg></summary><p>Да, это основной формат работы. Делаю проект целиком: структуру, дизайн, вёрстку, программирование и запуск. Готовый сайт выглядит точно как утверждённый макет, а вам не нужно искать второго исполнителя.</p></details>
         <details><summary>Почему цены открытые?<svg class="ph" aria-hidden="true"><use href="#ph-plus"/></svg></summary><p>Чтобы вы сразу понимали порядок суммы. Финальная цена зависит от объёма и фиксируется в смете до старта.</p></details>
         <details><summary>Что нужно от меня для старта?<svg class="ph" aria-hidden="true"><use href="#ph-plus"/></svg></summary><p>Описание задачи, примеры, которые нравятся, и материалы, если они есть: логотип, тексты, фото.</p></details>
         <details><summary>Поддерживаете проект после запуска?<svg class="ph" aria-hidden="true"><use href="#ph-plus"/></svg></summary><p>Да. Исправляю ошибки, добавляю разделы и функции. Формат поддержки обсуждаем отдельно.</p></details>
