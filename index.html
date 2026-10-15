@@ -12,11 +12,11 @@
 <meta property="og:url" content="https://qweqwasdd.github.io/design-studio/">
 <meta property="og:title" content="qwe studio | Дизайн и разработка">
 <meta property="og:description" content="Сайты, магазины, приложения и фирменный стиль. Цена известна до старта.">
-<meta property="og:image" content="https://qweqwasdd.github.io/design-studio/img/og.jpg?v=3">
+<meta property="og:image" content="https://qweqwasdd.github.io/design-studio/img/og.jpg?v=4">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="qwe studio: дизайн и код, которые приводят клиентов">
-<meta name="twitter:image" content="https://qweqwasdd.github.io/design-studio/img/og.jpg?v=3">
+<meta name="twitter:image" content="https://qweqwasdd.github.io/design-studio/img/og.jpg?v=4">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F4F5F1">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%23C8F53C%22/%3E%3Ctext x=%2216%22 y=%2222%22 font-family=%22Arial%22 font-weight=%22700%22 font-size=%2216%22 text-anchor=%22middle%22 fill=%22%23101211%22%3Eq%3C/text%3E%3C/svg%3E">
@@ -77,8 +77,11 @@ h2{font-size:clamp(34px,4.4vw,60px)}
 .top{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s}
 .top.solid{background:rgb(244 245 241 / .82);backdrop-filter:saturate(1.4) blur(16px);-webkit-backdrop-filter:saturate(1.4) blur(16px);box-shadow:0 1px 0 var(--line)}
 .top .wrap{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{display:flex;align-items:center;gap:7px;font:700 19px/1 var(--logo);letter-spacing:-.04em;white-space:nowrap}
-.logo b{background:var(--lime);border-radius:8px;padding:4px 7px 6px;box-shadow:inset 0 -2px 0 var(--lime-edge)}
+.logo{display:inline-flex;align-items:center;gap:.4em;font:700 19px/1 var(--logo);letter-spacing:-.04em;white-space:nowrap}
+/* знак: три клавиши q w e на подставке, как на экране загрузки */
+.lk{display:flex;gap:.17em;padding:.17em;border-radius:.5em;background:linear-gradient(#E6E8E2,#DCDFD7);box-shadow:inset 0 1px 0 #fff,0 1px 2px rgb(40 48 30 / .14)}
+.lk i{display:block;width:1.42em;height:1.42em;border-radius:.34em;padding-bottom:.12em;background:var(--lime-edge);font-style:normal}
+.lk b{display:grid;place-items:center;height:100%;border-radius:.32em;background:var(--lime);box-shadow:inset 0 0 0 1px var(--lime-hi);font-size:.66em;font-weight:700;padding-bottom:.1em}
 .nav{display:flex;gap:2px}
 .nav a{padding:9px 15px;border-radius:999px;font-size:15px;color:var(--ink-2);transition:color .2s,background .2s}
 .nav a:hover{color:var(--ink);background:var(--sunk)}
@@ -328,24 +331,23 @@ footer a:hover{color:var(--ink)}
 .ld.go .ld-in{opacity:1;transition:opacity .25s}
 .ld-sh{display:grid;gap:18px;transform:translateX(var(--sh,0px))}
 .ld.go .ld-sh{animation:ldShift .55s var(--ease) .56s both}
-.ld-lock{display:flex;align-items:center;gap:14px}
 @keyframes ldShift{to{transform:none}}
-.ld-keys{display:flex;gap:7px;padding:7px;border-radius:17px;background:linear-gradient(#E6E8E2,#DCDFD7);box-shadow:inset 0 1px 0 #fff,0 1px 0 #fff,var(--sh-1)}
-.ld-k{--h:6px;display:block;overflow:hidden;width:clamp(46px,5vw,58px);aspect-ratio:1;border-radius:12px;padding-bottom:var(--h);background:#C3C7BD}
-.ld-k i{will-change:transform;display:grid;place-items:center;height:100%;border-radius:11px;background:linear-gradient(#fff,#F5F6F2);box-shadow:inset 0 0 0 1px #E3E5DF;font:700 clamp(19px,2vw,23px)/1 var(--logo);font-style:normal;letter-spacing:-.04em;padding-bottom:2px}
-.ld.go .ld-k{animation:ldBase .34s var(--ease) both;animation-delay:calc(.12s + var(--n) * .15s)}
-.ld.go .ld-k i{animation:ldCap .34s var(--ease) both;animation-delay:calc(.12s + var(--n) * .15s)}
-.ld-word{font:700 clamp(26px,3vw,34px)/1 var(--logo);letter-spacing:-.04em;opacity:0;transform:translateX(-12px)}
+.ld .logo{font-size:clamp(24px,3vw,34px)}
+.ld .lk i{background:#C3C7BD}
+.ld .lk b{background:linear-gradient(#fff,#F5F6F2);box-shadow:inset 0 0 0 1px #E3E5DF;will-change:transform}
+.ld.go .lk i{animation:ldBase .4s var(--ease) both;animation-delay:calc(.12s + var(--n) * .15s)}
+.ld.go .lk b{animation:ldCap .4s var(--ease) both;animation-delay:calc(.12s + var(--n) * .15s)}
+.ld-word{opacity:0;transform:translateX(-12px)}
 .ld.go .ld-word{animation:ldWord .5s var(--ease) .56s both}
+@keyframes ldBase{35%,100%{background:var(--lime-edge)}}
+@keyframes ldCap{0%{background:#fff;transform:none}35%{background:var(--lime);box-shadow:inset 0 0 0 1px var(--lime-hi);transform:translateY(.16em)}100%{background:var(--lime);box-shadow:inset 0 0 0 1px var(--lime-hi);transform:none}}
+@media (max-width:480px){.ld .logo{font-size:21px}}
 .ld-bar{width:100%;height:2px;border-radius:2px;background:var(--line);overflow:hidden}
 .ld-bar i{display:block;height:100%;background:var(--ink);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
 .ld.out::before{opacity:0}
 .ld.out .ld-bar{opacity:0;transition:opacity .2s}
 .ld.out .ld-in{transition:transform .8s cubic-bezier(.7,0,.2,1),opacity .25s ease .72s;opacity:0}
-@keyframes ldBase{40%,100%{background:var(--lime-edge)}}
-@keyframes ldCap{0%{background:#fff;transform:none}40%{background:var(--lime);box-shadow:inset 0 0 0 1px var(--lime-hi);transform:translateY(5px)}100%{background:var(--lime);box-shadow:inset 0 0 0 1px var(--lime-hi);transform:translateY(3px)}}
 @keyframes ldWord{to{opacity:1;transform:none}}
-@media (max-width:480px){.ld-k{width:40px;border-radius:10px}.ld-k i{border-radius:9px;font-size:18px}.ld-keys{gap:6px;padding:6px;border-radius:15px}.ld-word{font-size:22px}.ld-lock{gap:10px}}
 @keyframes ldKill{to{opacity:0;visibility:hidden}}
 html.intro{overflow:hidden}
 .intro .top .logo,.fly .top .logo{opacity:0}
@@ -366,7 +368,7 @@ html.intro{overflow:hidden}
 <script>(function(r){r.classList.add('js');try{if(!location.hash&&!sessionStorage.getItem('qwe-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)r.classList.add('intro');setTimeout(function(){r.classList.remove('intro');},5000);}catch(e){}})(document.documentElement)</script>
 </head>
 <body>
-<div class="ld" aria-hidden="true"><div class="ld-in"><div class="ld-sh"><div class="ld-lock"><span class="ld-keys"><span class="ld-k" style="--n:0"><i>q</i></span><span class="ld-k" style="--n:1"><i>w</i></span><span class="ld-k" style="--n:2"><i>e</i></span></span><span class="ld-word">studio</span></div><div class="ld-bar"><i></i></div></div></div></div>
+<div class="ld" aria-hidden="true"><div class="ld-in"><div class="ld-sh"><div class="logo ld-lock"><span class="lk"><i style="--n:0"><b>q</b></i><i style="--n:1"><b>w</b></i><i style="--n:2"><b>e</b></i></span><span class="lw ld-word">studio</span></div><div class="ld-bar"><i></i></div></div></div></div>
 <script>
 (function(){
   var r=document.documentElement,ld=document.querySelector('.ld');
@@ -404,7 +406,7 @@ html.intro{overflow:hidden}
 
 <header class="top" id="top-bar">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="qwe studio, на главную"><b>qwe</b>studio</a>
+    <a class="logo" href="#top" aria-label="qwe studio, на главную"><span class="lk" aria-hidden="true"><i><b>q</b></i><i><b>w</b></i><i><b>e</b></i></span><span class="lw">studio</span></a>
     <nav class="nav" aria-label="Основное меню"><a href="#work">Работы</a><a href="#services">Услуги</a><a href="#process">Процесс</a><a href="#faq">Вопросы</a></nav>
     <a class="btn btn-ink" href="#contact">Обсудить проект</a>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Открыть меню"><i></i><i></i><i></i></button>
@@ -559,7 +561,7 @@ html.intro{overflow:hidden}
   </section>
 </main>
 
-<footer><div class="wrap"><a class="logo" href="#top"><b>qwe</b>studio</a><nav aria-label="Нижнее меню"><a href="#work">Работы</a><a href="#services">Услуги</a><a href="#process">Процесс</a><a href="#contact">Контакты</a></nav><span>© 2026 qwe studio, Семён Первухин</span></div></footer>
+<footer><div class="wrap"><a class="logo" href="#top" aria-label="qwe studio"><span class="lk" aria-hidden="true"><i><b>q</b></i><i><b>w</b></i><i><b>e</b></i></span><span class="lw">studio</span></a><nav aria-label="Нижнее меню"><a href="#work">Работы</a><a href="#services">Услуги</a><a href="#process">Процесс</a><a href="#contact">Контакты</a></nav><span>© 2026 qwe studio, Семён Первухин</span></div></footer>
 <a class="fab" href="#contact">Обсудить проект <svg class="ph" aria-hidden="true"><use href="#ph-arrow-right"/></svg></a>
 
 <script>

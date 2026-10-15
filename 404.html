@@ -15,11 +15,17 @@ main{display:grid;gap:16px;justify-items:center}
 .n{font:600 clamp(72px,16vw,160px)/1 "Geologica","Onest",sans-serif;letter-spacing:-.06em;background:linear-gradient(180deg,transparent 58%,var(--lime) 58%,var(--lime) 88%,transparent 88%);padding:0 .06em}
 h1{font:600 clamp(24px,3vw,32px)/1.2 "Geologica","Onest",sans-serif;letter-spacing:-.03em}
 p{color:var(--ink-2)}
-a{display:inline-flex;align-items:center;height:52px;padding:0 24px;border-radius:999px;background:var(--lime);box-shadow:inset 0 -2px 0 var(--lime-edge);color:var(--ink);font-weight:600;text-decoration:none;margin-top:8px}
+.btn{display:inline-flex;align-items:center;height:52px;padding:0 24px;border-radius:999px;background:var(--lime);box-shadow:inset 0 -2px 0 var(--lime-edge);color:var(--ink);font-weight:600;text-decoration:none;margin-top:8px}
 a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.logo{display:inline-flex;align-items:center;gap:.4em;font:700 19px/1 "Unbounded","Geologica",sans-serif;letter-spacing:-.04em;white-space:nowrap;color:#101211;text-decoration:none}
+.lk{display:flex;gap:.17em;padding:.17em;border-radius:.5em;background:linear-gradient(#E6E8E2,#DCDFD7);box-shadow:inset 0 1px 0 #fff,0 1px 2px rgb(40 48 30 / .14)}
+.lk i{display:block;width:1.42em;height:1.42em;border-radius:.34em;padding-bottom:.12em;background:#A8D21E;font-style:normal}
+.lk b{display:grid;place-items:center;height:100%;border-radius:.32em;background:#C8F53C;box-shadow:inset 0 0 0 1px #D4FA5A;font-size:.66em;font-weight:700;padding-bottom:.1em;color:#101211}
+.logo.top{position:fixed;top:20px;left:24px}
 </style>
 </head>
 <body>
-<main><span class="n">404</span><h1>Такой страницы нет</h1><p>Возможно, ссылка устарела. Всё нужное есть на главной.</p><a href="/design-studio/">На главную qwe studio</a></main>
+<a class="logo top" href="/design-studio/" aria-label="qwe studio, на главную"><span class="lk" aria-hidden="true"><i><b>q</b></i><i><b>w</b></i><i><b>e</b></i></span><span class="lw">studio</span></a>
+<main><span class="n">404</span><h1>Такой страницы нет</h1><p>Возможно, ссылка устарела. Всё нужное есть на главной.</p><a class="btn" href="/design-studio/">На главную qwe studio</a></main>
 </body>
 </html>
