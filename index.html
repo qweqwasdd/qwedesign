@@ -184,6 +184,17 @@ h1{font-size:clamp(38px,4.3vw,64px);line-height:1.03;letter-spacing:-.05em;max-w
 .w-feat .tag{display:inline-flex;font-size:13px;font-weight:600;color:var(--ink);padding:4px 11px;border-radius:999px;background:var(--lime)}
 .w-feat h3{font-size:clamp(22px,2vw,28px)}
 .w-feat p{color:var(--ink-2);max-width:62ch}
+.w-aura{grid-column:span 12;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:12px 28px;align-items:stretch}
+.w-aura .pic{aspect-ratio:16/10}
+.w-aura .info{align-content:center;padding:18px 18px 18px 6px;gap:14px}
+.w-aura h3{font-size:clamp(24px,2.2vw,32px)}
+.w-aura p{color:var(--ink-2);max-width:46ch}
+.w-aura .pts{display:flex;flex-wrap:wrap;gap:8px}
+.w-aura .pts span{font-size:13px;color:var(--ink-2);padding:5px 11px;border-radius:999px;background:var(--sunk)}
+.w-aura .tag{display:inline-flex;font-size:13px;font-weight:600;color:var(--ink);padding:4px 11px;border-radius:999px;background:var(--lime)}
+.w-aura .mshot{position:absolute;right:4%;bottom:6%;width:19%;aspect-ratio:400/622;border-radius:16px;overflow:hidden;box-shadow:var(--sh-2);outline:4px solid var(--surface);transition:transform .8s var(--ease)}
+.w-aura:hover .mshot{transform:translateY(-8px) rotate(-1.5deg)}
+.w-aura:hover .mshot img{transform:none}
 .w-app{grid-column:span 4}
 .w-app .pic{flex:1;min-height:320px;display:grid;place-items:center;padding:24px}
 .w-app .pic .phone{width:min(56%,210px);box-shadow:var(--sh-2)}
@@ -202,6 +213,7 @@ h1{font-size:clamp(38px,4.3vw,64px);line-height:1.03;letter-spacing:-.05em;max-w
 .thumbs img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .thumbs a:hover img{transform:scale(1.06)}
 .more .btn{align-self:flex-start}
+@media (max-width:960px){.w-aura{grid-template-columns:1fr}.w-aura .info{padding:6px 12px 12px}}
 @media (max-width:960px){.w-feat,.w-app,.w-sm,.w-wide,.more{grid-column:span 12}.w-sm{grid-column:span 6}.w-app .pic{min-height:420px}}
 @media (max-width:600px){.w-sm{grid-column:span 12}.bento{gap:16px}}
 
@@ -361,7 +373,7 @@ html.intro{overflow:hidden}
   html{scroll-behavior:auto}
   .js .rv{opacity:1;transform:none;transition:none}
   .ld{display:none!important}
-  .view,.key,.w,.w .pic img,.thumbs img,.w-app .phone{transition:none}
+  .view,.key,.w,.w .pic img,.thumbs img,.w-app .phone,.w-aura .mshot{transition:none}
   .row.flash{animation:none}
 }
 </style>
@@ -463,6 +475,10 @@ html.intro{overflow:hidden}
         <a class="w w-app rv" href="works/sort-app/">
           <div class="pic"><div class="phone"><img src="img/sort-app-m-400.webp" alt="Приложение кофейни «СОРТ»" width="400" height="866" loading="lazy" decoding="async"></div><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
           <div class="info"><div class="mt"><span>Мобильное приложение</span><span class="live">Живой прототип</span></div><h3>Приложение кофейни «СОРТ»</h3></div>
+        </a>
+        <a class="w w-aura rv" href="works/aura/">
+          <div class="pic"><img src="img/aura.webp" srcset="img/aura-800.webp 800w, img/aura.webp 1440w" sizes="(max-width:960px) calc(100vw - 32px), 740px" alt="Первый экран сайта глэмпинга «Аура» в Териберке" width="1440" height="900" loading="lazy" decoding="async"><span class="mshot"><img src="img/aura-m-400.webp" alt="" width="400" height="622" loading="lazy" decoding="async"></span><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
+          <div class="info"><div class="mt"><span class="tag">Новая работа</span><span class="live">Живой сайт</span></div><h3>Глэмпинг «Аура» в Териберке</h3><p>Концепт сайта для трёх стеклянных домов на Баренцевом море. Контент выезжает поверх первого экрана, истории листаются, а форма сама считает стоимость и предоплату.</p><div class="pts"><span>Лендинг</span><span>Бронирование</span><span>Анимации</span><span>Фото через ИИ</span></div></div>
         </a>
         <a class="w w-sm rv" href="works/stupen/">
           <div class="pic"><img src="img/stupen-800.webp" srcset="img/stupen-800.webp 800w, img/stupen.webp 1440w" sizes="(max-width:900px) calc(100vw - 32px), 560px" alt="Лендинг кабинета подологии «Ступень»" width="1440" height="900" loading="lazy" decoding="async"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
