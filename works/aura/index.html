@@ -254,6 +254,9 @@ p{text-wrap:pretty}
 .explore .icon{font-size:18px;transition:transform .3s var(--ease)}
 .explore a:hover .icon{transform:translate(2px,-2px)}
 
+.concept{position:relative;z-index:6;background:#070f1a;color:#b9c9cc;font:500 12.5px/1.45 var(--sans);text-align:center;padding-top:calc(9px + env(safe-area-inset-top,0px));padding-bottom:9px;text-wrap:balance}
+.concept a{color:var(--on-dark);font-weight:600;white-space:nowrap;text-decoration:underline;text-decoration-color:rgba(243,247,246,.35);text-underline-offset:3px;transition:color .2s}
+.concept a:hover{color:var(--aurora)}
 /* истории */
 .story{position:absolute;z-index:4;left:max(var(--gutter),env(safe-area-inset-left,0px));bottom:calc(var(--overlap) + clamp(28px,5vw,96px));width:clamp(180px,17vw,290px);animation:cardIn 1s var(--ease) 2s both}
 @keyframes cardIn{from{opacity:0;transform:translateY(30px) scale(.97)}to{opacity:1;transform:none}}
@@ -600,6 +603,7 @@ details p{margin:0 0 24px;color:var(--ink-soft);max-width:58ch}
   <a href="#cabins" class="pill">Домики</a><a href="#experiences" class="pill">Впечатления</a><a href="#seasons" class="pill">Сезоны</a><a href="#route" class="pill">Как добраться</a><a href="#faq" class="pill">Вопросы</a><a href="#booking" class="pill is-solid">Забронировать</a>
 </nav>
 
+<div class="concept pad">Концепт-проект qwe studio: дизайн и разработка сайта глэмпинга. Териберка настоящая, домики, цены и отзывы вымышлены. <a href="https://qweqwasdd.github.io/qwedesign/">← на сайт студии</a></div>
 <section class="hero" id="top" aria-label="Аура, Териберка">
   <div class="aurora-sky" aria-hidden="true"></div>
   <div class="gridlines" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
@@ -863,7 +867,7 @@ details p{margin:0 0 24px;color:var(--ink-soft);max-width:58ch}
     <div><h3 class="label">Гостям</h3><ul><li><a href="#booking">Забронировать</a></li><li><a href="#faq">Частые вопросы</a></li><li><a href="privacy.html">Политика конфиденциальности</a></li></ul></div>
     <div><h3 class="label">Связь</h3><ul><li><a href="tel:+78152600417">+7 (815) 260-04-17</a></li><li><a href="https://t.me/qweqwasdd" target="_blank" rel="noopener">Telegram</a></li><li><a href="mailto:sempervukhin@mail.ru">sempervukhin@mail.ru</a></li></ul></div>
   </div>
-  <div class="footer-bottom"><span>© <span id="year">2026</span> Аура, Териберка, Мурманская область</span><span>Дизайн и разработка: <a href="https://qweqwasdd.github.io/design-studio/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">qwe studio</a></span></div>
+  <div class="footer-bottom"><span>© <span id="year">2026</span> Аура, Териберка, Мурманская область</span><span>Дизайн и разработка: <a href="https://qweqwasdd.github.io/qwedesign/" style="text-decoration:underline;text-underline-offset:3px">qwe studio</a></span></div>
 </footer>
 </div>
 
