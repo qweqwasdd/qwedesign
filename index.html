@@ -185,16 +185,29 @@ h1{font-size:clamp(38px,4.3vw,64px);line-height:1.03;letter-spacing:-.05em;max-w
 .w-feat h3{font-size:clamp(22px,2vw,28px)}
 .w-feat p{color:var(--ink-2);max-width:62ch}
 .w-aura{grid-column:span 12;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:12px 28px;align-items:stretch}
-.w-aura .pic{aspect-ratio:16/10}
-.w-aura .info{align-content:center;padding:18px 18px 18px 6px;gap:14px}
+.w-aura .pic{min-height:420px;height:100%}
+.w-aura .pic>img{position:absolute;inset:0;object-position:30% 0}
+.w-aura .info{align-content:center;padding:18px 18px 18px 6px;gap:16px}
 .w-aura h3{font-size:clamp(24px,2.2vw,32px)}
 .w-aura p{color:var(--ink-2);max-width:46ch}
-.w-aura .pts{display:flex;flex-wrap:wrap;gap:8px}
-.w-aura .pts span{font-size:13px;color:var(--ink-2);padding:5px 11px;border-radius:999px;background:var(--sunk)}
+.w-aura .did{display:grid;gap:9px;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.w-aura .did li{position:relative;padding-left:18px}
+.w-aura .did li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:inset 0 0 0 1px var(--lime-edge)}
+.w-aura .did b{color:var(--ink);font-weight:600}
 .w-aura .tag{display:inline-flex;font-size:13px;font-weight:600;color:var(--ink);padding:4px 11px;border-radius:999px;background:var(--lime)}
 .w-aura .mshot{position:absolute;right:4%;bottom:6%;width:19%;aspect-ratio:400/622;border-radius:16px;overflow:hidden;box-shadow:var(--sh-2);outline:4px solid var(--surface);transition:transform .8s var(--ease)}
 .w-aura:hover .mshot{transform:translateY(-8px) rotate(-1.5deg)}
 .w-aura:hover .mshot img{transform:none}
+.w-7{grid-column:span 7}.w-5{grid-column:span 5}
+.w-7 .pic,.w-5 .pic{aspect-ratio:16/10}
+.w p{color:var(--ink-2);font-size:15.5px;line-height:1.55;max-width:60ch}
+.w p b{color:var(--ink);font-weight:600}
+.w .pts{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.w .pts li{font-size:13px;color:var(--ink-2);padding:5px 11px;border-radius:999px;background:var(--sunk)}
+.w .did{display:grid;gap:9px;margin-top:2px}
+.w .did li{position:relative;padding-left:22px;font-size:15px;line-height:1.45;color:var(--ink)}
+.w .did li::before{content:"";position:absolute;left:2px;top:.55em;width:10px;height:10px;border-radius:3px;background:var(--lime);box-shadow:inset 0 0 0 1px var(--lime-edge)}
+.tag-ink{display:inline-flex;font-size:13px;font-weight:600;color:var(--surface)!important;padding:4px 11px;border-radius:999px;background:var(--ink)}
 .w-app{grid-column:span 4}
 .w-app .pic{flex:1;min-height:320px;display:grid;place-items:center;padding:24px}
 .w-app .pic .phone{width:min(56%,210px);box-shadow:var(--sh-2)}
@@ -213,7 +226,8 @@ h1{font-size:clamp(38px,4.3vw,64px);line-height:1.03;letter-spacing:-.05em;max-w
 .thumbs img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .thumbs a:hover img{transform:scale(1.06)}
 .more .btn{align-self:flex-start}
-@media (max-width:960px){.w-aura{grid-template-columns:1fr}.w-aura .info{padding:6px 12px 12px}}
+@media (max-width:960px){.w-aura{grid-template-columns:1fr}.w-aura .pic{height:auto;min-height:0;aspect-ratio:16/10}.w-aura .info{padding:6px 12px 12px}}
+@media (max-width:960px){.w-7,.w-5{grid-column:span 12}}
 @media (max-width:960px){.w-feat,.w-app,.w-sm,.w-wide,.more{grid-column:span 12}.w-sm{grid-column:span 6}.w-app .pic{min-height:420px}}
 @media (max-width:600px){.w-sm{grid-column:span 12}.bento{gap:16px}}
 
@@ -440,15 +454,15 @@ html.intro{overflow:hidden}
       </div>
       <div class="show rv" style="--i:2">
         <div class="stage" aria-live="polite">
-          <div class="view v-q on" data-v="q"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>smartglobal.kz</span></div><img src="img/smartglobal.webp" srcset="img/smartglobal-800.webp 800w, img/smartglobal.webp 1172w" sizes="(max-width:960px) calc(100vw - 32px), 560px" alt="Сайт SmartGlobal Systems" width="1172" height="797" fetchpriority="high" decoding="async"></div></div>
-          <div class="view v-w" data-v="w"><div class="phone a"><img src="img/sort-app-m-400.webp" alt="Приложение кофейни «СОРТ»" width="400" height="866" loading="lazy" decoding="async"></div><div class="phone b"><img src="img/slot-m-400.webp" width="400" height="866" decoding="async" alt="Сервис записи «Слот» на телефоне" loading="lazy"></div></div>
-          <div class="view v-e" data-v="e"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>Брендбук «СОРТ»</span></div><img src="img/sort-brand-800.webp" srcset="img/sort-brand-800.webp 800w, img/sort-brand.webp 1440w" sizes="(max-width:960px) calc(100vw - 32px), 560px" alt="Фирменный стиль кофейной обжарки «СОРТ»" width="1440" height="900" loading="lazy" decoding="async"></div></div>
-          <div class="scap"><span><b id="capT">Сайты и магазины</b><small id="capP">от 7 500 ₽, от 1 недели</small></span><a href="#services" id="capA">Что входит <svg class="ph" aria-hidden="true"><use href="#ph-arrow-right"/></svg></a></div>
+          <div class="view v-q on" data-v="q"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>Глэмпинг «Аура»</span></div><img src="img/aura.webp" srcset="img/aura-800.webp 800w, img/aura.webp 1440w" sizes="(max-width:960px) calc(100vw - 32px), 560px" alt="Сайт глэмпинга «Аура» в Териберке" width="1440" height="900" fetchpriority="high" decoding="async"></div></div>
+          <div class="view v-e" data-v="w"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>Сервис записи «Слот»</span></div><img src="img/slot-800.webp" srcset="img/slot-800.webp 800w, img/slot.webp 1440w" sizes="(max-width:960px) calc(100vw - 32px), 560px" alt="Веб-приложение для записи в салоны «Слот»" width="1440" height="900" loading="lazy" decoding="async"></div></div>
+          <div class="view v-w" data-v="e"><div class="phone a"><img src="img/aura-phone-400.webp" alt="Сайт «Аура» на телефоне" width="400" height="861" loading="lazy" decoding="async"></div><div class="phone b"><img src="img/stupen-m-400.webp" alt="Лендинг «Ступень» на телефоне" width="400" height="865" loading="lazy" decoding="async"></div></div>
+          <div class="scap"><span><b id="capT">Сайты и лендинги</b><small id="capP">от 7 500 ₽, от 1 недели</small></span><a href="#services" id="capA">Что входит <svg class="ph" aria-hidden="true"><use href="#ph-arrow-right"/></svg></a></div>
         </div>
         <div class="deck" role="group" aria-label="Направления">
           <button class="key" type="button" data-v="q" data-k="q й" aria-pressed="true"><span class="cap"><b>Q</b><em>Сайты</em></span></button>
-          <button class="key" type="button" data-v="w" data-k="w ц" aria-pressed="false"><span class="cap"><b>W</b><em>Приложения</em></span></button>
-          <button class="key" type="button" data-v="e" data-k="e у" aria-pressed="false"><span class="cap"><b>E</b><em>Бренд</em></span></button>
+          <button class="key" type="button" data-v="w" data-k="w ц" aria-pressed="false"><span class="cap"><b>W</b><em>Сервисы</em></span></button>
+          <button class="key" type="button" data-v="e" data-k="e у" aria-pressed="false"><span class="cap"><b>E</b><em>Мобайл</em></span></button>
         </div>
         <p class="hint"><span class="h-desk">Нажмите <kbd>Q</kbd> <kbd>W</kbd> <kbd>E</kbd> на клавиатуре или кликните по клавише</span><span class="h-touch">Нажмите на клавишу или листайте витрину</span></p>
       </div>
@@ -466,35 +480,23 @@ html.intro{overflow:hidden}
 
   <section class="sec" id="work">
     <div class="wrap">
-      <div class="sh rv"><h2>Работы</h2><p>Коммерческий проект для клиента из Казахстана и живые проекты, которые открываются и работают: запись, корзина, приложение.</p></div>
+      <div class="sh rv"><h2>Работы</h2><p>Коммерческий сайт для клиента из Казахстана и проекты, которые можно открыть и потрогать: бронирование, онлайн-запись, интерактивная карта. В каждом описании задача и что я сделал своими руками.</p></div>
       <div class="bento">
-        <a class="w w-feat rv" href="works/smartglobal/">
-          <div class="pic"><img src="img/smartglobal.webp" srcset="img/smartglobal-800.webp 800w, img/smartglobal.webp 1172w" sizes="(max-width:900px) calc(100vw - 32px), 780px" alt="Первый экран сайта SmartGlobal Systems" width="1172" height="797" loading="lazy" decoding="async"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
-          <div class="info"><div class="mt"><span class="tag">Коммерческий проект</span><span>Казахстан, 2026</span></div><h3>Сайт для SmartGlobal Systems</h3><p>Монтаж видеонаблюдения, сигнализации и систем доступа. Сайт продаёт через доверие: оффер, три аргумента и заявка в два шага.</p></div>
-        </a>
-        <a class="w w-app rv" href="works/sort-app/">
-          <div class="pic"><div class="phone"><img src="img/sort-app-m-400.webp" alt="Приложение кофейни «СОРТ»" width="400" height="866" loading="lazy" decoding="async"></div><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
-          <div class="info"><div class="mt"><span>Мобильное приложение</span><span class="live">Живой прототип</span></div><h3>Приложение кофейни «СОРТ»</h3></div>
-        </a>
         <a class="w w-aura rv" href="works/aura/">
           <div class="pic"><img src="img/aura.webp" srcset="img/aura-800.webp 800w, img/aura.webp 1440w" sizes="(max-width:960px) calc(100vw - 32px), 740px" alt="Первый экран сайта глэмпинга «Аура» в Териберке" width="1440" height="900" loading="lazy" decoding="async"><span class="mshot"><img src="img/aura-m-400.webp" alt="" width="400" height="622" loading="lazy" decoding="async"></span><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
-          <div class="info"><div class="mt"><span class="tag">Новая работа</span><span class="live">Живой сайт</span></div><h3>Глэмпинг «Аура» в Териберке</h3><p>Концепт сайта для трёх стеклянных домов на Баренцевом море. Контент выезжает поверх первого экрана, истории листаются, а форма сама считает стоимость и предоплату.</p><div class="pts"><span>Лендинг</span><span>Бронирование</span><span>Анимации</span><span>Фото через ИИ</span></div></div>
+          <div class="info"><div class="mt"><span class="tag">Новая работа, 2026</span><span class="live">Живой сайт</span></div><h3>Сайт глэмпинга «Аура» в Териберке</h3><p><b>Задача:</b> продать отдых в стеклянных домах на краю материка и довести человека до брони без звонка.</p><ul class="did"><li>Концепция, тексты и арт-дирекшн: 6 фото в нейросети в одной архитектуре</li><li>Первый экран, поверх которого выезжает контент, истории и смена сезонов</li><li>Форма брони: выбор домика, гости, расчёт суммы и предоплаты, заявка на почту</li><li>Вёрстка и код без библиотек, адаптив под телефон</li></ul></div>
         </a>
-        <a class="w w-sm rv" href="works/stupen/">
-          <div class="pic"><img src="img/stupen-800.webp" srcset="img/stupen-800.webp 800w, img/stupen.webp 1440w" sizes="(max-width:900px) calc(100vw - 32px), 560px" alt="Лендинг кабинета подологии «Ступень»" width="1440" height="900" loading="lazy" decoding="async"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
-          <div class="info"><div class="mt"><span>Лендинг</span><span class="live">Живой сайт</span></div><h3>Кабинет подологии «Ступень»</h3></div>
+        <a class="w w-7 rv" href="works/smartglobal/">
+          <div class="pic"><img src="img/smartglobal.webp" srcset="img/smartglobal-800.webp 800w, img/smartglobal.webp 1172w" sizes="(max-width:960px) calc(100vw - 32px), 700px" alt="Первый экран сайта SmartGlobal Systems" width="1172" height="797" loading="lazy" decoding="async"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
+          <div class="info"><div class="mt"><span class="tag tag-ink">Коммерческий проект</span><span>Казахстан, 2026</span></div><h3>Сайт для SmartGlobal Systems</h3><p><b>Задача:</b> компания монтирует видеонаблюдение и системы доступа. Нужен сайт, которому доверяют с первого экрана и который ведёт к заявке.</p><ul class="pts"><li>Анализ ниши</li><li>Структура и прототип</li><li>UI для компьютера и телефона</li><li>Передано заказчику</li></ul></div>
         </a>
-        <a class="w w-sm rv" href="works/sort-shop/">
-          <div class="pic"><img src="img/sort-shop-800.webp" srcset="img/sort-shop-800.webp 800w, img/sort-shop.webp 1440w" sizes="(max-width:900px) calc(100vw - 32px), 560px" alt="Интернет-магазин кофейной обжарки «СОРТ»" width="1440" height="900" loading="lazy" decoding="async"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
-          <div class="info"><div class="mt"><span>Интернет-магазин</span><span class="live">Живой сайт</span></div><h3>Кофейная обжарка «СОРТ»</h3></div>
+        <a class="w w-5 rv" href="works/slot/">
+          <div class="pic"><img src="img/slot-800.webp" srcset="img/slot-800.webp 800w, img/slot.webp 1440w" sizes="(max-width:960px) calc(100vw - 32px), 500px" alt="Веб-приложение для записи в салоны «Слот»" width="1440" height="900" loading="lazy" decoding="async"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
+          <div class="info"><div class="mt"><span>Веб-приложение</span><span class="live">Работает в браузере</span></div><h3>Сервис записи в салоны «Слот»</h3><p>Рабочее место администратора: расписание мастеров, клиенты, услуги и аналитика выручки. Запись можно создать, и она сохранится.</p><ul class="pts"><li>UX-сценарии</li><li>Дашборд</li><li>Логика на JS</li></ul></div>
         </a>
-        <a class="w w-sm rv" href="works/slot/">
-          <div class="pic"><img src="img/slot-800.webp" srcset="img/slot-800.webp 800w, img/slot.webp 1440w" sizes="(max-width:900px) calc(100vw - 32px), 560px" alt="Сервис записи в салоны «Слот»" width="1440" height="900" loading="lazy" decoding="async"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
-          <div class="info"><div class="mt"><span>Веб-приложение</span><span class="live">Живой сайт</span></div><h3>Сервис записи «Слот»</h3></div>
-        </a>
-        <a class="w w-wide rv" href="works/sort-brand/">
-          <div class="pic"><img src="img/sort-brand-800.webp" srcset="img/sort-brand-800.webp 800w, img/sort-brand.webp 1440w" sizes="(max-width:900px) calc(100vw - 32px), 560px" alt="Фирменный стиль обжарки «СОРТ»" width="1440" height="900" loading="lazy" decoding="async"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
-          <div class="info"><div class="mt"><span>Фирменный стиль, 2026</span><span class="live">Онлайн-брендбук</span></div><h3>Брендбук обжарки «СОРТ»</h3></div>
+        <a class="w w-7 rv" href="works/stupen/">
+          <div class="pic"><img src="img/stupen-800.webp" srcset="img/stupen-800.webp 800w, img/stupen.webp 1440w" sizes="(max-width:960px) calc(100vw - 32px), 700px" alt="Лендинг кабинета подологии «Ступень»" width="1440" height="900" loading="lazy" decoding="async"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
+          <div class="info"><div class="mt"><span>Лендинг</span><span class="live">Живой сайт</span></div><h3>Кабинет подологии «Ступень»</h3><p>Человек нажимает на карте стопы, где болит, и сразу видит процедуру и цену. Дальше прайс без звёздочек и запись на свободное время.</p><ul class="pts"><li>Интерактивная карта</li><li>Прайс</li><li>Онлайн-запись</li></ul></div>
         </a>
         <div class="more rv">
           <div><h3>Ещё на Behance</h3><p>Магазины, лендинги и сайт часового бренда.</p></div>
@@ -516,7 +518,7 @@ html.intro{overflow:hidden}
       <div class="price rv" id="price">
         <div class="row" data-svc="Лендинг или сайт" id="s-q"><div><h3>Лендинги и сайты</h3><p>Под одну цель: заявку, звонок или запись.</p></div><ul><li>Структура и тексты</li><li>Адаптив</li><li>Сбор заявок</li><li>Аналитика</li></ul><div class="pr"><small>от</small>7 500 ₽</div><button class="pick" type="button">Выбрать</button></div>
         <div class="row" data-svc="Интернет-магазин"><div><h3>Интернет-магазины</h3><p>Каталог, корзина и оформление заказа.</p></div><ul><li>Фильтры и поиск</li><li>Оплата и доставка</li><li>Управление товарами</li></ul><div class="pr"><small>от</small>7 500 ₽</div><button class="pick" type="button">Выбрать</button></div>
-        <div class="row" data-svc="Веб-приложение"><div><h3>Веб-приложения</h3><p>Кабинеты, онлайн-запись, CRM и дашборды.</p></div><ul><li>Сценарии и интерфейсы</li><li>Роли и вход</li><li>Интеграции</li></ul><div class="pr"><small>цена</small>по задаче</div><button class="pick" type="button">Выбрать</button></div>
+        <div class="row" data-svc="Веб-приложение" id="s-a"><div><h3>Веб-приложения</h3><p>Кабинеты, онлайн-запись, CRM и дашборды.</p></div><ul><li>Сценарии и интерфейсы</li><li>Роли и вход</li><li>Интеграции</li></ul><div class="pr"><small>цена</small>по задаче</div><button class="pick" type="button">Выбрать</button></div>
         <div class="row" data-svc="Мобильное приложение" id="s-w"><div><h3>Мобильные приложения</h3><p>От прототипа до публикации в сторах.</p></div><ul><li>Прототип</li><li>iOS и Android</li><li>Push и оплата</li><li>App Store и Google Play</li></ul><div class="pr"><small>от</small>20 000 ₽</div><button class="pick" type="button">Выбрать</button></div>
         <div class="row" data-svc="Логотип и фирменный стиль" id="s-e"><div><h3>Логотип и стиль</h3><p>Чтобы бизнес узнавали на вывеске и в соцсетях.</p></div><ul><li>Логотип</li><li>Палитра и шрифты</li><li>Брендбук</li><li>Шаблоны для соцсетей</li></ul><div class="pr"><small>от</small>15 000 ₽</div><button class="pick" type="button">Выбрать</button></div>
       </div>
@@ -585,7 +587,7 @@ html.intro{overflow:hidden}
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // ---- витрина: клавиши Q W E переключают направление ----
-  var CAP={q:['Сайты и магазины','от 7 500 ₽, от 1 недели','#s-q'],w:['Мобильные приложения','от 20 000 ₽, от 3 недель','#s-w'],e:['Логотип и фирменный стиль','от 15 000 ₽, от 1 недели','#s-e']};
+  var CAP={q:['Сайты и лендинги','от 7 500 ₽, от 1 недели','#s-q'],w:['Веб-приложения и сервисы','цена по задаче','#s-a'],e:['Адаптив и мобильные приложения','от 20 000 ₽ за приложение','#s-w']};
   var keys=[].slice.call(document.querySelectorAll('.key')),views=[].slice.call(document.querySelectorAll('.view')),cur='q',timer=0,touched=false;
   var deck=document.querySelector('.deck'),capT=document.getElementById('capT'),capP=document.getElementById('capP'),capA=document.getElementById('capA');
   function show(v){cur=v;
