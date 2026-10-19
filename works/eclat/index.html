@@ -513,25 +513,25 @@ const CONFIG = {
   protocols: [
     { title: "SMAS-лифтинг Ultraformer MPT", duration: "60 минут", tag: "Аппаратная подтяжка",
       desc: "Сфокусированный ультразвук воздействует на глубокие слои кожи. Зоны и количество линий врач определяет на консультации.",
-      img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" },
+      img: "img/1570172619644-600.webp" },
     { title: "Биоревитализация и коллагенотерапия", duration: "45 минут", tag: "Инъекционная эстетика",
       desc: "Инъекции препаратов гиалуроновой кислоты или коллагена. Препарат и схему подбирает врач после осмотра.",
-      img: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=600&q=80" },
+      img: "img/1512290923902-600.webp" },
     { title: "Фотоомоложение BBL Hero", duration: "40 минут", tag: "Лазерная терапия",
       desc: "Широкополосный свет для работы с пигментацией и сосудистым рисунком. Проводится курсом, в период низкой солнечной активности.",
-      img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" },
+      img: "img/1522337360788-600.webp" },
     { title: "Молекулярные уходы Biologique", duration: "90 минут", tag: "Эстетическая дерматология",
       desc: "Профессиональные уходы по протоколам Biologique Recherche, подбираются по состоянию кожи в день визита.",
-      img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" }
+      img: "img/1540555700478-600.webp" }
   ],
 
   programs: [
     { title: "Сияние и ровный тон", tag: "Glass Skin", text: "BBL Forever Young, гидропилинг и пептидная маска.", price: "от 24 000 ₽",
-      img: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=800&q=80" },
+      img: "img/1596755389378-800.webp" },
     { title: "Архитектура контуров лица", tag: "Контуры", text: "Векторный лифтинг Радиесс и аппаратный дренаж.", price: "от 42 000 ₽",
-      img: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80" },
+      img: "img/1515377905703-800.webp" },
     { title: "Глубокое клеточное обновление", tag: "Обновление", text: "Экзосомальная терапия и микроигольчатый RF-лифтинг.", price: "от 38 000 ₽",
-      img: "https://images.unsplash.com/photo-1761718210089-ba3bb5ccb54f?auto=format&fit=crop&w=800&q=80" }
+      img: "img/1761718210089-800.webp" }
   ],
 
   journey: [
@@ -598,10 +598,10 @@ document.querySelectorAll('i[data-lucide]').forEach(function(i){var n=i.getAttri
   /* ---------- контент ---------- */
   // проверенные фото на замену, если ссылка из настроек не открылась
   const FALLBACK = [
-    'https://images.unsplash.com/photo-1761718210089-ba3bb5ccb54f?auto=format&fit=crop&w=900&q=80',
-    'https://images.unsplash.com/photo-1643684391140-c5056cfd3436?auto=format&fit=crop&w=900&q=80',
-    'https://images.unsplash.com/photo-1731514771613-991a02407132?auto=format&fit=crop&w=900&q=80',
-    'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80'
+    'img/1761718210089-900.webp',
+    'img/1643684391140-900.webp',
+    'img/1731514771613-900.webp',
+    'img/1570172619644-900.webp'
   ];
   $$('[data-c]').forEach(el => { const v = C[el.dataset.c]; if (v != null) el.textContent = v; });
 
@@ -617,8 +617,8 @@ document.querySelectorAll('i[data-lucide]').forEach(function(i){var n=i.getAttri
     const tried = new Set([src]);
     img.src = src; box.appendChild(img);
   }
-  photo($('[data-photo="hero"]'), 'https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1400&q=85', 'Уход за кожей лица', true);
-  photo($('[data-photo="clinic"]'), 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1000&q=85', 'Кабинет клиники');
+  photo($('[data-photo="hero"]'), 'img/1616394584738-1400.webp', 'Уход за кожей лица', true);
+  photo($('[data-photo="clinic"]'), 'img/1629909613654-1000.webp', 'Кабинет клиники');
 
   $('#protoCount').textContent = `${pad(C.protocols.length)} направления`;
   $('#protoList').innerHTML = C.protocols.map((p, i) => `
