@@ -153,6 +153,8 @@ select:focus,input:focus{outline:none;border-color:var(--mint)}
 footer{padding-block:40px;color:var(--muted);font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+form{grid-template-columns:minmax(0,1fr)}form select,form input,form textarea{max-width:100%;min-width:0}
+html,body{overflow-x:clip}
 </style>
 
 <div class="concept">Концепт-проект qwe studio: дизайн и разработка. Клиника, цены и врач вымышлены. <a href="../../">← на сайт студии</a></div>

@@ -321,6 +321,25 @@ dialog::backdrop{background:hsla(24,22%,18%,.4)}
 .fb{font-size:18px;line-height:1}
 .icons-ok .fb{display:none}
 
+/* ---------- телефон: ничего не шире экрана ---------- */
+html,body{overflow-x:clip}
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr)}
+  .hero-cta .btn{white-space:normal;text-align:center;line-height:1.35;padding:14px 22px}
+}
+@media(max-width:1023px){.proto-row{grid-template-columns:64px minmax(0,1fr)}.proto-title{hyphens:auto;overflow-wrap:break-word}.menu{bottom:0;overflow-y:auto}}
+@media(max-width:480px){
+  .nav .wrap{gap:10px}
+  .nav-right{gap:4px}
+  .mark b{font-size:22px;letter-spacing:.14em}
+  .nav .btn-outline{min-height:42px;padding:0 16px;letter-spacing:.1em}
+  .btn{letter-spacing:.1em;padding:0 22px}
+  .hero-title{font-size:clamp(28px,9.4vw,40px)}
+  .hero-line{font-size:19px}
+  .proto-title{font-size:18px;letter-spacing:0}
+  .visit .btn,.club .btn{white-space:normal;text-align:center}
+}
+@media(max-width:350px){.proto-title{font-size:15.5px}.proto-row{grid-template-columns:56px minmax(0,1fr);gap:12px}.proto-thumb{width:56px;height:74px}}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
