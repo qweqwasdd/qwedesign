@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Зилант. Аренда премиальных автомобилей в Казани</title>
 <meta name="description" content="BMW M5 Competition, Lamborghini Urus, Mercedes-AMG G 63, Porsche 911 Turbo и Mercedes-AMG GT S в аренду. Подача по Казани за 30 минут, полное КАСКО.">
-<meta name="theme-color" content="#0B0C0D">
+<meta name="theme-color" content="#100C0A">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Зилант: аренда премиальных автомобилей в Казани">
 <meta property="og:description" content="Спорткары и внедорожники люкс-класса. Подача за 30 минут, полное КАСКО.">
 <meta property="og:image" content="img/og.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B0C0D'/%3E%3Cpath d='M11 6h5l-5 20H6z' fill='%2389CEF6'/%3E%3Cpath d='M20 6h5l-5 20h-5z' fill='%2389CEF6' opacity='.5'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23100C0A'/%3E%3Cpath d='M11 6h5l-5 20H6z' fill='%23E97039'/%3E%3Cpath d='M20 6h5l-5 20h-5z' fill='%23E97039' opacity='.5'/%3E%3C/svg%3E">
 <link rel="preload" href="fonts/unbounded-cyrillic-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/golos-cyrillic-400.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js')</script>
@@ -29,19 +29,19 @@
 @font-face { font-family: 'Golos Text'; font-weight: 600; font-display: swap; src: url(fonts/golos-cyrillic-600.woff2) format('woff2'); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
 @font-face { font-family: 'Golos Text'; font-weight: 600; font-display: swap; src: url(fonts/golos-latin-600.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+20BD, U+2122, U+2190-2193, U+2212; }
 
-/* ---------- Палитра «Хром и лёд»: графит, холодный белый и ледяной голубой акцент (цвет сумеречного неба и LED-фар из видео) ---------- */
+/* ---------- Палитра: тёплый графит, слоновая кость и закатный оранжевый из видео. Оранжевый только на кнопках и ключевых цифрах ---------- */
 :root {
-  --ink: #0B0C0D;
-  --ink-c: 11 12 13;
-  --ink-2: #141618;
-  --ink-3: #1E2124;
-  --bone: #F1F2F3;
-  --dim: #999DA3;
-  --rule: rgb(241 242 243 / 0.12);
-  --rule-2: rgb(241 242 243 / 0.26);
-  --ember: #89CEF6;
-  --ember-ink: #0B0C0D;
-  --warn: oklch(0.7 0.16 25);
+  --ink: #100C0A;
+  --ink-c: 16 12 10;
+  --ink-2: #191512;
+  --ink-3: #26201D;
+  --bone: #F2EEE6;
+  --dim: #ACA7A0;
+  --rule: rgb(242 238 230 / 0.12);
+  --rule-2: rgb(242 238 230 / 0.26);
+  --ember: #E97039;
+  --ember-ink: #1D100A;
+  --warn: oklch(0.72 0.17 25);
   --pad: clamp(20px, 4vw, 64px);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --display: 'Unbounded', 'Golos Text', system-ui, sans-serif;
@@ -78,7 +78,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .btn:hover .arr { transform: translateX(4px); }
 .btn:active { transform: scale(0.98); }
 .btn--ember { background: var(--ember); border-color: var(--ember); color: var(--ember-ink); }
-.btn--ember:hover { background: transparent; color: var(--bone); border-color: var(--bone); }
+.btn--ember:hover { background: var(--bone); border-color: var(--bone); color: var(--ink); }
 .btn--ghost:hover { background: var(--bone); color: var(--ink); border-color: var(--bone); }
 .btn[disabled] { opacity: 0.6; cursor: progress; }
 
@@ -237,26 +237,33 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .book__head p { color: var(--dim); max-width: 46ch; font-size: 17px; }
 .grp { display: block; font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: 0.02em; margin-bottom: 4px; padding: 0; }
 .grp--gap { margin-top: 36px; }
-.pick { border: 0; min-width: 0; margin: 0 0 clamp(40px, 5vw, 64px); padding: 0; }
-.pick .grp { margin-bottom: 16px; }
-.pick__row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
-.car { position: relative; display: grid; cursor: pointer; background: var(--ink-2); border: 1px solid var(--rule); transition: border-color 0.3s ease, background 0.3s ease; }
-.car input { position: absolute; opacity: 0; pointer-events: none; }
-.car__img { aspect-ratio: 3 / 2; overflow: hidden; background: var(--ink-3); }
-.car__img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(0.85) brightness(0.62); transform: scale(1.02); transition: filter 0.5s var(--ease), transform 0.7s var(--ease); }
-.car__txt { display: grid; gap: 4px; padding: 14px 16px 16px; }
-.car__name { font-family: var(--display); font-weight: 600; font-size: 14px; letter-spacing: -0.01em; line-height: 1.2; color: var(--dim); transition: color 0.3s ease; }
-.car__price { font-size: 13px; color: var(--dim); }
-.car__price b { color: var(--bone); font-weight: 600; }
-.car__tick { position: absolute; top: 10px; right: 10px; width: 24px; height: 24px; border-radius: 50%; background: var(--ember); color: var(--ember-ink); display: grid; place-items: center; transform: scale(0); transition: transform 0.4s var(--ease); }
-.car__tick svg { width: 13px; height: 13px; }
-.car:hover { border-color: var(--rule-2); }
-.car:hover .car__img img { filter: grayscale(0.4) brightness(0.8); }
-.car:has(input:checked) { border-color: var(--ember); background: var(--ink-3); }
-.car:has(input:checked) .car__img img { filter: none; transform: scale(1); }
-.car:has(input:checked) .car__name { color: var(--bone); }
-.car:has(input:checked) .car__tick { transform: scale(1); }
-.car:has(input:focus-visible) { outline: 2px solid var(--ember); outline-offset: 3px; }
+.cars { position: relative; margin-top: 12px; }
+.cars__btn { width: 100%; display: grid; grid-template-columns: 96px minmax(0, 1fr) 24px; align-items: center; gap: 18px; padding: 10px 18px 10px 10px; background: var(--ink-2); border: 1px solid var(--rule-2); border-radius: 2px; color: var(--bone); cursor: pointer; text-align: left; font: inherit; transition: border-color 0.25s ease, background 0.25s ease; }
+.cars__btn:hover, .cars__btn[aria-expanded="true"] { border-color: var(--bone); }
+.cars__thumb { aspect-ratio: 3 / 2; overflow: hidden; background: var(--ink-3); display: block; }
+.cars__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cars__txt { display: grid; gap: 4px; min-width: 0; }
+.cars__txt b { font-family: var(--display); font-weight: 600; font-size: 17px; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cars__txt small { font-size: 14px; color: var(--dim); }
+.cars__chev { width: 10px; height: 10px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-3px) rotate(45deg); justify-self: center; transition: transform 0.35s var(--ease); }
+.cars__btn[aria-expanded="true"] .cars__chev { transform: translateY(2px) rotate(-135deg); }
+.cars__panel { position: absolute; z-index: 20; left: 0; right: 0; top: calc(100% + 6px); background: var(--ink-2); border: 1px solid var(--rule-2); box-shadow: 0 24px 60px rgb(var(--ink-c) / 0.7); transform-origin: top; animation: carsIn 0.35s var(--ease); }
+@keyframes carsIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.cars__search { padding: 10px 10px 4px; }
+.cars__search input { width: 100%; background: var(--ink); border: 1px solid var(--rule); color: var(--bone); font: 500 15px/1.2 var(--body); padding: 11px 12px; border-radius: 2px; outline: none; }
+.cars__search input:focus { border-color: var(--ember); }
+.cars__list { max-height: min(420px, 60vh); overflow-y: auto; padding: 6px; outline: none; overscroll-behavior: contain; }
+.cars__group { font-size: 12px; font-weight: 600; color: var(--dim); padding: 12px 10px 6px; letter-spacing: 0.02em; }
+.cars__opt { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 8px 12px 8px 8px; cursor: pointer; border-radius: 2px; transition: background 0.2s ease; }
+.cars__opt img { width: 72px; height: auto; aspect-ratio: 3 / 2; object-fit: cover; display: block; filter: brightness(0.85); }
+.cars__opt b { display: block; font-weight: 600; font-size: 15px; }
+.cars__opt small { font-size: 13px; color: var(--dim); }
+.cars__opt .pr { font-size: 14px; font-weight: 600; white-space: nowrap; text-align: right; }
+.cars__opt .pr small { display: block; font-weight: 400; }
+.cars__opt.act { background: var(--ink-3); }
+.cars__opt[aria-selected="true"] b, .cars__opt[aria-selected="true"] .pr { color: var(--ember); }
+.cars__opt[aria-selected="true"] img { filter: none; }
+.cars__empty { padding: 16px 12px; color: var(--dim); font-size: 14px; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 .chip { font: 500 14px/1 var(--body); color: var(--bone); background: transparent; border: 1px solid var(--rule-2); border-radius: 2px; padding: 11px 14px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease; }
 .chip small { font-size: 12px; color: var(--ember); font-weight: 600; }
@@ -267,6 +274,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .bookf__fields { grid-area: fields; }
 .bookf__send { grid-area: send; display: grid; }
 .ticket { grid-area: ticket; }
+.ticket__img { aspect-ratio: 16 / 10; overflow: hidden; background: var(--ink-3); }
+.ticket__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.4s ease; }
+.ticket__img img.swap { opacity: 0; }
 .ticket { position: sticky; top: 96px; background: var(--ink-2); border: 1px solid var(--rule); }
 .ticket__body { padding: clamp(20px, 2.4vw, 32px); }
 .ticket__name { font-family: var(--display); font-weight: 600; font-size: clamp(22px, 2.1vw, 30px); line-height: 1.1; letter-spacing: -0.02em; }
@@ -368,9 +378,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .split, .m5__text { grid-template-columns: 1fr; }
   .book__grid { grid-template-columns: 1fr; grid-template-areas: "fields" "ticket" "send"; }
   .ticket { position: static; margin-top: 32px; }
-  .pick__row { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(200px, 42%); overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 calc(var(--pad) * -1); padding: 0 var(--pad) 4px; scroll-padding: 0 var(--pad); scrollbar-width: none; }
-  .pick__row::-webkit-scrollbar { display: none; }
-  .car { scroll-snap-align: start; }
+  .ticket__img { display: none; }
   .m5__text { gap: 24px; }
   .m5__text .btn { justify-self: start; }
   .footer__cols { grid-template-columns: auto 1fr; column-gap: 56px; }
@@ -432,10 +440,13 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
   .form__row { grid-template-columns: 1fr; }
   .form__row.dates { grid-template-columns: 1fr 1fr; gap: 0 16px; }
-  .pick__row { grid-auto-columns: 64%; }
+  .cars__btn { grid-template-columns: 72px minmax(0, 1fr) 20px; gap: 14px; padding-right: 14px; }
+  .cars__txt b { font-size: 15px; }
+  .cars__txt small { font-size: 13px; }
+  .cars__opt { grid-template-columns: 60px minmax(0, 1fr) auto; gap: 12px; }
+  .cars__opt img { width: 60px; }
   .chips { display: grid; grid-template-columns: 1fr 1fr; }
   .chip { justify-content: center; }
-  .car__txt { padding: 12px 14px 14px; }
   .ticket__body { padding: 16px 18px 18px; }
   .ticket__name { font-size: 22px; }
   .ticket__kind { font-size: 13px; margin-top: 4px; }
@@ -610,13 +621,22 @@ button, input, select, textarea { font: inherit; color: inherit; }
       <p>Выберите автомобиль и даты. Менеджер перезвонит в течение 15 минут и подтвердит бронь.</p>
     </div>
     <form class="bookf" id="bookForm" novalidate data-subject="Зилант: новая заявка">
-      <fieldset class="pick reveal">
-        <legend class="grp">Автомобиль</legend>
-        <div class="pick__row" id="pickRow"></div>
-      </fieldset>
       <div class="book__grid">
         <div class="bookf__fields reveal">
-          <div class="grp">Даты</div>
+          <div class="grp" id="carLbl">Автомобиль</div>
+          <div class="cars" id="cars">
+            <button type="button" class="cars__btn" id="carBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="carList" aria-labelledby="carLbl carBtnName">
+              <span class="cars__thumb"><img id="carBtnImg" src="img/m5-800.webp" width="800" height="533" alt=""></span>
+              <span class="cars__txt"><b id="carBtnName">BMW M5 Competition</b><small id="carBtnMeta">Седан, 35 000 ₽ в сутки</small></span>
+              <span class="cars__chev" aria-hidden="true"></span>
+            </button>
+            <div class="cars__panel" id="carPanel" hidden>
+              <div class="cars__search" id="carSearchWrap" hidden><input type="search" id="carSearch" placeholder="Найти модель" aria-label="Найти модель" autocomplete="off"></div>
+              <div class="cars__list" id="carList" role="listbox" tabindex="-1" aria-labelledby="carLbl"></div>
+            </div>
+            <input type="hidden" name="Автомобиль" id="bCar" value="BMW M5 Competition">
+          </div>
+          <div class="grp grp--gap">Даты</div>
           <div class="form__row dates">
             <div class="field"><label for="bFrom">Начало аренды</label><input id="bFrom" name="С" type="date" required></div>
             <div class="field"><label for="bTo">Возврат</label><input id="bTo" name="По" type="date" required></div>
@@ -636,6 +656,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
           <div class="field"><label for="bMsg">Комментарий</label><textarea id="bMsg" name="Комментарий" rows="2" placeholder="Необязательно"></textarea></div>
         </div>
         <aside class="ticket reveal" aria-label="Ваш заказ" aria-live="polite" style="--d:0.1s">
+          <div class="ticket__img"><img id="tkImg" data-id="m5" src="img/m5-800.webp" srcset="img/m5-800.webp 800w, img/m5.webp 1500w" sizes="(max-width: 900px) 100vw, 40vw" width="800" height="533" alt="BMW M5 Competition" loading="lazy" decoding="async"></div>
           <div class="ticket__body">
             <div class="ticket__name" id="tkName">BMW M5 Competition</div>
             <div class="ticket__kind" id="tkKind">Седан, 625 л.с., до 100 км/ч за 3,3 с</div>
@@ -844,15 +865,66 @@ var CARS = [
   compact.addEventListener && compact.addEventListener('change', function () { if (!compact.matches) setMenu(false); });
 
   /* ---------- Форма бронирования ---------- */
-  var form = $('#bookForm'), pickRow = $('#pickRow'), fromI = $('#bFrom'), toI = $('#bTo');
-  var TICK = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>';
-  pickRow.innerHTML = CARS.map(function (c, i) {
-    return '<label class="car"><input type="radio" name="Автомобиль" value="' + c.name + '" data-id="' + c.id + '"' + (i ? '' : ' checked') + '>' +
-      '<span class="car__img"><img src="img/' + c.img + '-800.webp" width="800" height="533" alt="" loading="lazy" decoding="async"></span>' +
-      '<span class="car__tick">' + TICK + '</span>' +
-      '<span class="car__txt"><span class="car__name">' + c.name + '</span><span class="car__price"><b>' + fmt(c.price) + '</b> в сутки</span></span></label>';
-  }).join('');
-  var curCar = function () { var r = $('input[name="Автомобиль"]:checked', pickRow); return r ? r.getAttribute('data-id') : null; };
+  var form = $('#bookForm'), fromI = $('#bFrom'), toI = $('#bTo');
+  /* ---------- Выбор автомобиля: свой выпадающий список (ARIA listbox), масштабируется на любой автопарк ---------- */
+  var carIn = $('#bCar'), carBtn = $('#carBtn'), carPanel = $('#carPanel'), carList = $('#carList'), carSearch = $('#carSearch');
+  var GROUPS = { 'Седан': 'Седаны', 'Внедорожник': 'Внедорожники', 'Спорткар': 'Спорткары' };
+  var selId = 'm5', actIdx = -1, opts = [];
+  if (CARS.length > 8) $('#carSearchWrap').hidden = false;
+  var renderList = function (q) {
+    q = (q || '').trim().toLowerCase();
+    var list = CARS.filter(function (c) { return !q || c.name.toLowerCase().indexOf(q) > -1; });
+    var kinds = []; list.forEach(function (c) { if (kinds.indexOf(c.kind) < 0) kinds.push(c.kind); });
+    var html = '';
+    kinds.forEach(function (k) {
+      html += '<div class="cars__group" role="presentation">' + (GROUPS[k] || k) + '</div>';
+      list.filter(function (c) { return c.kind === k; }).forEach(function (c) {
+        html += '<div class="cars__opt" role="option" id="opt-' + c.id + '" data-id="' + c.id + '" aria-selected="' + (c.id === selId) + '">' +
+          '<img src="img/' + c.img + '-800.webp" width="800" height="533" alt="" loading="lazy" decoding="async">' +
+          '<span><b>' + c.name + '</b><small>' + c.hp + ' л.с., до 100 за ' + c.acc + ' с</small></span>' +
+          '<span class="pr">' + fmt(c.price) + '<small>в сутки</small></span></div>';
+      });
+    });
+    carList.innerHTML = html || '<div class="cars__empty">Ничего не нашли. Позвоните, подберём машину.</div>';
+    opts = $$('.cars__opt', carList);
+    actIdx = Math.max(0, opts.findIndex(function (o) { return o.getAttribute('data-id') === selId; }));
+    markAct();
+  };
+  var markAct = function () {
+    opts.forEach(function (o, i) { o.classList.toggle('act', i === actIdx); });
+    if (opts[actIdx]) { carList.setAttribute('aria-activedescendant', opts[actIdx].id); opts[actIdx].scrollIntoView({ block: 'nearest' }); }
+  };
+  var openCars = function () {
+    renderList(''); carPanel.hidden = false; carBtn.setAttribute('aria-expanded', 'true');
+    if (!$('#carSearchWrap').hidden) { carSearch.value = ''; carSearch.focus(); } else carList.focus({ preventScroll: true });
+  };
+  var closeCars = function (refocus) { carPanel.hidden = true; carBtn.setAttribute('aria-expanded', 'false'); if (refocus) carBtn.focus(); };
+  var setCar = function (id) {
+    var c = CARS.filter(function (x) { return x.id === id; })[0]; if (!c) return;
+    selId = id; carIn.value = c.name;
+    $('#carBtnName').textContent = c.name;
+    $('#carBtnMeta').textContent = c.kind + ', ' + fmt(c.price) + ' в сутки';
+    $('#carBtnImg').src = 'img/' + c.img + '-800.webp';
+    estimate();
+  };
+  carBtn.addEventListener('click', function () { if (carPanel.hidden) openCars(); else closeCars(); });
+  carList.addEventListener('click', function (e) { var o = e.target.closest('.cars__opt'); if (!o) return; setCar(o.getAttribute('data-id')); closeCars(true); });
+  carList.addEventListener('mousemove', function (e) { var o = e.target.closest('.cars__opt'); if (!o) return; var i = opts.indexOf(o); if (i !== actIdx) { actIdx = i; opts.forEach(function (x, j) { x.classList.toggle('act', j === i); }); } });
+  var onKeys = function (e) {
+    if (e.key === 'ArrowDown') { e.preventDefault(); actIdx = Math.min(opts.length - 1, actIdx + 1); markAct(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); actIdx = Math.max(0, actIdx - 1); markAct(); }
+    else if (e.key === 'Home') { e.preventDefault(); actIdx = 0; markAct(); }
+    else if (e.key === 'End') { e.preventDefault(); actIdx = opts.length - 1; markAct(); }
+    else if (e.key === 'Enter' || (e.key === ' ' && e.target === carList)) { e.preventDefault(); if (opts[actIdx]) { setCar(opts[actIdx].getAttribute('data-id')); closeCars(true); } }
+    else if (e.key === 'Escape') { e.preventDefault(); closeCars(true); }
+    else if (e.key === 'Tab') closeCars(false);
+  };
+  carList.addEventListener('keydown', onKeys);
+  carSearch.addEventListener('keydown', onKeys);
+  carSearch.addEventListener('input', function () { renderList(carSearch.value); });
+  carBtn.addEventListener('keydown', function (e) { if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && carPanel.hidden) { e.preventDefault(); openCars(); } });
+  document.addEventListener('pointerdown', function (e) { if (!carPanel.hidden && !e.target.closest('#cars')) closeCars(false); });
+  var curCar = function () { return selId; };
   var iso = function (d) { return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10); };
   var today = new Date(); today.setHours(0, 0, 0, 0);
   fromI.min = toI.min = iso(today);
@@ -868,6 +940,16 @@ var CARS = [
       $('#tkName').textContent = c.name;
       $('#tkKind').textContent = c.kind + ', ' + c.hp + ' л.с., до 100 км/ч за ' + c.acc + ' с';
       $('#tkDay').textContent = fmt(c.price);
+      var tk = $('#tkImg');
+      if (tk && tk.getAttribute('data-id') !== c.id) {
+        tk.setAttribute('data-id', c.id); tk.classList.add('swap');
+        setTimeout(function () {
+          tk.srcset = 'img/' + c.img + '-800.webp 800w, img/' + c.img + '.webp 1500w';
+          tk.src = 'img/' + c.img + '-800.webp'; tk.alt = c.name;
+          var on = function () { tk.classList.remove('swap'); };
+          if (tk.complete) on(); else tk.onload = on;
+        }, 180);
+      }
     }
     out.classList.add('empty'); discEl.classList.remove('on'); discEl.textContent = 'от 3 суток';
     if (!c || !fromI.value || !toI.value) { out.textContent = 'выберите даты'; daysEl.textContent = 'даты не выбраны'; total.value = ''; return; }
@@ -885,14 +967,6 @@ var CARS = [
     $$('.chip', form).forEach(function (b) { b.classList.toggle('on', +b.getAttribute('data-days') === days); });
   };
   [fromI, toI].forEach(function (el) { el.addEventListener('change', function () { estimate(); markChips(); }); });
-  var showPicked = function () {
-    var r = $('input[name="Автомобиль"]:checked', pickRow); if (!r) return;
-    var card = r.closest('.car'), row = pickRow;
-    if (row.scrollWidth <= row.clientWidth) return;
-    var left = row.scrollLeft + card.getBoundingClientRect().left - row.getBoundingClientRect().left - (row.clientWidth - card.offsetWidth) / 2;
-    row.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
-  };
-  pickRow.addEventListener('change', function () { estimate(); showPicked(); });
   $$('.chip', form).forEach(function (b) {
     b.addEventListener('click', function () {
       var n = +b.getAttribute('data-days');
@@ -905,8 +979,7 @@ var CARS = [
   document.addEventListener('click', function (e) {
     var b = e.target.closest('[data-car]'); if (!b) return;
     var id = b.getAttribute('data-car');
-    $$('input[name="Автомобиль"]', pickRow).forEach(function (o) { o.checked = o.getAttribute('data-id') === id; });
-    setTimeout(showPicked, 600);
+    setCar(id);
     estimate();
   });
 
@@ -959,7 +1032,7 @@ var CARS = [
     }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (res) {
         if (!(res.ok && String(res.j.success) === 'true')) throw new Error('fail');
-        form.reset(); estimate(); markChips();
+        var keep = selId; form.reset(); setCar(keep); markChips();
         status.classList.add('ok'); status.textContent = 'Заявка отправлена. Перезвоним в течение 15 минут.';
         showToast('Спасибо, заявка получена');
       })
