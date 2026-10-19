@@ -156,6 +156,13 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* ---------- Автопарк: список + превью ---------- */
 .fleet { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
+.fleet__tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.fleet__tabs .chip small { color: var(--dim); font-weight: 500; }
+.fleet__tabs .chip.on small { color: var(--ember-ink); }
+.fleet__more { margin-top: 20px; background: transparent; border: 1px solid var(--rule-2); color: var(--bone); font: 600 15px/1 var(--body); padding: 16px 22px; border-radius: 2px; cursor: pointer; transition: border-color 0.25s ease; }
+.fleet__more:hover { border-color: var(--bone); }
+.row[hidden] { display: none; }
+.index-wrap { min-width: 0; }
 .index { list-style: none; border-top: 1px solid var(--rule); }
 .row { border-bottom: 1px solid var(--rule); }
 .row__btn {
@@ -363,7 +370,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .hero__meta div:nth-child(n+3) { display: none; }
 
   /* автопарк: раскрывающийся список */
-  .fleet { grid-template-columns: 1fr; }
+  .fleet { grid-template-columns: minmax(0, 1fr); }
+  .fleet__tabs { flex-wrap: nowrap; overflow-x: auto; margin: 0 calc(var(--pad) * -1) 20px; padding: 0 var(--pad); scrollbar-width: none; }
+  .fleet__tabs::-webkit-scrollbar { display: none; }
+  .fleet__tabs .chip { flex: 0 0 auto; }
+  .fleet__more { width: 100%; }
   .preview { display: none; }
   .row__btn { grid-template-columns: 32px minmax(0, 1fr) auto 28px; }
   .row__ico { display: block; }
@@ -538,10 +549,14 @@ button, input, select, textarea { font: inherit; color: inherit; }
   <section class="section wrap" id="fleet">
     <div class="head reveal">
       <h2 class="h2">Автопарк</h2>
-      <p class="lead">Пять автомобилей, каждый проходит мойку и техосмотр перед выдачей. Выберите модель, чтобы посмотреть фото и характеристики.</p>
+      <p class="lead"><span id="fleetCount">Пять автомобилей</span>, каждый проходит мойку и техосмотр перед выдачей. Выберите модель, чтобы посмотреть фото и характеристики.</p>
     </div>
     <div class="fleet">
-      <ul class="index reveal" id="index"></ul>
+      <div class="index-wrap reveal">
+        <div class="fleet__tabs" id="fleetTabs" role="group" aria-label="Класс автомобиля" hidden></div>
+        <ul class="index" id="index"></ul>
+        <button type="button" class="fleet__more" id="fleetMore" hidden></button>
+      </div>
       <aside class="preview reveal" style="--d:0.1s" aria-live="polite">
         <div class="preview__img" id="pvImg"></div>
         <div class="specs" id="pvSpecs"></div>
@@ -798,7 +813,7 @@ var CARS = [
   $('#index').innerHTML = CARS.map(function (c, i) {
     return '<li class="row" data-id="' + c.id + '">' +
       '<button type="button" class="row__btn" aria-expanded="false" aria-controls="m-' + c.id + '">' +
-        '<span class="row__n">0' + (i + 1) + '</span>' +
+        '<span class="row__n">' + (i < 9 ? '0' : '') + (i + 1) + '</span>' +
         '<span class="row__name">' + c.name + '<small>' + c.kind + '</small></span>' +
         '<span class="row__price">от <b>' + fmt(c.price) + '</b> / сутки</span>' +
         '<span class="row__ico" aria-hidden="true"></span>' +
@@ -833,6 +848,39 @@ var CARS = [
       setActive(open ? null : id);
     });
   });
+
+
+  /* Автопарк растёт: при большом числе машин появляются фильтры по классу и кнопка «Показать все» */
+  var KINDS = { 'Седан': 'Седаны', 'Внедорожник': 'Внедорожники', 'Спорткар': 'Спорткары' };
+  var plural = function (n, a, b, c) { var m = n % 100, k = n % 10; return (m > 10 && m < 20) ? c : k === 1 ? a : (k > 1 && k < 5) ? b : c; };
+  var WORDS = ['', 'Один', 'Два', 'Три', 'Четыре', 'Пять', 'Шесть', 'Семь', 'Восемь', 'Девять', 'Десять'];
+  $('#fleetCount').textContent = (WORDS[CARS.length] || CARS.length) + ' ' + plural(CARS.length, 'автомобиль', 'автомобиля', 'автомобилей');
+  var LIMIT = 8, fKind = 'all', fOpen = false;
+  var fleetTabs = $('#fleetTabs'), fleetMore = $('#fleetMore');
+  var applyFleet = function () {
+    var shown = 0, list = CARS.filter(function (c) { return fKind === 'all' || c.kind === fKind; });
+    var cut = fKind === 'all' && !fOpen && list.length > LIMIT + 2;
+    $$('.row').forEach(function (r) {
+      var c = CARS.filter(function (x) { return x.id === r.getAttribute('data-id'); })[0];
+      var vis = (fKind === 'all' || c.kind === fKind) && (!cut || shown < LIMIT);
+      if (vis) shown++;
+      r.hidden = !vis;
+    });
+    fleetMore.hidden = !cut;
+    if (cut) fleetMore.textContent = 'Показать все ' + list.length + ' ' + plural(list.length, 'автомобиль', 'автомобиля', 'автомобилей');
+    $$('.chip', fleetTabs).forEach(function (b) { var on = b.getAttribute('data-kind') === fKind; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+    var act = $('.row.active');
+    if (!compact.matches && (!act || act.hidden)) { var first = $$('.row').filter(function (r) { return !r.hidden; })[0]; if (first) setActive(first.getAttribute('data-id')); }
+  };
+  if (CARS.length > 6) {
+    var kinds = []; CARS.forEach(function (c) { if (kinds.indexOf(c.kind) < 0) kinds.push(c.kind); });
+    fleetTabs.innerHTML = '<button type="button" class="chip" data-kind="all">Все <small>' + CARS.length + '</small></button>' +
+      kinds.map(function (k) { return '<button type="button" class="chip" data-kind="' + k + '">' + (KINDS[k] || k) + ' <small>' + CARS.filter(function (c) { return c.kind === k; }).length + '</small></button>'; }).join('');
+    fleetTabs.hidden = false;
+    fleetTabs.addEventListener('click', function (e) { var b = e.target.closest('.chip'); if (!b) return; fKind = b.getAttribute('data-kind'); fOpen = false; applyFleet(); });
+    fleetMore.addEventListener('click', function () { fOpen = true; applyFleet(); });
+    applyFleet();
+  }
 
   /* ---------- Шапка, меню, подсветка разделов, появление ---------- */
   var nav = $('#nav'), links = $$('[data-spy]'), mbar = $('#mbar');
