@@ -726,8 +726,10 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 <script>
 /* ============ НАСТРОЙКИ ============ */
-// Заявки уходят на почту через бесплатный FormSubmit.co.
-// При первой отправке на адрес придёт письмо «Activate Form»: его нужно один раз подтвердить.
+// ДЕМО-РЕЖИМ: сайт сделан для портфолио, заявки никуда не уходят, форма только показывает успешную отправку.
+// Для настоящего сайта поставить DEMO = false: заявки пойдут на почту через FormSubmit.co
+// (при первой отправке на адрес придёт письмо «Activate Form», его нужно один раз подтвердить).
+var DEMO = true;
 var FORM_EMAIL = 'sempervukhin@mail.ru';
 
 var CARS = [
@@ -1076,10 +1078,13 @@ var CARS = [
     btn.disabled = true; var label = btn.innerHTML; btn.textContent = 'Отправляем…';
     var ctrl = 'AbortController' in window ? new AbortController() : null;
     var to = setTimeout(function () { if (ctrl) ctrl.abort(); }, 15000);
-    fetch('https://formsubmit.co/ajax/' + encodeURIComponent(FORM_EMAIL), {
-      method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data), signal: ctrl ? ctrl.signal : undefined
-    }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+    var send = DEMO
+      ? new Promise(function (res) { setTimeout(function () { res({ ok: true, j: { success: 'true' } }); }, 900); })
+      : fetch('https://formsubmit.co/ajax/' + encodeURIComponent(FORM_EMAIL), {
+          method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data), signal: ctrl ? ctrl.signal : undefined
+        }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); });
+    send
       .then(function (res) {
         if (!(res.ok && String(res.j.success) === 'true')) throw new Error('fail');
         var keep = selId; form.reset(); setCar(keep); markChips();

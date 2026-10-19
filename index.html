@@ -226,6 +226,7 @@ h1{font-size:clamp(38px,4.3vw,64px);line-height:1.03;letter-spacing:-.05em;max-w
 .thumbs img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .thumbs a:hover img{transform:scale(1.06)}
 .more .btn{align-self:flex-start}
+@media (min-width:961px){.more .thumbs{flex:1;grid-auto-rows:1fr}.more .thumbs a{aspect-ratio:auto;min-height:120px}}
 .w-rev{grid-template-columns:minmax(0,1fr) minmax(0,1.55fr)}
 .w-rev .pic{order:2}
 .w-rev .info{padding:18px 6px 18px 18px}
@@ -464,7 +465,7 @@ html.intro{overflow:hidden}
         <div class="stage" aria-live="polite">
           <div class="view v-q on" data-v="q"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>Глэмпинг «Аура»</span></div><img src="img/aura.webp" srcset="img/aura-800.webp 800w, img/aura.webp 1440w" sizes="(max-width:960px) calc(100vw - 32px), 560px" alt="Сайт глэмпинга «Аура» в Териберке" width="1440" height="900" fetchpriority="high" decoding="async"></div></div>
           <div class="view v-e" data-v="w"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>Платформа ORLO</span></div><img src="img/orlo-800.webp" srcset="img/orlo-800.webp 800w, img/orlo.webp 1440w" sizes="(max-width:960px) calc(100vw - 32px), 560px" alt="Веб-консоль платформы ORLO: график нагрузки, узлы и терминал" width="1440" height="900" loading="lazy" decoding="async"></div></div>
-          <div class="view v-w" data-v="e"><div class="phone a"><img src="img/aura-phone-400.webp" alt="Сайт «Аура» на телефоне" width="400" height="861" loading="lazy" decoding="async"></div><div class="phone b"><img src="img/stupen-m-400.webp" alt="Лендинг «Ступень» на телефоне" width="400" height="865" loading="lazy" decoding="async"></div></div>
+          <div class="view v-w" data-v="e"><div class="phone a"><img src="img/aura-phone-400.webp" alt="Сайт «Аура» на телефоне" width="400" height="861" loading="lazy" decoding="async"></div><div class="phone b"><img src="img/zilant-phone-400.webp" alt="Сайт «Зилант» на телефоне" width="400" height="866" loading="lazy" decoding="async"></div></div>
           <div class="scap"><span><b id="capT">Сайты и лендинги</b><small id="capP">от 7 500 ₽, от 1 недели</small></span><a href="#services" id="capA">Что входит <svg class="ph" aria-hidden="true"><use href="#ph-arrow-right"/></svg></a></div>
         </div>
         <div class="deck" role="group" aria-label="Направления">
@@ -488,7 +489,7 @@ html.intro{overflow:hidden}
 
   <section class="sec" id="work">
     <div class="wrap">
-      <div class="sh rv"><h2>Работы</h2><p>Коммерческий сайт для клиента из Казахстана и проекты, которые можно открыть и потрогать: бронирование, онлайн-запись в клинику, консоль управления ИИ-вычислениями, интерактивная карта. В каждом описании задача и что я сделал своими руками.</p></div>
+      <div class="sh rv"><h2>Работы</h2><p>Коммерческий сайт для клиента из Казахстана и проекты, которые можно открыть и потрогать: бронирование глэмпинга, онлайн-запись в клинику, аренда автомобилей с расчётом цены, консоль управления ИИ-вычислениями. В каждом описании задача и что я сделал своими руками.</p></div>
       <div class="bento">
         <a class="w w-aura rv" href="works/aura/">
           <div class="pic"><img src="img/aura.webp" srcset="img/aura-800.webp 800w, img/aura.webp 1440w" sizes="(max-width:960px) calc(100vw - 32px), 740px" alt="Первый экран сайта глэмпинга «Аура» в Териберке" width="1440" height="900" loading="lazy" decoding="async"><span class="mshot"><img src="img/aura-m-400.webp" alt="" width="400" height="622" loading="lazy" decoding="async"></span><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
@@ -504,18 +505,14 @@ html.intro{overflow:hidden}
         </a>
 
         <a class="w w-aura w-rev rv" href="works/zilant/">
-          <div class="pic"><img src="img/zilant.webp" srcset="img/zilant-800.webp 800w, img/zilant.webp 1440w" sizes="(max-width:960px) calc(100vw - 32px), 740px" alt="Первый экран сайта аренды автомобилей «Зилант»: BMW M5 на вечерней трассе" style="object-position:50% 0" width="1440" height="900" loading="lazy" decoding="async"><span class="mshot"><img src="img/zilant-m-400.webp" alt="" width="400" height="622" loading="lazy" decoding="async"></span><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
+          <div class="pic"><img src="img/zilant.webp" srcset="img/zilant-800.webp 800w, img/zilant.webp 1456w" sizes="(max-width:960px) calc(100vw - 32px), 740px" alt="Первый экран сайта аренды автомобилей «Зилант»: BMW M5 на вечерней трассе" style="object-position:50% 0" width="1456" height="1288" loading="lazy" decoding="async"><span class="mshot"><img src="img/zilant-m-400.webp" alt="" width="400" height="622" loading="lazy" decoding="async"></span><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
           <div class="info"><div class="mt"><span class="tag">Концепт-проект, 2026</span><span class="live">Живой сайт</span></div><h3>«Зилант»: сайт аренды премиальных автомобилей в Казани</h3><p><b>Задача:</b> показать дорогой автопарк так, чтобы захотелось сесть за руль, и довести человека до заявки без звонка.</p><ul class="did"><li><b>Первый экран:</b> бесшовная видеопетля с BMW M5, смонтированная из стокового ролика, и отдельная вертикальная версия для телефона</li><li><b>Автопарк:</b> список моделей с живым превью на компьютере и раскрывающимися карточками на телефоне</li><li><b>Бронирование:</b> свой выпадающий список машин с фото и группами по классам, быстрый выбор срока, живой расчёт цены со скидкой, заявка на почту</li><li><b>Айдентика и разработка:</b> логотип, тёплый графит и закатный оранжевый из видео, вёрстка на чистом JS, адаптив до 320 px</li></ul></div>
         </a>
         <a class="w w-7 rv" href="works/smartglobal/">
           <div class="pic"><img src="img/smartglobal.webp" srcset="img/smartglobal-800.webp 800w, img/smartglobal.webp 1172w" sizes="(max-width:960px) calc(100vw - 32px), 700px" alt="Первый экран сайта SmartGlobal Systems" width="1172" height="797" loading="lazy" decoding="async"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
           <div class="info"><div class="mt"><span class="tag tag-ink">Коммерческий проект</span><span>Казахстан, 2026</span></div><h3>Сайт для SmartGlobal Systems</h3><p><b>Задача:</b> компания монтирует видеонаблюдение и системы доступа. Нужен сайт, которому доверяют с первого экрана и который ведёт к заявке.</p><ul class="pts"><li>Анализ ниши</li><li>Структура и прототип</li><li>UI для компьютера и телефона</li><li>Передано заказчику</li></ul></div>
         </a>
-        <a class="w w-5 rv" href="works/stupen/">
-          <div class="pic"><img src="img/stupen-800.webp" srcset="img/stupen-800.webp 800w, img/stupen.webp 1440w" sizes="(max-width:960px) calc(100vw - 32px), 500px" alt="Лендинг кабинета подологии «Ступень»" width="1440" height="900" loading="lazy" decoding="async"><span class="go"><svg class="ph" aria-hidden="true"><use href="#ph-arrow-up-right"/></svg></span></div>
-          <div class="info"><div class="mt"><span>Лендинг</span><span class="live">Живой сайт</span></div><h3>Кабинет подологии «Ступень»</h3><p>Человек нажимает на карте стопы, где болит, и сразу видит процедуру и цену. Дальше прайс без звёздочек и запись на свободное время.</p><ul class="pts"><li>Интерактивная карта</li><li>Прайс</li><li>Онлайн-запись</li></ul></div>
-        </a>
-        <div class="more more-wide rv">
+        <div class="more rv">
           <div><h3>Ещё на Behance</h3><p>Магазины, лендинги и сайт часового бренда.</p></div>
           <div class="thumbs">
             <a href="https://www.behance.net/gallery/216734345/GETFLOW-flower-shop" target="_blank" rel="noopener"><img src="img/getflow.webp" decoding="async" alt="Магазин цветов GETFLOW" loading="lazy"></a>

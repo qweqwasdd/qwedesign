@@ -1108,7 +1108,9 @@ function validate(){
   if(!document.getElementById('f-agree').checked){ statusEl.className='status bad'; statusEl.textContent='Отметьте согласие на обработку данных.'; ok=false; }
   return ok;
 }
-/* Заявка уходит на почту через FormSubmit (formsubmit.co). Первую заявку нужно подтвердить по ссылке из письма. */
+/* ДЕМО-РЕЖИМ: сайт сделан для портфолио, заявки никуда не уходят, форма только показывает успешную отправку.
+   Для настоящего сайта поставить DEMO=false: тогда заявка уйдёт на почту через FormSubmit (первую нужно подтвердить по ссылке из письма). */
+const DEMO=true;
 const FORM_ENDPOINT='https://formsubmit.co/ajax/sempervukhin@mail.ru';
 form.addEventListener('submit',async e=>{
   e.preventDefault(); statusEl.textContent=''; statusEl.className='status';
@@ -1118,9 +1120,12 @@ form.addEventListener('submit',async e=>{
   data._subject='Новая заявка на бронирование, Аура'; data._template='table'; data._captcha='false';
   submitBtn.disabled=true; submitLabel.textContent='Отправляем…';
   try{
-    const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
-    const j=await r.json().catch(()=>({}));
-    if(!r.ok || j.success==='false' || j.success===false) throw new Error(j.message||'send failed');
+    if(DEMO){ await new Promise(r=>setTimeout(r,900)); }
+    else{
+      const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
+      const j=await r.json().catch(()=>({}));
+      if(!r.ok || j.success==='false' || j.success===false) throw new Error(j.message||'send failed');
+    }
     statusEl.className='status ok'; statusEl.textContent='Заявка отправлена. Ответим в течение часа.'; form.reset(); setGuests(2); update();
   }catch(err){
     statusEl.className='status bad';
