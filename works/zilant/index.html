@@ -10,7 +10,7 @@
 <meta property="og:title" content="Зилант: аренда премиальных автомобилей в Казани">
 <meta property="og:description" content="Спорткары и внедорожники люкс-класса. Подача за 30 минут, полное КАСКО.">
 <meta property="og:image" content="img/og.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B0C0D'/%3E%3Cpath d='M11 6h5l-5 20H6z' fill='%23F2C230'/%3E%3Cpath d='M20 6h5l-5 20h-5z' fill='%23F2C230' opacity='.5'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230B0C0D'/%3E%3Cpath d='M11 6h5l-5 20H6z' fill='%2389CEF6'/%3E%3Cpath d='M20 6h5l-5 20h-5z' fill='%2389CEF6' opacity='.5'/%3E%3C/svg%3E">
 <link rel="preload" href="fonts/unbounded-cyrillic-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/golos-cyrillic-400.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js')</script>
@@ -29,7 +29,7 @@
 @font-face { font-family: 'Golos Text'; font-weight: 600; font-display: swap; src: url(fonts/golos-cyrillic-600.woff2) format('woff2'); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
 @font-face { font-family: 'Golos Text'; font-weight: 600; font-display: swap; src: url(fonts/golos-latin-600.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+20BD, U+2122, U+2190-2193, U+2212; }
 
-/* ---------- Палитра «Хром и лёд» с акцентом «жёлтый сигнал»: графит, холодный белый, один жёлтый для действий и цифр ---------- */
+/* ---------- Палитра «Хром и лёд»: графит, холодный белый и ледяной голубой акцент (цвет сумеречного неба и LED-фар из видео) ---------- */
 :root {
   --ink: #0B0C0D;
   --ink-c: 11 12 13;
@@ -39,7 +39,7 @@
   --dim: #999DA3;
   --rule: rgb(241 242 243 / 0.12);
   --rule-2: rgb(241 242 243 / 0.26);
-  --ember: #F2C230;
+  --ember: #89CEF6;
   --ember-ink: #0B0C0D;
   --warn: oklch(0.7 0.16 25);
   --pad: clamp(20px, 4vw, 64px);
@@ -235,11 +235,39 @@ button, input, select, textarea { font: inherit; color: inherit; }
 /* ---------- Бронирование: тёмный блок, сводка-«билет» слева, форма справа ---------- */
 .book__head { display: grid; gap: 16px; margin-bottom: clamp(36px, 5vw, 64px); }
 .book__head p { color: var(--dim); max-width: 46ch; font-size: 17px; }
-.book__grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(32px, 5vw, 88px); align-items: start; }
+.grp { display: block; font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: 0.02em; margin-bottom: 4px; padding: 0; }
+.grp--gap { margin-top: 36px; }
+.pick { border: 0; min-width: 0; margin: 0 0 clamp(40px, 5vw, 64px); padding: 0; }
+.pick .grp { margin-bottom: 16px; }
+.pick__row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.car { position: relative; display: grid; cursor: pointer; background: var(--ink-2); border: 1px solid var(--rule); transition: border-color 0.3s ease, background 0.3s ease; }
+.car input { position: absolute; opacity: 0; pointer-events: none; }
+.car__img { aspect-ratio: 3 / 2; overflow: hidden; background: var(--ink-3); }
+.car__img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(0.85) brightness(0.62); transform: scale(1.02); transition: filter 0.5s var(--ease), transform 0.7s var(--ease); }
+.car__txt { display: grid; gap: 4px; padding: 14px 16px 16px; }
+.car__name { font-family: var(--display); font-weight: 600; font-size: 14px; letter-spacing: -0.01em; line-height: 1.2; color: var(--dim); transition: color 0.3s ease; }
+.car__price { font-size: 13px; color: var(--dim); }
+.car__price b { color: var(--bone); font-weight: 600; }
+.car__tick { position: absolute; top: 10px; right: 10px; width: 24px; height: 24px; border-radius: 50%; background: var(--ember); color: var(--ember-ink); display: grid; place-items: center; transform: scale(0); transition: transform 0.4s var(--ease); }
+.car__tick svg { width: 13px; height: 13px; }
+.car:hover { border-color: var(--rule-2); }
+.car:hover .car__img img { filter: grayscale(0.4) brightness(0.8); }
+.car:has(input:checked) { border-color: var(--ember); background: var(--ink-3); }
+.car:has(input:checked) .car__img img { filter: none; transform: scale(1); }
+.car:has(input:checked) .car__name { color: var(--bone); }
+.car:has(input:checked) .car__tick { transform: scale(1); }
+.car:has(input:focus-visible) { outline: 2px solid var(--ember); outline-offset: 3px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chip { font: 500 14px/1 var(--body); color: var(--bone); background: transparent; border: 1px solid var(--rule-2); border-radius: 2px; padding: 11px 14px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease; }
+.chip small { font-size: 12px; color: var(--ember); font-weight: 600; }
+.chip:hover { border-color: var(--bone); }
+.chip.on { background: var(--ember); border-color: var(--ember); color: var(--ember-ink); }
+.chip.on small { color: var(--ember-ink); }
+.book__grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); grid-template-areas: "fields ticket" "send ticket"; column-gap: clamp(32px, 5vw, 88px); align-items: start; }
+.bookf__fields { grid-area: fields; }
+.bookf__send { grid-area: send; display: grid; }
+.ticket { grid-area: ticket; }
 .ticket { position: sticky; top: 96px; background: var(--ink-2); border: 1px solid var(--rule); }
-.ticket__img { aspect-ratio: 3 / 2; overflow: hidden; background: var(--ink-3); }
-.ticket__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity 0.4s ease; }
-.ticket__img img.swap { opacity: 0; }
 .ticket__body { padding: clamp(20px, 2.4vw, 32px); }
 .ticket__name { font-family: var(--display); font-weight: 600; font-size: clamp(22px, 2.1vw, 30px); line-height: 1.1; letter-spacing: -0.02em; }
 .ticket__kind { color: var(--dim); font-size: 14px; margin-top: 8px; }
@@ -252,7 +280,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .ticket__total span { color: var(--dim); font-size: 14px; }
 .ticket__total b { font-family: var(--display); font-weight: 700; letter-spacing: -0.02em; font-size: clamp(26px, 2.6vw, 36px); line-height: 1; color: var(--ember); white-space: nowrap; }
 .ticket__total b.empty { font-family: var(--body); font-size: 15px; color: var(--dim); }
-.form { display: grid; gap: 6px; }
 .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
 .field { display: grid; gap: 4px; padding: 16px 0 10px; border-bottom: 1px solid var(--rule-2); transition: border-color 0.25s ease; min-width: 0; position: relative; }
 .field::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--ember); transform: scaleX(0); transform-origin: left; transition: transform 0.45s var(--ease); }
@@ -271,7 +298,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .check input { width: 18px; height: 18px; margin-top: 1px; accent-color: var(--ember); flex: 0 0 18px; }
 .check.invalid { color: var(--warn); }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-.form .btn { margin-top: 14px; width: 100%; min-height: 58px; font-size: 16px; }
+.bookf .btn { margin-top: 14px; width: 100%; min-height: 58px; font-size: 16px; }
 .form__note { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 20px; margin-top: 18px; font-size: 14px; color: var(--dim); }
 .form__note a { color: var(--bone); border-bottom: 1px solid var(--rule-2); }
 .form__note a:hover { color: var(--ember); border-color: var(--ember); }
@@ -338,8 +365,12 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .row__media .specs { border-bottom: 0; }
   .row__media .btn { margin: 4px 0 26px; }
 
-  .split, .book__grid, .m5__text { grid-template-columns: 1fr; }
-  .ticket { position: static; }
+  .split, .m5__text { grid-template-columns: 1fr; }
+  .book__grid { grid-template-columns: 1fr; grid-template-areas: "fields" "ticket" "send"; }
+  .ticket { position: static; margin-top: 32px; }
+  .pick__row { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(200px, 42%); overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 calc(var(--pad) * -1); padding: 0 var(--pad) 4px; scroll-padding: 0 var(--pad); scrollbar-width: none; }
+  .pick__row::-webkit-scrollbar { display: none; }
+  .car { scroll-snap-align: start; }
   .m5__text { gap: 24px; }
   .m5__text .btn { justify-self: start; }
   .footer__cols { grid-template-columns: auto 1fr; column-gap: 56px; }
@@ -401,7 +432,10 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
   .form__row { grid-template-columns: 1fr; }
   .form__row.dates { grid-template-columns: 1fr 1fr; gap: 0 16px; }
-  .ticket__img { aspect-ratio: 16 / 9; }
+  .pick__row { grid-auto-columns: 64%; }
+  .chips { display: grid; grid-template-columns: 1fr 1fr; }
+  .chip { justify-content: center; }
+  .car__txt { padding: 12px 14px 14px; }
   .ticket__body { padding: 16px 18px 18px; }
   .ticket__name { font-size: 22px; }
   .ticket__kind { font-size: 13px; margin-top: 4px; }
@@ -575,40 +609,54 @@ button, input, select, textarea { font: inherit; color: inherit; }
       <h2 class="h2">Бронирование</h2>
       <p>Выберите автомобиль и даты. Менеджер перезвонит в течение 15 минут и подтвердит бронь.</p>
     </div>
-    <div class="book__grid">
-      <aside class="ticket reveal" aria-label="Ваш выбор" aria-live="polite">
-        <div class="ticket__img"><img id="tkImg" src="img/m5-800.webp" srcset="img/m5-800.webp 800w, img/m5.webp 1500w" sizes="(max-width: 900px) 40vw, 40vw" width="800" height="533" alt="BMW M5 Competition" loading="lazy" decoding="async"></div>
-        <div class="ticket__body">
-          <div class="ticket__name" id="tkName">BMW M5 Competition</div>
-          <div class="ticket__kind" id="tkKind">Седан, 625 л.с., до 100 км/ч за 3,3 с</div>
-          <dl class="ticket__rows">
-            <div><dt>Сутки</dt><dd id="tkDay">35 000 ₽</dd></div>
-            <div><dt>Срок</dt><dd id="tkDays">даты не выбраны</dd></div>
-            <div><dt>Скидка</dt><dd id="tkDisc">от 3 суток</dd></div>
-          </dl>
-          <div class="ticket__total"><span>Итого, ориентировочно</span><b id="est" class="empty">выберите даты</b></div>
+    <form class="bookf" id="bookForm" novalidate data-subject="Зилант: новая заявка">
+      <fieldset class="pick reveal">
+        <legend class="grp">Автомобиль</legend>
+        <div class="pick__row" id="pickRow"></div>
+      </fieldset>
+      <div class="book__grid">
+        <div class="bookf__fields reveal">
+          <div class="grp">Даты</div>
+          <div class="form__row dates">
+            <div class="field"><label for="bFrom">Начало аренды</label><input id="bFrom" name="С" type="date" required></div>
+            <div class="field"><label for="bTo">Возврат</label><input id="bTo" name="По" type="date" required></div>
+          </div>
+          <div class="chips" role="group" aria-label="Быстрый выбор срока">
+            <button type="button" class="chip" data-days="1">1 сутки</button>
+            <button type="button" class="chip" data-days="3">3 суток <small>−10%</small></button>
+            <button type="button" class="chip" data-days="7">Неделя <small>−15%</small></button>
+            <button type="button" class="chip" data-days="14">2 недели <small>−20%</small></button>
+          </div>
+          <div class="grp grp--gap">Контакты</div>
+          <div class="form__row">
+            <div class="field"><label for="bName">Имя</label><input id="bName" name="Имя" autocomplete="name" required placeholder="Как к вам обращаться"></div>
+            <div class="field"><label for="bPhone">Телефон</label><input id="bPhone" name="Телефон" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+7 (___) ___-__-__" data-phone></div>
+          </div>
+          <div class="field"><label for="bPlace">Куда подать</label><input id="bPlace" name="Место подачи" placeholder="Аэропорт, отель или адрес"></div>
+          <div class="field"><label for="bMsg">Комментарий</label><textarea id="bMsg" name="Комментарий" rows="2" placeholder="Необязательно"></textarea></div>
         </div>
-      </aside>
-      <form class="form reveal" id="bookForm" novalidate data-subject="Зилант: новая заявка" style="--d:0.1s">
-        <div class="field"><label for="bCar">Автомобиль</label><select id="bCar" name="Автомобиль" required></select></div>
-        <div class="form__row dates">
-          <div class="field"><label for="bFrom">С какого числа</label><input id="bFrom" name="С" type="date" required></div>
-          <div class="field"><label for="bTo">По какое</label><input id="bTo" name="По" type="date" required></div>
+        <aside class="ticket reveal" aria-label="Ваш заказ" aria-live="polite" style="--d:0.1s">
+          <div class="ticket__body">
+            <div class="ticket__name" id="tkName">BMW M5 Competition</div>
+            <div class="ticket__kind" id="tkKind">Седан, 625 л.с., до 100 км/ч за 3,3 с</div>
+            <dl class="ticket__rows">
+              <div><dt>Сутки</dt><dd id="tkDay">35 000 ₽</dd></div>
+              <div><dt>Срок</dt><dd id="tkDays">даты не выбраны</dd></div>
+              <div><dt>Скидка</dt><dd id="tkDisc">от 3 суток</dd></div>
+            </dl>
+            <div class="ticket__total"><span>Итого, ориентировочно</span><b id="est" class="empty">выберите даты</b></div>
+          </div>
+        </aside>
+        <div class="bookf__send reveal">
+          <input type="hidden" name="Итого (ориентир)" id="bTotal">
+          <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="check"><input type="checkbox" required name="Согласие" value="да"> Согласен на обработку персональных данных</label>
+          <button class="btn btn--ember" type="submit">Отправить заявку <span class="arr">→</span></button>
+          <div class="status" role="status" aria-live="polite"></div>
+          <div class="form__note"><span>Удобнее голосом?</span><span><a href="tel:+78430000000">+7 843 000-00-00</a>, круглосуточно</span></div>
         </div>
-        <div class="form__row">
-          <div class="field"><label for="bName">Имя</label><input id="bName" name="Имя" autocomplete="name" required placeholder="Как к вам обращаться"></div>
-          <div class="field"><label for="bPhone">Телефон</label><input id="bPhone" name="Телефон" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+7 (___) ___-__-__" data-phone></div>
-        </div>
-        <div class="field"><label for="bPlace">Куда подать</label><input id="bPlace" name="Место подачи" placeholder="Аэропорт, отель или адрес"></div>
-        <div class="field"><label for="bMsg">Комментарий</label><textarea id="bMsg" name="Комментарий" rows="2" placeholder="Необязательно"></textarea></div>
-        <input type="hidden" name="Итого (ориентир)" id="bTotal">
-        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="check"><input type="checkbox" required name="Согласие" value="да"> Согласен на обработку персональных данных</label>
-        <button class="btn btn--ember" type="submit">Отправить заявку <span class="arr">→</span></button>
-        <div class="status" role="status" aria-live="polite"></div>
-        <div class="form__note"><span>Удобнее голосом?</span><span><a href="tel:+78430000000">+7 843 000-00-00</a>, круглосуточно</span></div>
-      </form>
-    </div>
+      </div>
+    </form>
   </section>
 </main>
 
@@ -796,33 +844,30 @@ var CARS = [
   compact.addEventListener && compact.addEventListener('change', function () { if (!compact.matches) setMenu(false); });
 
   /* ---------- Форма бронирования ---------- */
-  var form = $('#bookForm'), carSel = $('#bCar'), fromI = $('#bFrom'), toI = $('#bTo');
-  carSel.innerHTML = CARS.map(function (c) { return '<option value="' + c.name + '" data-id="' + c.id + '">' + c.name + ', ' + fmt(c.price) + '/сутки</option>'; }).join('');
+  var form = $('#bookForm'), pickRow = $('#pickRow'), fromI = $('#bFrom'), toI = $('#bTo');
+  var TICK = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg>';
+  pickRow.innerHTML = CARS.map(function (c, i) {
+    return '<label class="car"><input type="radio" name="Автомобиль" value="' + c.name + '" data-id="' + c.id + '"' + (i ? '' : ' checked') + '>' +
+      '<span class="car__img"><img src="img/' + c.img + '-800.webp" width="800" height="533" alt="" loading="lazy" decoding="async"></span>' +
+      '<span class="car__tick">' + TICK + '</span>' +
+      '<span class="car__txt"><span class="car__name">' + c.name + '</span><span class="car__price"><b>' + fmt(c.price) + '</b> в сутки</span></span></label>';
+  }).join('');
+  var curCar = function () { var r = $('input[name="Автомобиль"]:checked', pickRow); return r ? r.getAttribute('data-id') : null; };
   var iso = function (d) { return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10); };
   var today = new Date(); today.setHours(0, 0, 0, 0);
   fromI.min = toI.min = iso(today);
   var disc = function (d) { return d >= 14 ? 0.2 : d >= 7 ? 0.15 : d >= 3 ? 0.1 : 0; };
   var MON = ['янв', 'фев', 'мар', 'апр', 'мая', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
   var dstr = function (v) { var d = new Date(v); return d.getDate() + ' ' + MON[d.getMonth()]; };
-  var tkImg = $('#tkImg'), shownCar = 'm5';
   var estimate = function () {
     var out = $('#est'), total = $('#bTotal'), daysEl = $('#tkDays'), discEl = $('#tkDisc');
-    var id = carSel.selectedOptions[0] && carSel.selectedOptions[0].getAttribute('data-id');
+    var id = curCar();
     var c = CARS.filter(function (x) { return x.id === id; })[0];
     if (fromI.value) toI.min = fromI.value;
     if (c) {
       $('#tkName').textContent = c.name;
       $('#tkKind').textContent = c.kind + ', ' + c.hp + ' л.с., до 100 км/ч за ' + c.acc + ' с';
       $('#tkDay').textContent = fmt(c.price);
-      if (c.id !== shownCar) {
-        shownCar = c.id; tkImg.classList.add('swap');
-        setTimeout(function () {
-          tkImg.srcset = 'img/' + c.img + '-800.webp 800w, img/' + c.img + '.webp 1500w';
-          tkImg.src = 'img/' + c.img + '-800.webp'; tkImg.alt = c.name;
-          var on = function () { tkImg.classList.remove('swap'); };
-          if (tkImg.complete) on(); else tkImg.onload = on;
-        }, 200);
-      }
     }
     out.classList.add('empty'); discEl.classList.remove('on'); discEl.textContent = 'от 3 суток';
     if (!c || !fromI.value || !toI.value) { out.textContent = 'выберите даты'; daysEl.textContent = 'даты не выбраны'; total.value = ''; return; }
@@ -835,11 +880,33 @@ var CARS = [
     out.textContent = fmt(Math.round(c.price * days * (1 - d)));
     total.value = out.textContent + ' за ' + days + ' сут.';
   };
-  [carSel, fromI, toI].forEach(function (el) { el.addEventListener('change', estimate); });
+  var markChips = function () {
+    var days = fromI.value && toI.value ? Math.round((new Date(toI.value) - new Date(fromI.value)) / 864e5) : 0;
+    $$('.chip', form).forEach(function (b) { b.classList.toggle('on', +b.getAttribute('data-days') === days); });
+  };
+  [fromI, toI].forEach(function (el) { el.addEventListener('change', function () { estimate(); markChips(); }); });
+  var showPicked = function () {
+    var r = $('input[name="Автомобиль"]:checked', pickRow); if (!r) return;
+    var card = r.closest('.car'), row = pickRow;
+    if (row.scrollWidth <= row.clientWidth) return;
+    var left = row.scrollLeft + card.getBoundingClientRect().left - row.getBoundingClientRect().left - (row.clientWidth - card.offsetWidth) / 2;
+    row.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+  };
+  pickRow.addEventListener('change', function () { estimate(); showPicked(); });
+  $$('.chip', form).forEach(function (b) {
+    b.addEventListener('click', function () {
+      var n = +b.getAttribute('data-days');
+      if (!fromI.value) { var t = new Date(today); t.setDate(t.getDate() + 1); fromI.value = iso(t); }
+      var e = new Date(fromI.value); e.setDate(e.getDate() + n); toI.value = iso(e);
+      $$('.field', form).forEach(function (f) { if (f.contains(fromI) || f.contains(toI)) f.classList.remove('invalid'); });
+      estimate(); markChips();
+    });
+  });
   document.addEventListener('click', function (e) {
     var b = e.target.closest('[data-car]'); if (!b) return;
     var id = b.getAttribute('data-car');
-    $$('option', carSel).forEach(function (o) { o.selected = o.getAttribute('data-id') === id; });
+    $$('input[name="Автомобиль"]', pickRow).forEach(function (o) { o.checked = o.getAttribute('data-id') === id; });
+    setTimeout(showPicked, 600);
     estimate();
   });
 
@@ -892,7 +959,7 @@ var CARS = [
     }).then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (res) {
         if (!(res.ok && String(res.j.success) === 'true')) throw new Error('fail');
-        form.reset(); estimate();
+        form.reset(); estimate(); markChips();
         status.classList.add('ok'); status.textContent = 'Заявка отправлена. Перезвоним в течение 15 минут.';
         showToast('Спасибо, заявка получена');
       })
